@@ -1,0 +1,6 @@
+1. SharpDevelop - The Open Source Development Environment for .NET. #develop (short for SharpDevelop) is a free IDE for C# and VB.NET projects on Microsoft's .NET platform.
+2. C# Studio - A simple IDE for a C#/Mono/GTK# developer.
+3. MonoDevelop - project to port SharpDevelop to Gtk#. There are numerous goals that MonoDevelop hopes to achieve. Some of these are: * To create a best of breed development environment for Unix systems for C# and Mono. * Since its written in Gtk#, and we like Gtk# and we get good support from Gtk#, most likely it will add functionality to improve the Gtk# experience. * Today the IDE is a simple IDE and on Unix does not do GUI design, but we plan on adding a GUI designer. * We want to integrate the tools we have been building so far, so things like MonoDoc, NUnit-Gtk and the debugger should target MonoDevelop.
+4. xacc - small and fast integrated development environment (IDE) mainly targeted at .NET development. It has syntax support for 27 languages and project support for various compilers. It has support for step debugging .NET based executables. Also featured is brace matching and folding support for some languages.
+5. Eclipse with C# plugin - popular IDE Eclipse, with corresponding c# plugin
+6. Notepad++ - editor, which can be used for C# developing
