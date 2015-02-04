@@ -27,7 +27,6 @@ namespace Problem10FindSumInArray
             }
 
             int minCurIndex = 0;
-            int maxSum = 0;
             int currentSum = 0;
 
             // Search for most frequent number
