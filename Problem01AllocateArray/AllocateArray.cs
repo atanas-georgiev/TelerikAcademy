@@ -11,6 +11,19 @@ namespace Problem01AllocateArray
     {
         static void Main()
         {
+            int[] array = new int[20];
+
+            // Fill in the array
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = i * 5;
+            }
+
+            // Output the array to console
+            for (int i = 0; i < array.Length; i++)
+            {
+                Console.WriteLine(array[i]);
+            }
         }
     }
 }
