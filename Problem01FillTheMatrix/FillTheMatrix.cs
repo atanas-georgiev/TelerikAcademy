@@ -13,6 +13,61 @@ namespace Problem01FillTheMatrix
 {
     class FillTheMatrix
     {
+
+        static int number = 1;
+
+        static void Spiral(int[,] matrix, int row, int col, int n)
+        {
+            if (number >= n * n)
+            {
+                return;
+            }
+            else
+            {
+                // down
+                while ((row < n) && (matrix[row, col] == 0))
+                {
+                    matrix[row, col] = number;
+                    row++;
+                    number++;
+                }
+                row--;
+                col++;
+                // left
+                while ((col < n) && (matrix[row, col] == 0))
+                {
+                    matrix[row, col] = number;
+                    col++;
+                    number++;
+                }
+                col--;
+                row--;
+                // up
+                while ((row >= 0) && (matrix[row, col] == 0))
+                {
+                    matrix[row, col] = number;
+                    row--;
+                    number++;
+                }
+                row++;
+                col--;
+                // left
+                while ((col > 0) && (matrix[row, col] == 0))
+                {
+                    matrix[row, col] = number;
+                    col--;
+                    number++;
+                }
+
+                if (matrix[row, col] != 0)
+                {
+                    row++;
+                    col++;
+                    Spiral(matrix, row, col, n);
+                }
+            }
+        }
+
         static void DisplayArray(int[,] arr, int n)
         {
             for (int i = 0; i < Math.Sqrt(arr.Length); i++)
@@ -102,6 +157,22 @@ namespace Problem01FillTheMatrix
             }
 
             // display variant c)
+            DisplayArray(array, n);
+
+            Console.WriteLine();
+
+            // fill in variant d)
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    array[j, i] = 0;
+                }
+            }
+
+            Spiral(array, 0, 0, n);
+
+            // display variant d)
             DisplayArray(array, n);
 
         }
