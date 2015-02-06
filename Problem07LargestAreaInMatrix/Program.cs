@@ -7,7 +7,7 @@ using System;
 namespace Problem07LargestAreaInMatrix
 {
     class Program
-    {
+    {        
         static void Main()
         {
         }
