@@ -47,20 +47,6 @@ namespace Problem14QuickSort
             }
         }
 
-        static void Main(string[] args)
-        {
-            int[] numbers = { 3, 8, 7, 5, 2, 1, 9, 6, 4 };
-            int len = 9;
-
-            Console.WriteLine("QuickSort By Recursive Method");
-            QuickSort_Recursive(numbers, 0, len - 1);
-            for (int i = 0; i < 9; i++)
-                Console.WriteLine(numbers[i]);
-
-            Console.WriteLine();
-
-        }
-
         static void Main()
         {
             // Enter array length

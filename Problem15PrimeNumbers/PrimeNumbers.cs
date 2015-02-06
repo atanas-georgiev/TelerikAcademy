@@ -10,7 +10,6 @@ namespace Problem15PrimeNumbers
     {
         static void Main()
         {
-            long sum = 0;
             long n = 10000000;
 
             // Define new array

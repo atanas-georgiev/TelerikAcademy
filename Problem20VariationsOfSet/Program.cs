@@ -10,6 +10,17 @@ namespace Problem20VariationsOfSet
     {
         static void Main()
         {
+            Console.WriteLine("N: ");
+            int n = int.Parse(Console.ReadLine());
+            Console.WriteLine("K: ");
+            int k = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < Math.Pow(n, k); i++)
+            {
+                if ((i % n) == 0) Console.WriteLine();
+                Console.Write(i / n + 1);
+                Console.Write (i % n + 1);
+            }
         }
     }
 }
