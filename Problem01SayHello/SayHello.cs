@@ -9,8 +9,16 @@ namespace Problem01SayHello
 {
     class SayHello
     {
+        static string DisplayHello(string name)
+        {
+            return "Hello, " + name + "!";
+        }
+
         static void Main()
         {
+            Console.WriteLine("Name: ");
+            string name = Console.ReadLine();
+            Console.WriteLine(DisplayHello(name));
         }
     }
 }
