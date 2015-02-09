@@ -11,6 +11,9 @@ namespace Problem01LeapYear
     {
         static void Main()
         {
+            Console.WriteLine("Enter year: ");
+            int year = int.Parse(Console.ReadLine());
+            Console.WriteLine("Is year leap? {0}", DateTime.IsLeapYear(year));
         }
     }
 }
