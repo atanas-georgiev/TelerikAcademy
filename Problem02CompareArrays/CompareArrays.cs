@@ -42,7 +42,6 @@ namespace Problem02CompareArrays
 
                 Console.WriteLine("Array1[{3}] = {0} {2} Array2[{3}] = {1}", array1[i], array2[i], simbol, i);
             }
-
         }
     }
 }

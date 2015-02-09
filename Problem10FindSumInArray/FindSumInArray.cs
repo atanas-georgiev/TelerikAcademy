@@ -8,7 +8,6 @@ namespace Problem10FindSumInArray
 {
     class FindSumInArray
     {
-
         static void Main()
         {
             // Enter array length
