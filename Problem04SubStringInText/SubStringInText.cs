@@ -7,6 +7,8 @@
 //The result is: 9
 
 using System;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Problem04SubStringInText
 {
@@ -14,6 +16,12 @@ namespace Problem04SubStringInText
     {
         static void Main()
         {
+            Console.WriteLine("Enter text: ");
+            string str = Console.ReadLine();
+            Console.WriteLine("Enter substring: ");
+            string subStr = Console.ReadLine();
+
+            Console.WriteLine("Substring {0} appears {1} times in the text. ", subStr, Regex.Matches(str, subStr).Cast<Match>().Count());
         }
     }
 }

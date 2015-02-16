@@ -9,8 +9,22 @@ namespace Problem06StringLength
 {
     class StringLength
     {
+        const int MAX_LEN = 20;
         static void Main()
         {
+            Console.WriteLine("Enter text: ");
+            string input = Console.ReadLine();
+
+            if (input.Length > MAX_LEN)
+            {
+                input = input.Substring(0, MAX_LEN);
+            }
+            else
+            {
+                input = input.PadRight(20, '*');
+            }
+
+            Console.WriteLine("Output: " + input);
         }
     }
 }
