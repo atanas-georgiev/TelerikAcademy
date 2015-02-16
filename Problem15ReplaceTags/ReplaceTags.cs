@@ -10,6 +10,14 @@ namespace Problem15ReplaceTags
     {
         static void Main()
         {
+            Console.WriteLine("Enter text: ");
+            string input = Console.ReadLine();
+
+            input = input.Replace("<a href=\"", "[URL=");
+            input = input.Replace("\">", "]");
+            input = input.Replace("</a>", "[/URL]");
+
+            Console.WriteLine(input);
         }
     }
 }

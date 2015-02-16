@@ -4,6 +4,7 @@
 //Write a program that replaces the forbidden words with asterisks.
 
 using System;
+using System.Text.RegularExpressions;
 
 namespace Problem09ForbiddenWords
 {
@@ -11,6 +12,19 @@ namespace Problem09ForbiddenWords
     {
         static void Main()
         {
+            Console.WriteLine("Enter text: ");
+            string input = Console.ReadLine();
+            Console.WriteLine("Enter forbidden words separated by comma: ");
+            string forb = Console.ReadLine();
+            forb = forb.Trim();
+            string[] forbiddenWords = forb.Split(',');
+
+            foreach (string word in forbiddenWords)
+            {
+                input = Regex.Replace(input, word, "*");
+            }
+
+            Console.WriteLine("Output: " + input);
         }
     }
 }

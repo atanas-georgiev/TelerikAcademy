@@ -10,6 +10,15 @@ namespace Problem12ParseUrl
     {
         static void Main()
         {
+            Console.WriteLine("Enter text: ");
+            string input = Console.ReadLine();
+
+            int serverIndex = input.IndexOf("://");
+            int resIndex = input.Substring(serverIndex + 3).IndexOf("/") + serverIndex + 3;
+
+            Console.WriteLine("[protocol] = " + input.Substring(0, serverIndex));
+            Console.WriteLine("[server] = " + input.Substring(serverIndex + 3, resIndex - serverIndex - 3));
+            Console.WriteLine("[resource] = " + input.Substring(resIndex));
         }
     }
 }
