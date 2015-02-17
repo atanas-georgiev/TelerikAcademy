@@ -21,7 +21,7 @@ namespace Problem09ForbiddenWords
 
             foreach (string word in forbiddenWords)
             {
-                input = Regex.Replace(input, word, "*");
+                input = Regex.Replace(input, word, new String('*', word.Length));
             }
 
             Console.WriteLine("Output: " + input);
