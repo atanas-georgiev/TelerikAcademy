@@ -1,71 +1,89 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace Problem05
+class FeaturingWithGrisko
 {
-    class Permute
+    static int resultCount = 0;
+    static int[] isUsed;
+
+    static void Main()
     {
-        public HashSet<string> hash = new HashSet<string>();
+        isUsed = new int[26];
+        string inputString = Console.ReadLine();
 
-        private void swap(ref char a, ref char b)
+        for (int i = 0; i < inputString.Length; i++)
         {
-            if (a == b)
-                return;
-            a ^= b;
-            b ^= a;
-            a ^= b;
+            isUsed[inputString[i] - 'a']++;
         }
 
-        public void setper(char[] list)
+        if (!OnlyUniqueLetters())
         {
-            int x = list.Length - 1;
-            go(list, 0, x);
+            char[] output = new char[inputString.Length];
+            GetComb(output, 0);
+            Console.WriteLine(resultCount);
         }
-
-        private void go(char[] list, int k, int m)
+        else
         {
-            int i;
-            if (k == m)
-            {
-                hash.Add(new string(list));
-            }
-            else
-                for (i = k; i <= m; i++)
-                {
-                    swap(ref list[k], ref list[i]);
-                    go(list, k + 1, m);
-                    swap(ref list[k], ref list[i]);
-                }
+            Console.WriteLine(FactCalc(inputString.Length));
         }
     }
 
-    class Program
+    static int FactCalc(int n)
     {
-        static void Main(string[] args)
+        int currFact = 1;
+        for (int i = 2; i <= n; i++)
         {
-            int Count = 0;
-            Permute p = new Permute();
-            string c = Console.ReadLine();
-            char[] c2 = c.ToCharArray();
-            /* Calling the permute */
-            p.setper(c2);
-
-            //for (int i = 0; i < p.hash. - 1; i++)
-            //{
-            //    if (list[i] == list[i + 1])
-            //    {
-            //        found = true;
-            //        break;
-            //    }
-            //}
-            //if (found == false) Count++;
-            //Console.WriteLine(p.Count);      
-
+            currFact = currFact * i;
         }
 
+        return currFact;
+    }
+    static bool OnlyUniqueLetters()
+    {
+        for (int i = 0; i < isUsed.Length; i++)
+        {
+            if (isUsed[i] > 1)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    static void GetComb(char[] output, int index)
+    {
+        if (index == output.Length)
+        {
+            if (IsValidWord(output))
+            {
+                resultCount++;
+            }
+            return;
+        }
 
+        for (int i = 0; i < isUsed.Length; i++)
+        {
+            if (isUsed[i] > 0)
+            {
+                output[index] = (char)(i + 'a');
+                isUsed[i]--;
+                GetComb(output, index + 1); /* recursive call to generate the 
+                rest of the permutations the rest of the words */
+                isUsed[i]++;
+                // after the recursion return the letter so it can be again
+                // in the next permutation
+            }
+        }
+    }
 
+    static bool IsValidWord(char[] input)
+    {
+        // IsValidWord checks if the word has two neighbouring letters are the same
+        for (int i = 0; i < input.Length - 1; i++)
+        {
+            if (input[i] == input[i + 1])
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
