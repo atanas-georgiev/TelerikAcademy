@@ -31,37 +31,36 @@ namespace Problem03
     class Cuboid
     {
         private Cell[, ,] cube;
-        private int W, H, D;
-        private int layer;
-        public Cuboid(int w, int h, int d)
+        private int X, Y, Z;
+        public Cuboid(int x, int y, int z)
         {
-            W = w;
-            H = h;
-            D = d;
-            cube = new Cell[W, H, D];
+            X = x;
+            Y = y;
+            Z = z;
+            cube = new Cell[X, Y, Z];
         }
 
-        public void AddLayer(int height, string layer)
+        public void AddLayer(int z, string layer)
         {
             var elements =
             Regex.Matches(layer.Replace(Environment.NewLine, ""), @"\((.*?)\)")
                 .Cast<Match>()
-                .Select(x => x.Groups[1].Value)
+                .Select(m => m.Groups[1].Value)
                 .ToList();
 
-            int width = 0;
-            int depth = 0;
+            int x = 0;
+            int y = 0;
 
             foreach (string match in elements)
             {
                 string[] temp = match.Split(' ');
                 Cell newCell = new Cell();
 
-                switch (temp[0])
+                switch (temp[0].Trim().ToUpper())
                 {
                     case "S":
                         newCell.type = CellType.Slide;
-                        switch (temp[1])
+                        switch (temp[1].Trim().ToUpper())
                         {
                             case "L":
                                 newCell.data1 = 0;
@@ -91,6 +90,11 @@ namespace Problem03
                                 break;
                         }
                         break;
+                    case "T":
+                        newCell.type = CellType.Teleport;
+                        newCell.data1 = int.Parse(temp[1]);
+                        newCell.data2 = int.Parse(temp[2]);
+                        break;
                     case "E":
                         newCell.type = CellType.Empty;
                         break;
@@ -101,78 +105,98 @@ namespace Problem03
                         break;
                 }
 
-                cube[width, height, depth] = newCell;
-                depth++;
+                cube[x, y, z] = newCell;
+                x++;
 
-                if (depth >= D)
+                if (x >= X)
                 {
-                    depth = 0;
-                    width++;
+                    x = 0;
+                    y++;
                 }
             }
         }
 
         public Point3d Slide(int x, int y)
         {
-            Point3d point = new Point3d();
-            point.X = x;
-            point.Y = y;
-            point.Z = 0;
-            point.isOut = true;
+            bool isOut = true;
+            int z = 0;
 
-            for (int i = 0; i < H; i++)
-            {                
-                switch (cube[point.X, i, point.Y].type)
+            for (z = 0; z < Z; z++)
+            {
+                switch (cube[x, y, z].type)
                 {
                     case CellType.Slide:
-                        switch (cube[point.X, i, point.Y].data1)
+                        if (z < Z - 1)
                         {
-                            case 0:
-                                point.Y -= 1;
-                                break;
-                            case 1:
-                                point.Y += 1;
-                                break;
-                            case 2:
-                                point.X += 1;
-                                break;
-                            case 3:
-                                point.Y -= 1;
-                                break;
-                            case 4:
-                                point.X += 1;
-                                point.Y -= 1;
-                                break;
-                            case 5:
-                                point.X += 1;
-                                point.Y += 1;
-                                break;
-                            case 6:
-                                point.X -= 1;
-                                point.Y -= 1;
-                                break;
-                            case 7:
-                                point.X -= 1;
-                                point.Y += 1;
-                                break;
-                            default:
-                                break;
+                            switch (cube[x, y, z].data1)
+                            {
+                                case 0: // L
+                                    x -= 1;
+                                    break;
+                                case 1: // R
+                                    x += 1;
+                                    break;
+                                case 2: // F
+                                    y -= 1;
+                                    break;
+                                case 3: // B
+                                    y += 1;
+                                    break;
+                                case 4: // FL
+                                    y -= 1;
+                                    x -= 1;
+                                    break;
+                                case 5: // FR
+                                    y -= 1;
+                                    x += 1;
+                                    break;
+                                case 6: // BL
+                                    y += 1;
+                                    x -= 1;
+                                    break;
+                                case 7: // BR
+                                    y += 1;
+                                    x += 1;
+                                    break;
+                                default:
+                                    break;
+                            }
+
+                            if (x < 0) { x += 1; isOut = false; }
+                            if (y < 0) { y += 1; ; isOut = false; }
+                            if (x >= X) { x -= 1; isOut = false; }
+                            if (y >= Y) { y -= 1; ; isOut = false; }
                         }
                         break;
                     case CellType.Teleport:
-                        point.X = cube[point.X, i, point.Y].data1;
-                        point.Y = cube[point.X, i, point.Y].data2;
+                        int temp1, temp2;
+                        temp1 = cube[x, y, z].data1;
+                        temp2 = cube[x, y, z].data2;
+                        x = temp1;
+                        y = temp2;
+                        z -= 1;
+                        break;
+                    case CellType.Basket:
+                        isOut = false;
                         break;
                     case CellType.Empty:
                         break;
-                    case CellType.Basket:
-                        point.isOut = false;
-                        return point;
                     default:
                         break;
                 }
-                point.Z++;
+
+                if (isOut == false)
+                {
+                    break;
+                }
             }
+
+            if (z >= Z) { z = Z - 1; }
+            Point3d point = new Point3d();
+            point.X = x;
+            point.Y = y;
+            point.Z = z;
+            point.isOut = isOut;
 
             return point;
         }
@@ -181,12 +205,24 @@ namespace Problem03
     {
         static void Main(string[] args)
         {
-            Cuboid c = new Cuboid(3, 3, 3);
-            c.AddLayer(0, "(S L)(E)(S L) | (S L)(S R)(S L) | (B)(S F)(S L) ");
-            c.AddLayer(1, "(S B)(S F)(E) | (S B)(S F)(T 1 1)  | (S L)(S R)(B) ");
-            c.AddLayer(2, "(S FL)(S FL)(S FR) | (S FL)(S FL)(S FR) | (S F)(S BR)(S FR) ");
+            int[] inputPath = Console.ReadLine().Split(' ').Select(n => Convert.ToInt32(n)).ToArray();
+            int x = inputPath[0];
+            int y = inputPath[2];
+            int z = inputPath[1];
 
-            Point3d p = c.Slide(1, 1);
+            Cuboid c = new Cuboid(x, y, z);
+
+            for (int i = 0; i < z; i++)
+            {
+                c.AddLayer(i, Console.ReadLine());
+            }
+
+            int[] start = Console.ReadLine().Split(' ').Select(n => Convert.ToInt32(n)).ToArray();
+
+            Point3d p = c.Slide(start[0], start[1]);
+
+            Console.WriteLine("{0}", p.isOut == true ? "Yes" : "No");
+            Console.WriteLine("{0} {1} {2}", p.X, p.Z, p.Y);
         }
     }
 }
