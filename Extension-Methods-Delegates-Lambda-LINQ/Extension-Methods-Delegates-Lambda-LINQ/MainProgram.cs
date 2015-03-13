@@ -92,6 +92,27 @@ namespace Extension_Methods_Delegates_Lambda_LINQ
                 Console.Write(item + " ");
             }
 
+            // test Problem 7. Timer
+            Console.WriteLine();
+            Console.WriteLine("\nProblem 7. Timer with delegates");
+            Console.WriteLine("------------------------------------");
+            Timer timer = new Timer(1);
+            Timer.MyMethodsDelegate d = delegate() { Console.WriteLine("Timer executed with delegates each 1 second"); };
+            timer.AddDelegate(d);
+            timer.Start();
+            System.Threading.Thread.Sleep(5000);
+            timer.Stop();
+
+            // test Problem 8. Timer with events
+            Console.WriteLine();
+            Console.WriteLine("\nProblem 8. Timer with events");
+            Console.WriteLine("------------------------------------");
+            TimerEvents timerEv = new TimerEvents(1);
+            timerEv.RaiseTimerEvent += (sender, e) => { Console.WriteLine("Timer executed with events each {0} second", e.Interval); };
+            timerEv.Start();
+            System.Threading.Thread.Sleep(5000);
+            timerEv.Stop();
+
             List<Student> studentsList = students.ToList<Student>();
 
             // test Problem 9. Students from group number 2
@@ -142,6 +163,15 @@ namespace Extension_Methods_Delegates_Lambda_LINQ
                 Console.WriteLine(item);
             }
 
+            // test Problem 15. Students that enrolled in 2006
+            Console.WriteLine();
+            Console.WriteLine("\nProblem 15. Students that enrolled in 2006");
+            Console.WriteLine("------------------------------------");
+            foreach (var item in LinqAndLambdaQueries.ExtractAllWithFNin2006(studentsList))
+            {
+                Console.WriteLine(item);
+            }
+
             // test Problem 16. Students from gorup Mathematics
             Console.WriteLine();
             Console.WriteLine("\nProblem 16. Students from gorup Mathematics");
@@ -178,7 +208,24 @@ namespace Extension_Methods_Delegates_Lambda_LINQ
                 Console.WriteLine(item);
             }
 
-
+            // test Problem 20. Convergent series
+            Console.WriteLine();
+            Console.WriteLine("\nProblem 20. Convergent series");
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine("1 + 1/2 + 1/4 + 1/8 + 1/16 + …");
+            Console.WriteLine(Convergent.ConvergentSum(index => 1 / Math.Pow(2, index - 1), 0.01));
+            Console.WriteLine("1 + 1/2 - 1/4 + 1/8 - 1/16 + …");
+            Console.WriteLine(Convergent.ConvergentSum(index => 
+                {
+                    if ((index % 2) == 0)
+                    {
+                        return 1 / Math.Pow(2, index - 1);
+                    }
+                    else
+                    {
+                        return (1 / Math.Pow(2, index - 1)) * -1;
+                    }
+                }, 0.01));             
         }
     }
 }

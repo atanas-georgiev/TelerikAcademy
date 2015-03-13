@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Convergent.cs" />
     <Compile Include="Group.cs" />
     <Compile Include="IEnumerableExtensions.cs" />
     <Compile Include="LinqAndLambdaQueries.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="Student.cs" />
     <Compile Include="StudentExtensions.cs" />
     <Compile Include="Timer.cs" />
+    <Compile Include="TimerEvents.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
