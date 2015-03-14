@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C1F4823A-83F2-4C46-BE43-35128B09FB82}</ProjectGuid>
+    <ProjectGuid>{D264976E-EE8C-4DEA-874D-B6274BDFA107}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OOPPrinciplesPart1</RootNamespace>
-    <AssemblyName>OOPPrinciplesPart1</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>Problem02StudentsAndWorkers</RootNamespace>
+    <AssemblyName>Problem02StudentsAndWorkers</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -41,14 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Comment.cs" />
-    <Compile Include="Discipline.cs" />
-    <Compile Include="Person.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Human.cs" />
+    <Compile Include="MainProgram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SchoolClass.cs" />
     <Compile Include="Student.cs" />
-    <Compile Include="Teacher.cs" />
+    <Compile Include="Worker.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
