@@ -9,86 +9,103 @@ namespace Infestation
     {
         protected override void DispatchCommand(string[] commandWords)
         {
-            base.DispatchCommand(commandWords);
-        }
+            try
+            { 
+                base.DispatchCommand(commandWords); 
+            }
+            catch
+            {
 
+            }            
+        }
         protected override void ExecuteAddSupplementCommand(string[] commandWords)
         {
-            var unit = base.GetUnit(commandWords[2]);
-            switch (commandWords[1])
+            try
             {
-                case "PowerCatalyst":
-                    unit.AddSupplement(new PowerCatalyst());
-                    break;
-                case "HealthCatalyst":
-                    unit.AddSupplement(new HealthCatalyst());
-                    break;
-                case "AggressionCatalyst":
-                    unit.AddSupplement(new AggressionCatalyst());
-                    break;
-                case "Weapon":
-                    unit.AddSupplement(new Weapon());
-                    break;
-                default:
-                    base.ExecuteInsertUnitCommand(commandWords);
-                    break;
+                var unit = this.GetUnit(commandWords[2]);
+                switch (commandWords[1])
+                {
+                    case "PowerCatalyst":
+                        unit.AddSupplement(new PowerCatalyst());
+                        break;
+                    case "HealthCatalyst":
+                        unit.AddSupplement(new HealthCatalyst());
+                        break;
+                    case "AggressionCatalyst":
+                        unit.AddSupplement(new AggressionCatalyst());
+                        break;
+                    case "Weapon":
+                        unit.AddSupplement(new Weapon());
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch
+            {
+
             }
         }
 
         protected override void ExecuteInsertUnitCommand(string[] commandWords)
         {
-            switch (commandWords[1])
+            try
             {
-                case "Tank":
-                    var tank = new Tank(commandWords[2]);
-                    this.InsertUnit(tank);
-                    break;
-                case "Marine":
-                    var marine = new Marine(commandWords[2]);
-                    this.InsertUnit(marine);
-                    break;
-                case "Parasite":
-                    var parasite = new Parasite(commandWords[2]);
-                    this.InsertUnit(parasite);
-                    break;
-                case "Queen":
-                    var queen = new Queen(commandWords[2]);
-                    this.InsertUnit(queen);
-                    break;
-                default:
-                    base.ExecuteInsertUnitCommand(commandWords);
-                    break;
+                switch (commandWords[1])
+                {
+                    case "Tank":
+                        var tank = new Tank(commandWords[2]);
+                        this.InsertUnit(tank);
+                        break;
+                    case "Marine":
+                        var marine = new Marine(commandWords[2]);
+                        this.InsertUnit(marine);
+                        break;
+                    case "Parasite":
+                        var parasite = new Parasite(commandWords[2]);
+                        this.InsertUnit(parasite);
+                        break;
+                    case "Queen":
+                        var queen = new Queen(commandWords[2]);
+                        this.InsertUnit(queen);
+                        break;
+                    default:
+                        base.ExecuteInsertUnitCommand(commandWords);
+                        break;
+                }
             }
-        }
+            catch
+            {
 
-        protected override void ExecuteProceedSingleIterationCommand()
-        {
-            base.ExecuteProceedSingleIterationCommand();
+            }
         }
 
         protected override void ProcessSingleInteraction(Interaction interaction)
         {
-            switch (interaction.InteractionType)
+            try
             {
-                case InteractionType.Attack:
-                    Unit targetUnit = this.GetUnit(interaction.TargetUnit);
+                switch (interaction.InteractionType)
+                {
+                    case InteractionType.Attack:
+                        Unit targetUnit = this.GetUnit(interaction.TargetUnit);
+                        targetUnit.DecreaseBaseHealth(interaction.SourceUnit.Power);
+                        break;
 
-                    targetUnit.DecreaseBaseHealth(interaction.SourceUnit.Power);
-                    break;
-
-                case InteractionType.Infest:
-                    
-                  //  if (InfestationRequirements.RequiredClassificationToInfest(interaction.TargetUnit.UnitClassification) == interaction.SourceUnit.UnitClassification)
-                  //  {
+                    case InteractionType.Infest:
                         Unit targetUnit1 = this.GetUnit(interaction.TargetUnit);
-                        targetUnit1.AddSupplement(new InfestationSpores());                     
-                  //  }
-                    
-                    break;
-                default:
-                    break;
+                        if (InfestationRequirements.RequiredClassificationToInfest(targetUnit1.UnitClassification) == interaction.SourceUnit.UnitClassification)
+                        {
+                            targetUnit1.AddSupplement(new InfestationSpores());
+                        }
+                        break;
+                    default:
+                        break;
+                }
             }
-            
+            catch
+            {
+
+            }
         }
     }
 }

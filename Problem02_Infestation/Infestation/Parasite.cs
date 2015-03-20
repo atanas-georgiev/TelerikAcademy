@@ -14,7 +14,7 @@ namespace Infestation
         protected override bool CanAttackUnit(UnitInfo unit)
         {
             bool attackUnit = false;
-            if (this.Id != unit.Id && unit.UnitClassification == Infestation.UnitClassification.Biological)
+            if (this.Id != unit.Id && unit.UnitClassification == UnitClassification.Biological)
             {
                 attackUnit = true;
             }
@@ -42,7 +42,7 @@ namespace Infestation
 
         protected override UnitInfo GetOptimalAttackableUnit(IEnumerable<UnitInfo> attackableUnits)
         {
-            var res = attackableUnits.OrderBy(x => x.Health).First<UnitInfo>();
+            var res = attackableUnits.OrderBy(x => x.Health).LastOrDefault<UnitInfo>();
             return res;
         }
 

@@ -50,7 +50,7 @@ namespace Infestation
 
         protected virtual void ExecuteAddSupplementCommand(string[] commandWords)
         {
-            throw new NotImplementedException();
+          //  throw new NotImplementedException();
         }
 
         protected virtual void ExecuteProceedSingleIterationCommand()

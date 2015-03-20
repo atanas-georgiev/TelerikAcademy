@@ -64,7 +64,7 @@ using System.Text;
         }
         protected virtual void ExecuteAddSupplementCommand(string[] commandWords)
         {
-            throw new NotImplementedException();
+          //  throw new NotImplementedException();
         }
         protected virtual void ExecuteProceedSingleIterationCommand()
         {
@@ -125,76 +125,95 @@ using System.Text;
     {
         protected override void DispatchCommand(string[] commandWords)
         {
-            base.DispatchCommand(commandWords);
+            try
+            { 
+                base.DispatchCommand(commandWords); 
+            }
+            catch
+            {
+            }            
         }
         protected override void ExecuteAddSupplementCommand(string[] commandWords)
         {
-            var unit = base.GetUnit(commandWords[2]);
-            switch (commandWords[1])
+            try
             {
-                case "PowerCatalyst":
-                    unit.AddSupplement(new PowerCatalyst());
-                    break;
-                case "HealthCatalyst":
-                    unit.AddSupplement(new HealthCatalyst());
-                    break;
-                case "AggressionCatalyst":
-                    unit.AddSupplement(new AggressionCatalyst());
-                    break;
-                case "Weapon":
-                    unit.AddSupplement(new Weapon());
-                    break;
-                default:
-                    base.ExecuteInsertUnitCommand(commandWords);
-                    break;
+                var unit = this.GetUnit(commandWords[2]);
+                switch (commandWords[1])
+                {
+                    case "PowerCatalyst":
+                        unit.AddSupplement(new PowerCatalyst());
+                        break;
+                    case "HealthCatalyst":
+                        unit.AddSupplement(new HealthCatalyst());
+                        break;
+                    case "AggressionCatalyst":
+                        unit.AddSupplement(new AggressionCatalyst());
+                        break;
+                    case "Weapon":
+                        unit.AddSupplement(new Weapon());
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch
+            {
             }
         }
         protected override void ExecuteInsertUnitCommand(string[] commandWords)
         {
-            switch (commandWords[1])
+            try
             {
-                case "Tank":
-                    var tank = new Tank(commandWords[2]);
-                    this.InsertUnit(tank);
-                    break;
-                case "Marine":
-                    var marine = new Marine(commandWords[2]);
-                    this.InsertUnit(marine);
-                    break;
-                case "Parasite":
-                    var parasite = new Parasite(commandWords[2]);
-                    this.InsertUnit(parasite);
-                    break;
-                case "Queen":
-                    var queen = new Queen(commandWords[2]);
-                    this.InsertUnit(queen);
-                    break;
-                default:
-                    base.ExecuteInsertUnitCommand(commandWords);
-                    break;
+                switch (commandWords[1])
+                {
+                    case "Tank":
+                        var tank = new Tank(commandWords[2]);
+                        this.InsertUnit(tank);
+                        break;
+                    case "Marine":
+                        var marine = new Marine(commandWords[2]);
+                        this.InsertUnit(marine);
+                        break;
+                    case "Parasite":
+                        var parasite = new Parasite(commandWords[2]);
+                        this.InsertUnit(parasite);
+                        break;
+                    case "Queen":
+                        var queen = new Queen(commandWords[2]);
+                        this.InsertUnit(queen);
+                        break;
+                    default:
+                        base.ExecuteInsertUnitCommand(commandWords);
+                        break;
+                }
             }
-        }
-        protected override void ExecuteProceedSingleIterationCommand()
-        {
-            base.ExecuteProceedSingleIterationCommand();
+            catch
+            {
+            }
         }
         protected override void ProcessSingleInteraction(Interaction interaction)
         {
-            switch (interaction.InteractionType)
+            try
             {
-                case InteractionType.Attack:
-                    Unit targetUnit = this.GetUnit(interaction.TargetUnit);
-                    targetUnit.DecreaseBaseHealth(interaction.SourceUnit.Power);
-                    break;
-                case InteractionType.Infest:
-                  //  if (InfestationRequirements.RequiredClassificationToInfest(interaction.TargetUnit.UnitClassification) == interaction.SourceUnit.UnitClassification)
-                  //  {
+                switch (interaction.InteractionType)
+                {
+                    case InteractionType.Attack:
+                        Unit targetUnit = this.GetUnit(interaction.TargetUnit);
+                        targetUnit.DecreaseBaseHealth(interaction.SourceUnit.Power);
+                        break;
+                    case InteractionType.Infest:
                         Unit targetUnit1 = this.GetUnit(interaction.TargetUnit);
-                        targetUnit1.AddSupplement(new InfestationSpores());                     
-                  //  }
-                    break;
-                default:
-                    break;
+                        if (InfestationRequirements.RequiredClassificationToInfest(targetUnit1.UnitClassification) == interaction.SourceUnit.UnitClassification)
+                        {
+                            targetUnit1.AddSupplement(new InfestationSpores());
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch
+            {
             }
         }
     }
@@ -308,7 +327,7 @@ using System.Text;
         protected override bool CanAttackUnit(UnitInfo unit)
         {
             bool attackUnit = false;
-            if (this.Id != unit.Id && unit.UnitClassification == Infestation.UnitClassification.Biological)
+            if (this.Id != unit.Id && unit.UnitClassification == UnitClassification.Biological)
             {
                 attackUnit = true;
             }
@@ -330,7 +349,7 @@ using System.Text;
         }
         protected override UnitInfo GetOptimalAttackableUnit(IEnumerable<UnitInfo> attackableUnits)
         {
-            var res = attackableUnits.OrderBy(x => x.Health).First<UnitInfo>();
+            var res = attackableUnits.OrderBy(x => x.Health).LastOrDefault<UnitInfo>();
             return res;
         }
     }
@@ -371,7 +390,7 @@ using System.Text;
         protected override bool CanAttackUnit(UnitInfo unit)
         {
             bool attackUnit = false;
-            if (this.Id != unit.Id && (unit.UnitClassification == Infestation.UnitClassification.Mechanical || unit.UnitClassification == Infestation.UnitClassification.Psionic))
+            if (this.Id != unit.Id && (unit.UnitClassification == UnitClassification.Mechanical || unit.UnitClassification == UnitClassification.Psionic))
             {
                 attackUnit = true;
             }
@@ -393,7 +412,7 @@ using System.Text;
         }
         protected override UnitInfo GetOptimalAttackableUnit(IEnumerable<UnitInfo> attackableUnits)
         {
-            var res = attackableUnits.OrderBy(x => x.Health).First<UnitInfo>();
+            var res = attackableUnits.OrderBy(x => x.Health).LastOrDefault<UnitInfo>();
             return res;
         }
     }
@@ -445,6 +464,19 @@ using System.Text;
         public Tank(string name)
             : base(name, UnitClassification.Mechanical, 20, 25, 25)
         {
+        }
+        protected override bool CanAttackUnit(UnitInfo unit)
+        {
+            bool attackUnit = false;
+            if (this.Id != unit.Id)
+            {
+                attackUnit = true;
+            }
+            return attackUnit;
+        }
+        protected override UnitInfo GetOptimalAttackableUnit(IEnumerable<UnitInfo> attackableUnits)
+        {
+            return attackableUnits.LastOrDefault();
         }
     }
     abstract public class Unit
