@@ -12,9 +12,6 @@ namespace TradeAndTravel
         {
             switch (itemTypeString)
             {
-                case "armor":
-                    item = new Armor(itemNameString, itemLocation);
-                    break;
                 case "weapon":
                     item = new Weapon(itemNameString, itemLocation);
                     break;
@@ -25,8 +22,9 @@ namespace TradeAndTravel
                     item = new Iron(itemNameString, itemLocation);
                     break;
                 default:
-                    break;
+                    return base.CreateItem(itemTypeString, itemNameString, itemLocation, item);
             }
+
             return item;
         }
 
@@ -35,9 +33,6 @@ namespace TradeAndTravel
             Location location = null;
             switch (locationTypeString)
             {
-                case "town":
-                    location = new Town(locationName);
-                    break;
                 case "mine":
                     location = new Mine(locationName);
                     break;
@@ -45,61 +40,148 @@ namespace TradeAndTravel
                     location = new Forest(locationName);
                     break;
                 default:
-                    break;
+                    return base.CreateLocation(locationTypeString, locationName);
             }
             return location;
         }
 
+        protected override Person CreatePerson(string personTypeString, string personNameString, Location personLocation)
+        {
+            Person person = null;
+            switch (personTypeString)
+            {
+                case "merchant":
+                    person = new Merchant(personNameString, personLocation);
+                    break;
+                default:
+                    return base.CreatePerson(personTypeString, personNameString, personLocation);
+            }
+            return person;
+        }
+
+        protected override void HandleItemCreation(string itemTypeString, string itemNameString, string itemLocationString)
+        {
+            base.HandleItemCreation(itemTypeString, itemNameString, itemLocationString);
+        }
+
+        protected override void HandleLocationCreation(string locationTypeString, string locationName)
+        {
+            base.HandleLocationCreation(locationTypeString, locationName);
+        }
+
+        protected override void HandlePersonCreation(string personTypeString, string personNameString, string personLocationString)
+        {
+            base.HandlePersonCreation(personTypeString, personNameString, personLocationString);
+        }
+
         protected override void HandlePersonCommand(string[] commandWords, Person actor)
         {
-
             switch (commandWords[1])
             {
                 case "gather":
-                    HandleGatherInteraction(actor);
+                    HandleGatherInteraction(commandWords[2], actor);                    
                     break;
+                case "craft":
+                    HandleCraftInteraction(commandWords[2], commandWords[3], actor);                    
+                    break;                            
                 default:
                     base.HandlePersonCommand(commandWords, actor);
                     break;
             }
         }
 
-        private void HandleGatherInteraction(Person actor)
+        private void HandleGatherInteraction(string name, Person actor)
         {
-            switch (actor.Location.LocationType)
+            bool isItemFound = false;
+
+            if (actor.Location.LocationType == LocationType.Forest)
             {
-                case LocationType.Forest:
-                    bool hasWeapon = false;
-                    foreach (var item in actor.ListInventory())
+                foreach (Item item in actor.ListInventory())
+	            {
+		            if (item.ItemType == ItemType.Weapon)
                     {
-                        if (item.ItemType == ItemType.Weapon)
-                        {
-                            hasWeapon = true;                            
-                        }
+                        isItemFound = true;
                     }
+	            }
 
-                    if (hasWeapon)
-                    {
-                        actor.
-                    }
-
-
-                    break;
-                default:
-                    break;
-
-            }
-
-            foreach (var item in actor.ListInventory())
-            {
-                if (ownerByItem[item] == actor)
+                if (isItemFound)
                 {
+                    Item item = null;
+                    item = CreateItem("wood", name, actor.Location, item);
+                    actor.AddToInventory(item);
+                    ownerByItem[item] = actor;
                     strayItemsByLocation[actor.Location].Add(item);
-                    this.RemoveFromPerson(actor, item);
-
-                    item.UpdateWithInteraction("drop");
                 }
             }
+            else if (actor.Location.LocationType == LocationType.Mine)
+            {
+                foreach (Item item in actor.ListInventory())
+                {
+                    if (item.ItemType == ItemType.Armor)
+                    {
+                        isItemFound = true;
+                    }
+                }
+
+                if (isItemFound)
+                {
+                    Item item = null;
+                    item = CreateItem("iron", name, actor.Location, item);
+                    actor.AddToInventory(item);
+                    ownerByItem[item] = actor;
+                    strayItemsByLocation[actor.Location].Add(item);
+                }
+            }
+        }
+
+        private void HandleCraftInteraction(string type, string name, Person actor)
+        {
+            bool isItemFound = false;
+            bool isItemFound1 = false;
+
+            if (type == "weapon")
+            {
+                foreach (Item item in actor.ListInventory())
+                {
+                    if (item.ItemType == ItemType.Iron)
+                    {
+                        isItemFound = true;
+                    }
+                    if (item.ItemType == ItemType.Wood)
+                    {
+                        isItemFound1 = true;
+                    }
+                }
+
+                if (isItemFound && isItemFound1)
+                {
+                    Item item = null;
+                    item = CreateItem("weapon", name, actor.Location, item);
+                    actor.AddToInventory(item);
+                    ownerByItem[item] = actor;
+                    strayItemsByLocation[actor.Location].Add(item);
+                }
+            }
+            else if (type == "armor")
+            {
+                foreach (Item item in actor.ListInventory())
+                {
+                    if (item.ItemType == ItemType.Iron)
+                    {
+                        isItemFound = true;
+                    }
+                }
+
+                if (isItemFound)
+                {
+                    Item item = null;
+                    item = CreateItem("armor", name, actor.Location, item);
+                    actor.AddToInventory(item);
+                    ownerByItem[item] = actor;
+                    strayItemsByLocation[actor.Location].Add(item);
+                }
+            }
+
         }
     }
 }

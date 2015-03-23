@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace TradeAndTravel
 {
@@ -14,10 +15,5 @@ namespace TradeAndTravel
         {
         }
 
-        static List<ItemType> GetComposingItems()
-        {
-            return new List<ItemType>() { ItemType.Iron };
-        }
     }
 }
-

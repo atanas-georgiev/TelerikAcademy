@@ -54,6 +54,7 @@
     <Compile Include="ITraveller.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="LocationType.cs" />
+    <Compile Include="Merchant.cs" />
     <Compile Include="Mine.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />

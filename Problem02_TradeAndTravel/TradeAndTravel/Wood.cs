@@ -2,21 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace TradeAndTravel
 {
     public class Wood : Item
     {
-        const int GeneralWoodValue = 5;
+        const int GeneralWoodValue = 2;
 
         public Wood(string name, Location location = null)
             : base(name, Wood.GeneralWoodValue, ItemType.Wood, location)
         {
         }
 
-        static List<ItemType> GetComposingItems()
+        public override void UpdateWithInteraction(string interaction)
         {
-            return new List<ItemType>() { ItemType.Wood };
+            if (interaction == "drop" && this.Value > 0)
+            {
+                this.Value--;
+            }
         }
     }
 }
