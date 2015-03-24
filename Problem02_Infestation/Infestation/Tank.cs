@@ -12,20 +12,5 @@ namespace Infestation
         {
 
         }
-
-        protected override bool CanAttackUnit(UnitInfo unit)
-        {
-            bool attackUnit = false;
-            if (this.Id != unit.Id)
-            {
-                attackUnit = true;
-            }
-            return attackUnit;
-        }
-
-        protected override UnitInfo GetOptimalAttackableUnit(IEnumerable<UnitInfo> attackableUnits)
-        {
-            return attackableUnits.LastOrDefault();
-        }
     }
 }

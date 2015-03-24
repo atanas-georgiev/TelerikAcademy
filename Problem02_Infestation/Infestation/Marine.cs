@@ -38,7 +38,7 @@ namespace Infestation
 
         protected override UnitInfo GetOptimalAttackableUnit(IEnumerable<UnitInfo> attackableUnits)
         {
-            var res = attackableUnits.OrderBy(x => x.Health).Last<UnitInfo>();
+            var res = attackableUnits.OrderBy(x => x.Health).LastOrDefault<UnitInfo>();
             return res;
         }
 

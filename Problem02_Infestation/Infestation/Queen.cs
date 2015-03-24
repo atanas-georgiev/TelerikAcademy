@@ -15,7 +15,7 @@ namespace Infestation
         protected override bool CanAttackUnit(UnitInfo unit)
         {
             bool attackUnit = false;
-            if (this.Id != unit.Id && (unit.UnitClassification == UnitClassification.Mechanical || unit.UnitClassification == UnitClassification.Psionic))
+            if (this.Id != unit.Id)
             {
                 attackUnit = true;
             }

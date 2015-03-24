@@ -9,14 +9,7 @@ namespace Infestation
     {
         protected override void DispatchCommand(string[] commandWords)
         {
-            try
-            { 
-                base.DispatchCommand(commandWords); 
-            }
-            catch
-            {
-
-            }            
+            base.DispatchCommand(commandWords);          
         }
         protected override void ExecuteAddSupplementCommand(string[] commandWords)
         {
