@@ -19,7 +19,8 @@
         }
 
         protected override void Setup()
-        {            
+        {
+            base.Setup();
         }
 
         protected override void ExecuteCommandLoop()

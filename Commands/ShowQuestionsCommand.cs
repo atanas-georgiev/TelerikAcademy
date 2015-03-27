@@ -27,6 +27,7 @@
                 {
                     Console.WriteLine(item);
                 }
+                this.Forum.CurrentQuestion = null;
             }
         }
     }

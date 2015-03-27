@@ -24,6 +24,7 @@
             else
             {
                 this.Forum.CurrentUser = null;
+                this.Forum.CurrentQuestion = null;
                 this.Forum.Output.AppendLine(string.Format(Messages.LogoutSuccess));
             }
         }
