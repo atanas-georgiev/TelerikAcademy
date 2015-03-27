@@ -17,32 +17,17 @@
 
         public override void Execute()
         {
-            if (!this.Forum.IsLogged)
+            int questionId = int.Parse(this.Data[1]);
+
+            if (this.Forum.Questions.Count(x => x.Id == questionId) == 0)
             {
-                throw new CommandException(Messages.NotLogged);
+                throw new CommandException(Messages.NoQuestion);
             }
             else
             {
-                Question q = new Question();
-                q.Id = this.Forum.Questions.Count + 1;
-                q.Title = this.Data[1];
-                q.Body = string.Empty;
-                q.Author = this.Forum.CurrentUser;
-
-                for (int i = 2; i < Data.Count; i++)
-                {
-                    q.Body += this.Data[i];
-
-                    if (i != this.Data.Count - 1)
-                    {
-                        q.Body += " ";
-                    }
-                }
-
-                this.Forum.CurrentUser.Questions.Add(q);
-                this.Forum.Questions.Add(q);
-
-                this.Forum.Output.AppendLine(string.Format(Messages.PostQuestionSuccess, q.Id));
+                Question q = (Question)this.Forum.Questions.First(x => x.Id == questionId);
+                this.Forum.CurrentQuestion = q;
+                this.Forum.Output.AppendLine(q.ToString());
             }
         }
     }

@@ -1,7 +1,7 @@
 ﻿namespace ConsoleForum.Entities.Users
 {
     using System;
-    using System.Collections.Generic;    
+    using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using ConsoleForum.Contracts;
@@ -50,10 +50,12 @@
                         }
                     }
                 }
-
-                foreach (var item in this.Answers.OrderBy(x => x.Id))
+                else
                 {
-                    result.Append(item);
+                    foreach (var item in this.Answers.OrderBy(x => x.Id))
+                    {
+                        result.Append(item);
+                    }
                 }
             }
 
