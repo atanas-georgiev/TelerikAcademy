@@ -40,6 +40,8 @@
     <Compile Include="Engine\Factories\RecipeFactory.cs" />
     <Compile Include="Engine\Factories\RestaurantFactory.cs" />
     <Compile Include="Engine\RestaurantManagerEngine.cs" />
+    <Compile Include="Models\Dessert.cs" />
+    <Compile Include="Models\Drink.cs" />
     <Compile Include="Interfaces\Engine\ICommand.cs" />
     <Compile Include="Interfaces\Engine\IRecipeFactory.cs" />
     <Compile Include="Interfaces\Engine\IRestaurantFactory.cs" />
@@ -52,8 +54,13 @@
     <Compile Include="Interfaces\IRecipe.cs" />
     <Compile Include="Interfaces\IRestaurant.cs" />
     <Compile Include="Interfaces\ISalad.cs" />
+    <Compile Include="Models\MainCourse.cs" />
     <Compile Include="Models\MainCourseType.cs" />
+    <Compile Include="Models\Meal.cs" />
     <Compile Include="Models\MetricUnit.cs" />
+    <Compile Include="Models\Recipe.cs" />
+    <Compile Include="Models\Restaurant.cs" />
+    <Compile Include="Models\Salad.cs" />
     <Compile Include="RestaurantManagerProgram.cs" />
   </ItemGroup>
   <ItemGroup>
