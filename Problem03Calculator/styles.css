@@ -1,0 +1,21 @@
+﻿table, td {
+    border: 1px solid black;
+}
+
+input {   
+    width: 100%;
+    font-family: monospace;
+    font-size: 30px;
+    text-decoration: none;
+    cursor: pointer;
+    border:none;
+    background-color: white;
+}
+
+input[type="text"] {   
+    text-align: right;
+}
+
+input:hover {
+    background:#ccc;
+}

@@ -1,0 +1,15 @@
+﻿.table1 th {
+    font-size: 2em;
+}
+
+.table2 table {
+    border: 1px solid black;
+}
+
+.table2 td {
+    text-align: center;
+    border: 1px solid black;
+    overflow: hidden;
+    height: 30px;
+    width: 50px;
+}
