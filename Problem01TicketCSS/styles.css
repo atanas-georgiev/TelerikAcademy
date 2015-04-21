@@ -1,0 +1,47 @@
+body {
+    background-color: #595959;
+    font-family: Helvetica, serif;
+    padding: 0;
+    margin: 0 0 0 5px;
+}
+
+h1 {
+    color: #999;
+    font-weight: normal;
+    font-size: 17px;
+}
+
+dt {
+    font-size: 11px;
+    color: white;
+    font-style: italic;
+    float: left; width: 100px;
+}
+
+dd {
+    font-size: 11px;
+    line-height:18px;
+    margin-left: 100px;
+    margin-bottom: 10px;
+    color: #999;
+}
+
+img {
+    width: 13px;
+    height: 13px;
+    margin-right: 4px;
+}
+
+a {
+    color: #f8ebaa;
+    text-decoration: none;
+}
+
+#nosupport {
+    display: block;
+    color: red;
+}
+
+dl dd:last-child {
+    color:#cf6830;
+}
