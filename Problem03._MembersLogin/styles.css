@@ -1,0 +1,77 @@
+﻿body, section, h1 {
+    padding: 0;
+    margin: 0;    
+}
+
+.content {
+    width: 660px;
+    height: 320px;
+    background-color: #3b3b3b;
+    border: 1px solid #806651;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+}
+
+header {
+    font-family: Cambria, Serif;
+    background: linear-gradient(to bottom, #3b3b3b, #2b2b2b);    
+	font-size: 1.3em;
+	font-weight: 700;
+	color: rgb(255, 255, 255);
+    height: 70px;
+}
+
+header img {    
+    float: left;
+    padding: 10px;
+}
+
+header form {
+    float: right;
+    margin-top: 15px;
+	margin-right: 8px;
+}
+
+header form button {
+    background: linear-gradient(to bottom, #e98790, red);
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: white;
+    height: 28px;
+    width: 57px;
+    padding: 0;
+    margin: 0;
+}
+
+header form input {
+    width: 150px;
+    margin-right: 20px;
+}
+
+header form label {
+    margin-right: 20px;    
+}
+
+section h1 {
+    color: #fece33;
+    font-size: 32px;
+    font-weight: normal;
+    padding-top: 10px;
+    padding-left: 12px;
+    margin-bottom: 20px;
+}
+
+section p {
+    font-family: Calibri, Tahoma, Arial, "Courier New", Serif;
+    color: #ababab;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+    padding-left: 15px;
+    padding-right: 50px;
+}
+
+section a {
+    color: white;
+}

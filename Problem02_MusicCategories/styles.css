@@ -1,0 +1,64 @@
+﻿body, h1, p, img, input, figure {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+section {
+    height: 540px;
+    width: 420px;
+    background-color: #eee;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+}
+
+section > h1 {
+        font-weight: normal;
+        font-size: 16px;
+        padding: 14px;
+    }
+
+article {
+    border: 1px solid #999;
+    margin-left: 12px;
+    margin-right: 10px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    height: 85px;
+    background-color: #fff;
+    padding: 15px;
+    font-size: 13px;
+    position: relative;
+}
+
+figure {
+    float: left;
+    margin-right: 15px;
+}
+
+.buttons {
+    display: inline-block;
+    color: white;
+    position: absolute;
+    bottom: 12px;
+    right: 15px;
+}
+
+button {
+    background-image: url("images/button.png");
+    color: white;
+    border: none;
+    height: 25px;
+}
+
+button:hover {
+    background-image: url("images/buttonHover.png");
+}
+
+button:first-of-type {
+    width: 75px;    
+}
+
+button:last-of-type {
+    width: 65px;
+}
