@@ -5,16 +5,12 @@
 
 function problem02_MultiplicationSign() {
 
-    var a = -2,
-        b = 4,
-        c = 3,
+    alert('Problem 2. Multiplication Sign');
+
+    var a = prompt("a = "),
+        b = prompt("b = "),
+        c = prompt("c = "),
         result;
-
-    console.log('----------------------------------------');
-    console.log('Problem 2. Multiplication Sign');
-    console.log('----------------------------------------');
-
-    console.log('a = ' + a + ',b = ' + b + ',c = ' + c);
 
     if (a === 0 || b === 0 || c === 0) {
         result = '0';
@@ -48,6 +44,6 @@ function problem02_MultiplicationSign() {
         }
     }
 
-    console.log('result: ' + result);
+    alert('result: ' + result);
 
 }

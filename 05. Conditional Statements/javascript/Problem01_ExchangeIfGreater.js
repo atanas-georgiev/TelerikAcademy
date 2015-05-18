@@ -12,7 +12,7 @@ function problem01_ExchangeIfGreater() {
         temp;
 
     if (a > b) {
-        temp = a;
+        temp  = a;
         a = b;
         b = temp;
     }

@@ -4,18 +4,14 @@
 //  Use nested if statements.
 //  Note: Don’t use arrays and the built-in sorting functionality.
 
-(function () {
+function problem04_SortThreeNumbers() {
 
-    var a = -0.1,
-        b = -1.1,
-        c = -2,
+    alert('Problem 4. Sort 3 numbers');
+
+    var a = prompt("a = "),
+        b = prompt("b = "),
+        c = prompt("c = "),
         result = [];
-
-    console.log('----------------------------------------');
-    console.log('Problem 4. Sort 3 numbers');
-    console.log('----------------------------------------');
-
-    console.log('a = ' + a + ',b = ' + b + ',c = ' + c);
 
     if (a >= b) {
         if (a >= c) {
@@ -43,6 +39,6 @@
         }
     }
 
-    console.log('result: ' + result);
+    alert('result: ' + result);
 
-})();
+}

@@ -3,18 +3,14 @@
 //  Write a script that finds the biggest of three numbers.
 //  Use nested if statements.
 
-(function () {
+function problem03_TheBiggestOfThree() {
 
-    var a = -0.1,
-        b = -1.1,
-        c = -2,
+    alert('Problem 3. The biggest of Three');
+
+    var a = prompt("a = "),
+        b = prompt("b = "),
+        c = prompt("c = "),
         result;
-
-    console.log('----------------------------------------');
-    console.log('Problem 3. The biggest of Three');
-    console.log('----------------------------------------');
-
-    console.log('a = ' + a + ',b = ' + b + ',c = ' + c);
 
     if (a >= b) {
         if (a >= c) {
@@ -30,6 +26,6 @@
         }
     }
 
-    console.log('result: ' + result);
+    alert('result: ' + result);
 
-})();
+}
