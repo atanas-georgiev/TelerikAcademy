@@ -2,6 +2,12 @@
 //
 //Write a function to count the number of div elements on the web page
 
-function problem04_NumberOfElements() {
+function countDivElements(element) {
+    'use strict';
+    return document.getElementsByTagName(element).length;
+}
 
+function problem04_NumberOfElements() {
+    'use strict';
+    alert('Page contains ' + countDivElements('div') + " element(s).");
 }
