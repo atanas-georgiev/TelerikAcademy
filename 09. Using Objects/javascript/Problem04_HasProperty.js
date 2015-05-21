@@ -5,6 +5,21 @@
 //    var obj  = …;
 //var hasProp = hasProperty(obj, 'length');
 
-function problem04_HasProperty() {
+function hasProperty(obj, prop) {
+    'use strict';
 
+    return obj.hasOwnProperty(prop);
+}
+
+function problem04_HasProperty() {
+    'use strict';
+
+    var obj = window,
+        prop = 'closed';
+
+    if (hasProperty(obj, prop)) {
+        alert('Object contains the property');
+    } else {
+        alert('Object do NOT contain the property');
+    }
 }
