@@ -9,6 +9,16 @@
 //
 //The result is: 9
 
+function countStringOccurances(thePattern, theString) {
+    'use strict';
+    return theString.match(eval('/' + thePattern + '/g')).length;
+}
+
 function problem03_SubStringInText() {
+    'use strict';
+    var text = prompt('Enter text'),
+        srch = prompt('Enter search text');
+
+    alert('Number of occurrences: ' + countStringOccurances(srch, text));
 
 }

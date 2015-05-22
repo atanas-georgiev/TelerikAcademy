@@ -6,6 +6,15 @@
 //input    output
 //sample   elpmas
 
-function problem01_ReverseString() {
+function reverseString(input) {
+    'use strict';
+    if ((typeof input) !== 'string') {
+        throw new Error('Input is not a string!');
+    }
+    return input.split('').reverse().join('');
+}
 
+function problem01_ReverseString() {
+    'use strict';
+    alert('Inverted string is: ' + reverseString(prompt('Enter a string value')));
 }
