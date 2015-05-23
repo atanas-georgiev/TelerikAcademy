@@ -5,5 +5,10 @@
 //    Return the emails as array of strings.
 
 function problem09_ExtractEmails() {
+    'use strict';
 
+    var emails = 'riojasm66@yahoo.com, hdclive@live.com, terauau@gmail.com, jabu_moleketi@yahoo.com, soeungkheng34@yahoo.com, desk433@yahoo.com, caf432@ig.com.br',
+        mailList = emails.match(/.+\@.+\..+/g).map(String);
+
+    console.log(mailList);
 }
