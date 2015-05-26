@@ -11,7 +11,9 @@ function solve(params) {
         carrots = 0,
         cabbage = 0,
         lettuce = 0,
-        turnip = 0;
+        turnip = 0,
+        tempStr,
+        visitedCells = [];
 
     for (i = 0; i < params.length - 1; i += 1) {
         matrix[i] = params[i + 1].split(', ');
@@ -48,21 +50,21 @@ function solve(params) {
             y = matrix[0].length - 1;
             hits += 1;
         } else {
-            carrots += matrix[x][y].split('{!}').length - 1;
-            matrix[x][y] = matrix[x][y].split('{!}').join('@');
+            var tempStr = matrix[x][y];
 
-            cabbage += matrix[x][y].split('{*}').length - 1;
-            matrix[x][y] = matrix[x][y].split('{*}').join('@');
+            if (tempStr.indexOf('{!}') > -1) carrots += 1;
+            if (tempStr.indexOf('{*}') > -1) cabbage += 1;
+            if (tempStr.indexOf('{&}') > -1) lettuce += 1;
+            if (tempStr.indexOf('{#}') > -1) turnip += 1;
 
-            lettuce += matrix[x][y].split('{&}').length - 1;
-            matrix[x][y] = matrix[x][y].split('{&}').join('@');
+            tempStr = tempStr.replace('{!}', '@');
+            tempStr = tempStr.replace('{*}', '@');
+            tempStr = tempStr.replace('{&}', '@');
+            tempStr = tempStr.replace('{#}', '@');
 
-            turnip += matrix[x][y].split('{#}').length - 1;
-            matrix[x][y] = matrix[x][y].split('{#}').join('@');
-
-            //if (typeof steps[matrix[x][y]] === 'undefined') {
-                steps.push(matrix[x][y]);
-            //}
+            if (steps.indexOf(tempStr) <= -1) {
+                steps.push(tempStr);
+            }
         }
     }
 
@@ -78,8 +80,8 @@ function solve(params) {
     'use strict';
     var res = solve(['right, up, up, down',
         'asdf, as{#}aj{g}dasd, kjldk{}fdffd, jdflk{#}jdfj',
-'tr{X}yrty, zxx{*}zxc, mncvnvcn, popipoip',
-'poiopipo, nmf{X}d{X}ei, mzoijwq, omcxzne']);
+        'tr{X}yrty, zxx{*}zxc, mncvnvcn, popipoip',
+        'poiopipo, nmf{X}d{X}ei, mzoijwq, omcxzne']);
 
     //console.log('gold : ' + Math.floor(res / 100) % 10);
     //console.log('silver : ' + Math.floor(res / 10) % 10);

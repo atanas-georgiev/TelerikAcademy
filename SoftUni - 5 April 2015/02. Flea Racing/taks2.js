@@ -7,7 +7,7 @@ function solve(params) {
         j,
         players = {},
         player,
-        winner = -1,
+        winner,
         str1 = '',
         str2 = '',
         playerStr = '',
@@ -15,6 +15,7 @@ function solve(params) {
 
     for (i = 2; i < params.length; i += 1) {
         players[params[i].split(',')[0].trim()] = [parseInt(params[i].split(',')[1].trim()), 0];
+        winner = params[i].split(',')[0].trim();
     }
 
     for (i = 0; i < jumps && end === false; i += 1) {
