@@ -1,6 +1,6 @@
 function solve() {
     'use strict';
-    var module = (function() {
+    var module = (function () {
 
         var CONSTANTS = {
             MIN_STRING_LEN: 3,
@@ -9,31 +9,31 @@ function solve() {
 
         var validators = {
             // String
-            isString: function(value) {
+            isString: function (value) {
                 return (typeof value === 'string' || value instanceof String);
             },
-            checkStringAndThrow: function(value) {
+            checkStringAndThrow: function (value) {
                 if (!this.isString(value)) {
                     throw new Error(value + ' not a string!');
                 }
             },
-            checkTitleLength: function(value) {
+            checkTitleLength: function (value) {
                 if (value.length < CONSTANTS.MIN_STRING_LEN ||
                     value.length > CONSTANTS.MAX_STRING_LEN) {
                     throw new Error(value + ' length not correct!');
                 }
             },
             // Number
-            isNumber: function(value) {
+            isNumber: function (value) {
                 return !isNaN(parseFloat(value)) && isFinite(value);
             },
-            checkNumberAndThrow: function(value) {
+            checkNumberAndThrow: function (value) {
                 if (!this.isNumber(value)) {
                     throw new Error(value + ' not a number!');
                 }
             },
             // others
-            getById: function(collection, id) {
+            getById: function (collection, id) {
                 if (collection === undefined || id === undefined) {
                     throw new Error();
                 }
@@ -47,7 +47,7 @@ function solve() {
 
                 return null;
             },
-            getIndexById: function(collection, id) {
+            getIndexById: function (collection, id) {
                 if (collection === undefined || id === undefined) {
                     throw new Error();
                 }
@@ -61,21 +61,21 @@ function solve() {
 
                 return null;
             },
-            checkForIdAndThrow: function(value) {
+            checkForIdAndThrow: function (value) {
                 if (value === undefined || typeof value !== 'object' || value.id === undefined) {
                     throw new Error();
                 }
             },
         };
 
-        var playable = (function() {
+        var playable = (function () {
             // Private functions
             var playableInternal = Object.create({}),
                 idPlayable = 0;
 
             Object.defineProperties(playableInternal, {
                 'init': {
-                    value: function(title, author) {
+                    value: function (title, author) {
                         this._id = ++idPlayable;
                         this.title = title;
                         this.author = author;
@@ -83,32 +83,32 @@ function solve() {
                     }
                 },
                 'id': {
-                    get: function() {
+                    get: function () {
                         return this._id;
                     }
                 },
                 'title': {
-                    get: function() {
+                    get: function () {
                         return this._title;
                     },
-                    set: function(value) {
+                    set: function (value) {
                         validators.checkStringAndThrow(value);
                         validators.checkTitleLength(value);
                         this._title = value;
                     }
                 },
                 'author': {
-                    get: function() {
+                    get: function () {
                         return this._auther;
                     },
-                    set: function(value) {
+                    set: function (value) {
                         validators.checkStringAndThrow(value);
                         validators.checkTitleLength(value);
                         this._auther = value;
                     }
                 },
                 'play': {
-                    value: function() {
+                    value: function () {
                         return this.id + '.' + this.title + ' - ' + this.author;
                     }
                 }
@@ -116,22 +116,22 @@ function solve() {
             return playableInternal;
         }());
 
-        var audio = (function(parent) {
+        var audio = (function (parent) {
             var audioInternal = Object.create(parent);
 
             Object.defineProperties(audioInternal, {
                 'init': {
-                    value: function(title, author, length) {
+                    value: function (title, author, length) {
                         parent.init.call(this, title, author);
                         this.length = length;
                         return this;
                     }
                 },
                 'length': {
-                    get: function() {
+                    get: function () {
                         return this._length;
                     },
-                    set: function(value) {
+                    set: function (value) {
                         validators.checkNumberAndThrow(value);
                         if (value <= 0) {
                             throw new Error();
@@ -140,7 +140,7 @@ function solve() {
                     }
                 },
                 'play': {
-                    value: function() {
+                    value: function () {
                         return parent.play.call(this) + ' - ' + this.length;
                     }
                 }
@@ -148,22 +148,22 @@ function solve() {
             return audioInternal;
         }(playable));
 
-        var video = (function(parent) {
+        var video = (function (parent) {
             var videoInternal = Object.create(parent);
 
             Object.defineProperties(videoInternal, {
                 'init': {
-                    value: function(title, author, imdbRating) {
+                    value: function (title, author, imdbRating) {
                         parent.init.call(this, title, author);
                         this.imdbRating = imdbRating;
                         return this;
                     }
                 },
                 'imdbRating': {
-                    get: function() {
+                    get: function () {
                         return this._imdbRating;
                     },
-                    set: function(value) {
+                    set: function (value) {
                         validators.checkNumberAndThrow(imdbRating);
                         if (value < 1 || value > 5) {
                             throw new Error();
@@ -172,7 +172,7 @@ function solve() {
                     }
                 },
                 'play': {
-                    value: function() {
+                    value: function () {
                         return parent.play.call(this) + ' - ' + this.imdbRating;
                     }
                 }
@@ -180,13 +180,13 @@ function solve() {
             return videoInternal;
         }(playable));
 
-        var playlist = (function() {
+        var playlist = (function () {
             var playlistInternal = {},
                 idPlaylist = 0;
 
             Object.defineProperties(playlistInternal, {
                 'init': {
-                    value: function(name) {
+                    value: function (name) {
                         this.name = name;
                         this._id = ++idPlaylist;
                         this._playables = [];
@@ -194,22 +194,22 @@ function solve() {
                     }
                 },
                 'id': {
-                    get: function() {
+                    get: function () {
                         return this._id;
                     }
                 },
                 'name': {
-                    get: function() {
+                    get: function () {
                         return this._name;
                     },
-                    set: function(value) {
+                    set: function (value) {
                         validators.checkStringAndThrow(value);
                         validators.checkTitleLength(value);
                         this._name = value;
                     }
                 },
                 'addPlayable': {
-                    value: function(playableValue) {
+                    value: function (playableValue) {
                         var res;
                         validators.checkForIdAndThrow(playableValue);
                         res = validators.getById(this._playables, playableValue.id);
@@ -220,12 +220,12 @@ function solve() {
                     }
                 },
                 'getPlayableById': {
-                    value: function(id) {
+                    value: function (id) {
                         return validators.getById(this._playables, id);
                     }
                 },
                 'removePlayable': {
-                    value: function(id) {
+                    value: function (id) {
                         if (validators.isNumber(id) !== true) {
                             id = id.id;
                         }
@@ -241,7 +241,7 @@ function solve() {
                     }
                 },
                 'listPlayables': {
-                    value: function(page, size) {
+                    value: function (page, size) {
                         validators.checkNumberAndThrow(page);
                         validators.checkNumberAndThrow(size);
 
@@ -252,7 +252,7 @@ function solve() {
                         return this
                             ._playables
                             .slice()
-                            .sort(function(item1, item2) {
+                            .sort(function (item1, item2) {
                                 if (item1.name > item2.name) {
                                     return 1;
                                 } else if (item1.name < item2.name) {
@@ -268,13 +268,13 @@ function solve() {
             return playlistInternal;
         }());
 
-        var player = (function() {
+        var player = (function () {
             var playerInternal = {},
                 idPlayer;
 
             Object.defineProperties(playerInternal, {
                 'init': {
-                    value: function(name) {
+                    value: function (name) {
                         this.name = name;
                         this._id = ++idPlayer;
                         this._playlists = [];
@@ -282,22 +282,22 @@ function solve() {
                     }
                 },
                 'id': {
-                    get: function() {
+                    get: function () {
                         return this._id;
                     }
                 },
                 'name': {
-                    get: function() {
+                    get: function () {
                         return this._name;
                     },
-                    set: function(value) {
+                    set: function (value) {
                         validators.checkStringAndThrow(value);
                         validators.checkTitleLength(value);
                         this._name = value;
                     }
                 },
                 'addPlaylist': {
-                    value: function(playlistToAdd) {
+                    value: function (playlistToAdd) {
                         var res;
                         validators.checkForIdAndThrow(playlistToAdd);
                         res = validators.getById(this._playlists, playlistToAdd.id);
@@ -308,12 +308,12 @@ function solve() {
                     }
                 },
                 'getPlaylistById': {
-                    value: function(id) {
+                    value: function (id) {
                         return validators.getById(this._playlists, id);
                     }
                 },
                 'removePlaylist': {
-                    value: function(id) {
+                    value: function (id) {
                         if (validators.isNumber(id) !== true) {
                             id = id.id;
                         }
@@ -329,7 +329,7 @@ function solve() {
                     }
                 },
                 'listPlaylists': {
-                    value: function(page, size) {
+                    value: function (page, size) {
                         validators.checkNumberAndThrow(page);
                         validators.checkNumberAndThrow(size);
 
@@ -340,7 +340,7 @@ function solve() {
                         return this
                             ._playlists
                             .slice()
-                            .sort(function(item1, item2) {
+                            .sort(function (item1, item2) {
                                 if (item1.name > item2.name) {
                                     return 1;
                                 } else if (item1.name < item2.name) {
@@ -352,7 +352,7 @@ function solve() {
                     }
                 },
                 'contains': {
-                    value: function(playable, playlist) {
+                    value: function (playable, playlist) {
                         validator.checkForIdAndThrow(playable);
                         validator.checkForIdAndThrow(playlist);
                         var playableId = playable.id;
@@ -372,7 +372,7 @@ function solve() {
                     }
                 },
                 'search': {
-                    value: function(pattern) {
+                    value: function (pattern) {
 
                     }
                 }
@@ -381,16 +381,16 @@ function solve() {
         }());
 
         return {
-            getPlayer: function(name) {
+            getPlayer: function (name) {
                 return Object.create(player).init(name);
             },
-            getPlaylist: function(name) {
+            getPlaylist: function (name) {
                 return Object.create(playlist).init(name);
             },
-            getAudio: function(title, author, length) {
+            getAudio: function (title, author, length) {
                 return Object.create(audio).init(title, author, length);
             },
-            getVideo: function(title, author, imdbRating) {
+            getVideo: function (title, author, imdbRating) {
                 return Object.create(video).init(title, author, imdbRating);
             }
         };
