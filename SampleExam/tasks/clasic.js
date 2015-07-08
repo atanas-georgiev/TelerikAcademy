@@ -1,5 +1,5 @@
 function solve() {
-    var module = (function() {
+    var module = (function () {
         var Player,
             currentPlayerId = 0,
             Playlist,
@@ -29,7 +29,7 @@ function solve() {
         }
 
         function getSortingFunction(firstParameter, secondParameter) {
-            return function(first, second) {
+            return function (first, second) {
                 if (first[firstParameter] < second[firstParameter]) {
                     return -1;
                 } else if (first[firstParameter] > second[firstParameter]) {
@@ -43,29 +43,29 @@ function solve() {
                 } else {
                     return 0;
                 }
-            }
+            };
         }
 
         validator = {
-            validateIfUndefined: function(val, name) {
+            validateIfUndefined: function (val, name) {
                 name = name || 'Value';
                 if (val === undefined) {
                     throw new Error(name + ' cannot be undefined');
                 }
             },
-            validateIfObject: function(val, name) {
+            validateIfObject: function (val, name) {
                 name = name || 'Value';
                 if (typeof val !== 'object') {
                     throw new Error(name + ' must be an object');
                 }
             },
-            validateIfNumber: function(val, name) {
+            validateIfNumber: function (val, name) {
                 name = name || 'Value';
                 if (typeof val !== 'number') {
                     throw new Error(name + ' must be a number');
                 }
             },
-            validateString: function(val, name) {
+            validateString: function (val, name) {
                 name = name || 'Value';
                 this.validateIfUndefined(val, name);
 
@@ -78,7 +78,7 @@ function solve() {
                         ' and ' + CONSTANTS.TEXT_MAX_LENGTH + ' symbols');
                 }
             },
-            validatePositiveNumber: function(val, name) {
+            validatePositiveNumber: function (val, name) {
                 name = name || 'Value';
                 this.validateIfUndefined(val, name);
                 this.validateIfNumber(val, name);
@@ -87,7 +87,7 @@ function solve() {
                     throw new Error(name + ' must be positive number');
                 }
             },
-            validateImdbRating: function(val) {
+            validateImdbRating: function (val) {
                 this.validateIfUndefined(val, 'IMDB Rating');
                 this.validateIfNumber(val, 'IMDB Rating');
 
@@ -95,7 +95,7 @@ function solve() {
                     throw new Error('IMDB Rating must be between ' + CONSTANTS.IMDB_MIN_RATING + ' and ' + CONSTANTS.IMDB_MAX_RATING);
                 }
             },
-            validateId: function(id) {
+            validateId: function (id) {
                 this.validateIfUndefined(id, 'Object id');
                 if (typeof id !== 'number') {
                     id = id.id;
@@ -104,7 +104,7 @@ function solve() {
                 this.validateIfUndefined(id, 'Object must have id');
                 return id;
             },
-            validatePageAndSize: function(page, size, maxElements) {
+            validatePageAndSize: function (page, size, maxElements) {
                 this.validateIfUndefined(page);
                 this.validateIfUndefined(size);
                 this.validateIfNumber(page);
@@ -122,30 +122,30 @@ function solve() {
             }
         };
 
-        Player = function(name) {
+        Player = function (name) {
             this.name = name;
             this._id = ++currentPlayerId;
             this._playlists = [];
         };
 
         Object.defineProperty(Player.prototype, 'id', {
-            get: function() {
+            get: function () {
                 return this._id;
             }
         });
 
         Object.defineProperty(Player.prototype, 'name', {
-            get: function() {
+            get: function () {
                 return this._name;
             },
-            set: function(val) {
+            set: function (val) {
                 validator.validateString(val, 'Player name');
                 this._name = val;
             }
         });
 
         Object.defineProperty(Player.prototype, 'addPlaylist', {
-            value: function(playlist) {
+            value: function (playlist) {
                 validator.validateIfUndefined(playlist, 'Player add playlist parameter');
                 if (playlist.id === undefined) {
                     throw new Error('Player add playlist parameter must have id');
@@ -157,7 +157,7 @@ function solve() {
         });
 
         Object.defineProperty(Player.prototype, 'getPlaylistById', {
-            value: function(id) {
+            value: function (id) {
                 validator.validateIfUndefined(id, 'Player get playlist parameter id');
                 validator.validateIfNumber(id, 'Player get playlist paratemeter id');
 
@@ -171,7 +171,7 @@ function solve() {
         });
 
         Object.defineProperty(Player.prototype, 'removePlaylist', {
-            value: function(id) {
+            value: function (id) {
                 id = validator.validateId(id);
 
                 var foundIndex = indexOfElementWithIdInCollection(this._playlists, id);
@@ -186,7 +186,7 @@ function solve() {
         });
 
         Object.defineProperty(Player.prototype, 'listPlaylists', {
-            value: function(page, size) {
+            value: function (page, size) {
                 validator.validatePageAndSize(page, size, this._playlists.length);
 
                 return this._playlists
@@ -197,7 +197,7 @@ function solve() {
         });
 
         Object.defineProperty(Player.prototype, 'contains', {
-            value: function(playable, playlist) {
+            value: function (playable, playlist) {
                 validator.validateIfUndefined(playable);
                 validator.validateIfUndefined(playlist);
                 var playableId = validator.validateId(playable.id);
@@ -218,21 +218,21 @@ function solve() {
         });
 
         Object.defineProperty(Player.prototype, 'search', {
-            value: function(pattern) {
+            value: function (pattern) {
                 validator.validateString(pattern, 'Search pattern');
 
                 return this._playlists
-                    .filter(function(playlist) {
+                    .filter(function (playlist) {
                         return playlist
                             .listPlayables()
-                            .some(function(playable) {
+                            .some(function (playable) {
                                 return playable.length !== undefined && playable
                                     .title
                                     .toLowerCase()
                                     .indexOf(pattern.toLowerCase()) >= 0;
                             });
                     })
-                    .map(function(playlist) {
+                    .map(function (playlist) {
                         return {
                             id: playlist.id,
                             name: playlist.name
@@ -241,30 +241,30 @@ function solve() {
             }
         });
 
-        Playlist = function(name) {
+        Playlist = function (name) {
             this.name = name;
             this._id = ++currentPlaylistId;
             this._playables = [];
         };
 
         Object.defineProperty(Playlist.prototype, 'id', {
-            get: function() {
+            get: function () {
                 return this._id;
             }
         });
 
         Object.defineProperty(Playlist.prototype, 'name', {
-            get: function() {
+            get: function () {
                 return this._name;
             },
-            set: function(val) {
+            set: function (val) {
                 validator.validateString(val, 'Playlist name');
                 this._name = val;
             }
         });
 
         Object.defineProperty(Playlist.prototype, 'addPlayable', {
-            value: function(playable) {
+            value: function (playable) {
                 validator.validateIfUndefined(playable, 'Playlist add playable parameter');
                 validator.validateIfObject(playable, 'Playlist add playable parameter');
                 validator.validateIfUndefined(playable.id, 'Playlist add playable parameter must have id');
@@ -275,7 +275,7 @@ function solve() {
         });
 
         Object.defineProperty(Playlist.prototype, 'getPlayableById', {
-            value: function(id) {
+            value: function (id) {
                 validator.validateIfUndefined(id, 'Playlist get playable parameter id');
                 validator.validateIfNumber(id, 'Playlist get playable paratemeter id');
 
@@ -289,7 +289,7 @@ function solve() {
         });
 
         Object.defineProperty(Playlist.prototype, 'removePlayable', {
-            value: function(id) {
+            value: function (id) {
                 id = validator.validateId(id);
 
                 var foundIndex = indexOfElementWithIdInCollection(this._playables, id);
@@ -304,7 +304,7 @@ function solve() {
         });
 
         Object.defineProperty(Playlist.prototype, 'listPlayables', {
-            value: function(page, size) {
+            value: function (page, size) {
                 page = page || 0;
                 size = size || CONSTANTS.MAX_NUMBER;
                 validator.validatePageAndSize(page, size, this._playables.length);
@@ -317,45 +317,45 @@ function solve() {
             }
         });
 
-        Playable = function(title, author) {
+        Playable = function (title, author) {
             this.title = title;
             this.author = author;
             this._id = ++currentPlayableId;
         };
 
         Object.defineProperty(Playable.prototype, 'id', {
-            get: function() {
+            get: function () {
                 return this._id;
             }
         });
 
         Object.defineProperty(Playable.prototype, 'title', {
-            get: function() {
+            get: function () {
                 return this._title;
             },
-            set: function(val) {
+            set: function (val) {
                 validator.validateString(val, 'Playable Title');
                 this._title = val;
             }
         });
 
         Object.defineProperty(Playable.prototype, 'author', {
-            get: function() {
+            get: function () {
                 return this._author;
             },
-            set: function(val) {
+            set: function (val) {
                 validator.validateString(val, 'Playable Author');
                 this._author = val;
             }
         });
 
         Object.defineProperty(Playable.prototype, 'play', {
-            value: function() {
+            value: function () {
                 return this.id + '. ' + this.title + ' - ' + this.author;
             }
         });
 
-        Audio = function(title, author, length) {
+        Audio = function (title, author, length) {
             Playable.call(this, title, author);
             this.length = length;
         };
@@ -364,22 +364,22 @@ function solve() {
         Audio.prototype.constructor = Audio;
 
         Object.defineProperty(Audio.prototype, 'length', {
-            get: function() {
+            get: function () {
                 return this._length;
             },
-            set: function(val) {
+            set: function (val) {
                 validator.validatePositiveNumber(val, 'Audio Length');
                 this._length = val;
             }
         });
 
         Object.defineProperty(Audio.prototype, 'play', {
-            value: function() {
+            value: function () {
                 return Playable.prototype.play.call(this) + ' - ' + this.length;
             }
         });
 
-        Video = function(title, author, imdbRating) {
+        Video = function (title, author, imdbRating) {
             Playable.call(this, title, author);
             this.imdbRating = imdbRating;
         };
@@ -388,32 +388,32 @@ function solve() {
         Video.prototype.constructor = Video;
 
         Object.defineProperty(Video.prototype, 'imdbRating', {
-            get: function() {
+            get: function () {
                 return this._imdbRating;
             },
-            set: function(val) {
+            set: function (val) {
                 validator.validateImdbRating(val);
                 this._imdbRating = val;
             }
         });
 
         Object.defineProperty(Video.prototype, 'play', {
-            value: function() {
+            value: function () {
                 return Playable.prototype.play.call(this) + ' - ' + this.imdbRating;
             }
         });
 
         return {
-            getPlayer: function(name) {
+            getPlayer: function (name) {
                 return new Player(name);
             },
-            getPlaylist: function(name) {
+            getPlaylist: function (name) {
                 return new Playlist(name);
             },
-            getAudio: function(title, author, length) {
+            getAudio: function (title, author, length) {
                 return new Audio(title, author, length);
             },
-            getVideo: function(title, author, imdbRating) {
+            getVideo: function (title, author, imdbRating) {
                 return new Video(title, author, imdbRating);
             }
         };
