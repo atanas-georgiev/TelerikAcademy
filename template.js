@@ -5,14 +5,17 @@ function solve() {
 
         // Constants in the module
         var CONSTANTS = {
-            __CONSTANT1: 0,
-            __CONSTANT2: 0
-        };
+                __CONSTANT1: 0,
+                __CONSTANT2: 0
+            },
+            validators,
+            __parent,
+            __child;
 
         // Some internal functions
 
         // Validations
-        var validators = {
+        validators = {
             // Undefined
             checkUndefinedAndThrow: function (value) {
                 if (value === undefined) {
@@ -22,7 +25,7 @@ function solve() {
             // isInteger
             isInteger: function (value) {
                 this.checkUndefinedAndThrow(value);
-                return value !== '' && !isNaN(value) && Math.round(n) == value;
+                return Number(value) === value && value % 1 === 0;
             },
             checkIntegerAndThrow: function (value) {
                 this.checkUndefinedAndThrow(value);
@@ -33,7 +36,7 @@ function solve() {
             // Positive integer
             isPositiveInteger: function (value) {
                 this.checkUndefinedAndThrow(value);
-                return value !== "" && !isNaN(value) && Math.round(value) == value && value >= 0;
+                return this.isInteger(value) && value >= 0;
             },
             checkPositiveIntegerAndThrow: function (value) {
                 this.checkUndefinedAndThrow(value);
@@ -44,7 +47,7 @@ function solve() {
             //Float
             isFloat: function (value) {
                 this.checkUndefinedAndThrow(value);
-                return value !== "" && !isNaN(value) && Math.round(value) != value;
+                return Number(value) === value && value % 1 !== 0;
             },
             checkFloatAndThrow: function (value) {
                 this.checkUndefinedAndThrow(value);
@@ -109,7 +112,7 @@ function solve() {
             }
         };
 
-        var __parent = (function () {
+        __parent = (function () {
             // Private functions
             var __parentInternal = Object.create({});
 
@@ -138,7 +141,7 @@ function solve() {
             return __parentInternal;
         }());
 
-        var __child = (function (parent) {
+        __child = (function (parent) {
             var __childInternal = Object.create(parent);
 
             Object.defineProperties(__childInternal, {
@@ -176,5 +179,8 @@ function solve() {
         };
 
     })();
+
     return module;
 }
+
+solve();
