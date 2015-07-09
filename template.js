@@ -19,10 +19,10 @@ function solve() {
                     throw new Error(value + ' is undefined');
                 }
             },
-            // Integer
+            // isInteger
             isInteger: function (value) {
                 this.checkUndefinedAndThrow(value);
-                return typeof value === "number" && value === +value && Math.round(value) === value;
+                return value !== '' && !isNaN(value) && Math.round(n) == value;
             },
             checkIntegerAndThrow: function (value) {
                 this.checkUndefinedAndThrow(value);
@@ -33,7 +33,7 @@ function solve() {
             // Positive integer
             isPositiveInteger: function (value) {
                 this.checkUndefinedAndThrow(value);
-                return typeof value === "number" && value === +value && Math.round(value) === value && value >= 0;
+                return value !== "" && !isNaN(value) && Math.round(value) == value && value >= 0;
             },
             checkPositiveIntegerAndThrow: function (value) {
                 this.checkUndefinedAndThrow(value);
@@ -41,10 +41,10 @@ function solve() {
                     throw new Error(value + ' not a positive integer!');
                 }
             },
-            // Float
+            //Float
             isFloat: function (value) {
                 this.checkUndefinedAndThrow(value);
-                return typeof value === "number" && value === +value && Math.round(value) !== value;
+                return value !== "" && !isNaN(value) && Math.round(value) != value;
             },
             checkFloatAndThrow: function (value) {
                 this.checkUndefinedAndThrow(value);
@@ -114,13 +114,13 @@ function solve() {
             var __parentInternal = Object.create({});
 
             Object.defineProperties(__parentInternal, {
-                'init': {
+                init: {
                     value: function (__params) {
                         //this.param = __params;
                         return this;
                     }
                 },
-                'param': {
+                param: {
                     get: function () {
                         return this._param;
                     },
@@ -129,7 +129,7 @@ function solve() {
                         this._param = value;
                     }
                 },
-                'func': {
+                func: {
                     value: function () {
                         // some function
                     }
@@ -142,13 +142,13 @@ function solve() {
             var __childInternal = Object.create(parent);
 
             Object.defineProperties(__childInternal, {
-                'init': {
+                init: {
                     value: function (__params) {
                         //this.param = __params;
                         return this;
                     }
                 },
-                'param': {
+                param: {
                     get: function () {
                         return this._param;
                     },
@@ -157,7 +157,7 @@ function solve() {
                         this._param = value;
                     }
                 },
-                'func': {
+                func: {
                     value: function () {
                         // some function
                     }
