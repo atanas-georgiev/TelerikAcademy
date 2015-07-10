@@ -3,7 +3,6 @@ function solve() {
 
     var module = (function () {
 
-        // Constants in the module
         var validators,
             item,
             book,
@@ -11,8 +10,6 @@ function solve() {
             catalog,
             bookcatalog,
             mediacatalog;
-
-        // Some internal functions
 
         // Validations
         validators = {
@@ -35,6 +32,7 @@ function solve() {
             },
             // Positive integer
             isPositiveInteger: function (value) {
+                this.checkUndefinedAndThrow(value);
                 return this.isInteger(value) && value > 0;
             },
             checkPositiveIntegerAndThrow: function (value) {
@@ -101,7 +99,7 @@ function solve() {
             // Object
             isObject: function (value) {
                 this.checkUndefinedAndThrow(value);
-                return Object.prototype.toString.call(value) === '[object Object]';
+                return (typeof value === 'object');
             },
             checkObjectAndThrow: function (value) {
                 this.checkUndefinedAndThrow(value);
@@ -124,89 +122,15 @@ function solve() {
 
                 return null;
             },
-            getAllByName: function (collection, name) {
-                var result = [];
-                if (collection === undefined || name === undefined) {
-                    throw new Error();
-                }
-
+            findCollectionByParam: function (paramName, param, collection) {
                 var i, len;
-                for (i = 0, len = collection.length; i < len; i++) {
-                    if (collection[i].name.toUpperCase() === name.toUpperCase()) {
-                        result.push(collection[i]);
-                    }
-                }
-
-                if (result.length === 0) {
-                    return null;
-                } else {
-                    return result;
-                }
-            },
-            getAllByObject: function (collection, obj) {
-                var result = [];
-                if (obj === undefined) {
-                    throw new Error();
-                }
-
-                var vals = Object.keys(obj);
-
-                var i, len, j;
-
-                for (i = 0, len = collection.length; i < len; i++) {
-                    var found = 0;
-                    for (j = 0; j < vals.length; j++) {
-                        if (this.isString(collection[i][vals[j]])) {
-                            if (collection[i][vals[j]].toUpperCase() === obj[vals[j]].toUpperCase()) {
-                                found++;
-                            }
-                        } else {
-                            if (collection[i][vals[j]] === obj[vals[j]]) {
-                                found++;
-                            }
-                        }
-                        // console.log(collection[i][vals[j]]);
-                        // console.log(obj[vals[j]]);
-                    }
-
-                    if (found === vals.length) {
-
-                        result.push(collection[i]);
-                    }
-                }
-                if (result.length === 0) {
-                    return null;
-                } else {
-                    return result.slice();
-                }
-            },
-            getIndexById: function (collection, id) {
-                if (collection === undefined || id === undefined) {
-                    throw new Error();
-                }
-
-                var i, len;
-                for (i = 0, len = collection.length; i < len; i++) {
-                    if (collection[i].id === id) {
+                for (i = 0, len = collection.length; i < len; i += 1) {
+                    if (collection[i][paramName] === param) {
                         return i;
                     }
                 }
 
-                return null;
-            },
-            getByNameAndId: function (collection, id, name) {
-                if (collection === undefined || id === undefined || name === undefined) {
-                    throw new Error();
-                }
-
-                var i, len;
-                for (i = 0, len = collection.length; i < len; i++) {
-                    if (collection[i].name.toUpperCase() === name.toUpperCase() && collection[i].id === id) {
-                        return collection[i];
-                    }
-                }
-
-                return null;
+                return -1;
             },
             checkRange: function (value, minLen, maxLen) {
                 this.checkUndefinedAndThrow(value);
@@ -219,7 +143,6 @@ function solve() {
         };
 
         item = (function () {
-            // Private functions
             var itemInternal = Object.create({}),
                 numberId = 0;
 
@@ -278,7 +201,10 @@ function solve() {
                         return this._isbn;
                     },
                     set: function (value) {
-                        validators.checkRange(value, 10, 13);
+                        validators.checkStringAndThrow(value);
+                        if (value.length !== 10 && value.length !== 13) {
+                            throw Error();
+                        }
                         if (/^\d+$/.test(value) === false) {
                             throw new Error('isbn do not contain only digits!');
                         }
@@ -367,26 +293,12 @@ function solve() {
                         this._name = value;
                     }
                 },
-                items: {
-                    get: function () {
-                        return this._items;
-                    },
-                    set: function (value) {
-                        var i,
-                            len;
-                        validators.checkArrayAndThrow(value);
-                        len = value.length;
-                        for (i = 0; i < len; i++) {
-                            validators.checkUndefinedAndThrow(value.id);
-                        }
-                        this._items = value;
-                    }
-                },
                 add: {
-                    value: function (items) {
+                    value: function () {
                         var i,
                             len,
-                            tempArr = [];
+                            tempArr = [],
+                            items = arguments[0];
                         validators.checkUndefinedAndThrow(items);
                         if (validators.isArray(items)) {
                             if (items.length === 0) {
@@ -416,50 +328,99 @@ function solve() {
                     }
                 },
                 find: {
-                    value: function (items) {
-                        var searchResults = [],
-                            element,
-                            i,
-                            len;
-                        validators.checkUndefinedAndThrow(items);
-
-                        if (items.length === 0) {
-                            throw new Error('Array is empty!');
-                        }
-                        if (validators.isPositiveInteger(items)) {
-                            element = validators.getById(this.items, items);
-                            return [{
-                                name: element.name,
-                                id: element.id
-                            }];
-                        } else if (validators.isObject(items)) {
-                                element = validators.getAllByObject(this.items, items);
-                                if (element !== null) {
-                                    len = element.length;
-                                    for (i = 0; i < len; i++) {
-                                        searchResults.push({
-                                            name: element[i].name,
-                                            id: element[i].id
-                                        });
+                    value: function (idOrOptions) {
+                        if (typeof idOrOptions === 'object') {
+                            var id = idOrOptions.id,
+                                name = idOrOptions.name,
+                                isbn = idOrOptions.isbn,
+                                genre = idOrOptions.genre,
+                                duration = idOrOptions.duration,
+                                rating = idOrOptions.rating,
+                                result = this.items.slice();
+                            if (id) {
+                                result = result.filter(function (item) {
+                                    if (item.id === id) {
+                                        return true;
+                                    } else {
+                                        return false;
                                     }
-                                }
-                                return searchResults;
-
-                        } else if (validators.isString(items)) {
-                            len = this.items.length;
-                            for (i = 0; i < len; i++) {
-                                if (this.items[i].name.toLowerCase().indexOf(items.toLowerCase()) > -1 ||
-                                    this.items[i].description.toLowerCase().indexOf(items.toLowerCase()) > -1) {
-                                    searchResults.push({
-                                        name: this.items[i].name,
-                                        id: this.items[i].id
-                                    });
-                                }
+                                });
                             }
-                            return searchResults;
+                            if (name) {
+                                result = result.filter(function (item) {
+                                    if (item.name.toLowerCase() === name.toLowerCase()) {
+                                        return true;
+                                    } else {
+                                        return false;
+                                    }
+                                });
+                            }
+                            if (isbn) {
+                                result = result.filter(function (item) {
+                                    if (item.isbn.toLowerCase() === isbn.toLowerCase()) {
+                                        return true;
+                                    } else {
+                                        return false;
+                                    }
+                                });
+                            }
+                            if (genre) {
+                                result = result.filter(function (item) {
+                                    if (item.genre.toLowerCase() === genre.toLowerCase()) {
+                                        return true;
+                                    } else {
+                                        return false;
+                                    }
+                                });
+                            }
+                            if (duration) {
+                                result = result.filter(function (item) {
+                                    if (item.duration === duration) {
+                                        return true;
+                                    } else {
+                                        return false;
+                                    }
+                                });
+                            }
+                            if (rating) {
+                                result = result.filter(function (item) {
+                                    if (item.rating === rating) {
+                                        return true;
+                                    } else {
+                                        return false;
+                                    }
+                                });
+                            }
+                            return result;
+                        } else if (typeof idOrOptions === 'number') {
+                            var index = validators.findCollectionByParam('id', idOrOptions, this.items);
+                            if (index < 0) {
+                                return null;
+                            } else {
+                                return this.items[index];
+                            }
                         } else {
-                            throw new Error(items + ' is not correct!');
+                            throw new Error('ID is neither a object nor a number');
                         }
+                    }
+                },
+                search: {
+                    value: function (pattern) {
+                        var result = this.items;
+                        validators.checkStringAndThrow(pattern);
+                        validators.checkRange(pattern, 1, Number.MAX_VALUE);
+                        pattern = pattern.toLowerCase();
+
+                        result = result.filter(function (item) {
+                            if (item.name.toLowerCase().indexOf(pattern) >= 0 ||
+                                item.description.toLowerCase().indexOf(pattern) >= 0) {
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        });
+
+                        return result;
                     }
                 }
             });
@@ -468,7 +429,6 @@ function solve() {
 
         bookcatalog = (function (parent) {
             var bookcatalogInternal = Object.create(parent);
-
             Object.defineProperties(bookcatalogInternal, {
                 init: {
                     value: function (name) {
@@ -477,9 +437,10 @@ function solve() {
                     }
                 },
                 add: {
-                    value: function (items) {
+                    value: function () {
                         var i,
-                            len;
+                            len,
+                            items = arguments[0];
                         validators.checkUndefinedAndThrow(items);
 
                         if (validators.isArray(items)) {
@@ -502,12 +463,15 @@ function solve() {
                             }
                             parent.add.call(this, Array.prototype.slice.call(arguments));
                         }
-
                         return this;
                     }
                 },
                 getGenres: {
-                    value: function (items) {
+                    value: function () {
+                        function onlyUnique(value, index, self) {
+                            return self.indexOf(value) === index;
+                        }
+
                         var result = [],
                             i,
                             j,
@@ -516,23 +480,25 @@ function solve() {
 
                         len = this.items.length;
                         for (i = 0; i < len; i++) {
-                            found = false;
-                            for (j = 0; j < result.length; j++) {
-                                if (this.items[i].genre.toLowerCase() === result[j].toLowerCase()) { //??????????
-                                    found = true;
-                                }
-                            }
-                            if (found === false) {
-                                result.push(this.items[i].genre.toLowerCase());
-                            }
+                            result.push(this.items[i].genre.toLowerCase());
                         }
-                        return result;
+
+                        return result.filter(onlyUnique);
                     }
                 },
-                search: {
-                    value: function (items) {
-                        //validators.checkObjectAndThrow(items);
-                        return parent.find.call(this, items); // todo
+                find: {
+                    value: function (options) {
+                        var parentFiltered = parent.find.call(this, options);
+                        if (options.genre) {
+                            parentFiltered = parentFiltered.filter(function (item) {
+                                if (item.genre && item.genre.toLowerCase() === options.genre.toLocaleLowerCase()) {
+                                    return true;
+                                } else {
+                                    return false;
+                                }
+                            });
+                        }
+                        return parentFiltered;
                     }
                 }
             });
@@ -580,43 +546,37 @@ function solve() {
                 },
                 getTop: {
                     value: function (count) {
-                        var result = [],
-                            result2 = [],
-                            i,
-                            j,
-                            found,
-                            len;
-
-                        validators.checkPositiveIntegerAndThrow(count);
-
-                        result = this.items.slice();
-                        result.sort(function (item1, item2) {
-                            return item2.rating - item1.rating;
-                        });
-
-                        len = result.length;
-                        for (i = 0; i < len; i++) {
-                            result2.push({
-                                id: result[i].id,
-                                name: result[i].name
-                            });
+                        if (!count || typeof count !== 'number' || count < 1) {
+                            throw new Error('Coun err');
                         }
-
-                        return result2.slice(0, count);
+                        return this.items
+                            .sort(function (x, y) {
+                                if (x.rating > y.rating) {
+                                    return -1;
+                                } else if (x.rating < y.rating) {
+                                    return 1;
+                                } else {
+                                    return 0;
+                                }
+                            })
+                            .filter(function (item) {
+                                if (item.rating) {
+                                    return true;
+                                } else {
+                                    return false;
+                                }
+                            })
+                            .map(function (item) {
+                                return {
+                                    id: item.id,
+                                    name: item.name
+                                };
+                            })
+                            .slice(0, count);
                     }
                 },
                 getSortedByDuration: {
                     value: function () {
-                        var result = [],
-                            result2 = [],
-                            i,
-                            j,
-                            found,
-                            len;
-
-                        result = this.items.slice();
-
-
                         return this.items.slice().sort(function (item1, item2) {
                             if (item2.duration - item1.duration > 0) {
                                 return 1;
@@ -651,28 +611,3 @@ function solve() {
 
     return module;
 }
-
-
-var module = solve();
-var catalog = module.getBookCatalog('John\'s catalog');
-
-var book1 = module.getBook('The secrets of the JavaScript Ninja', '1234567890', 'IT', 'A book about JavaScript');
-var book2 = module.getBook('JavaScript: The Good Parts', '0123456789', 'IT', 'A good book about JS');
-
-catalog.add(book1);
-catalog.add(book2);
-
-console.log(catalog.find(book1.id));
-//returns book1
-
-console.log(catalog.find({id: book2.id, genre: 'IT'}));
-//returns book2
-
-console.log(catalog.search('js'));
-// returns book2
-
-console.log(catalog.search('javascript'));
-//returns book1 and book2
-
-console.log(catalog.search('Te sa zeleni'));
-//returns []
