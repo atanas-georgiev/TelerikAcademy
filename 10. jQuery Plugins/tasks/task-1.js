@@ -1,42 +1,51 @@
 function solve() {
+    return function (selector) {
+        var $selectedList = $(selector).hide(),
+            options = $selectedList.find('option'),
+            $divContainer = $('<div>')
+            .addClass('dropdown-list')
+            .append($selectedList),
+            $currentSelection = $('<div>')
+            .addClass('current')
+            .attr('data-value', '')
+            .text('Select value'),
+            $divOptionsContainer = $('<div>')
+            .addClass('options-container')
+            .css({
+                position: 'absolute',
+                display: 'none'
+            });
 
+        $currentSelection.on('click', function () {
+            var $container = $('.options-container');
+            $container.css('display', 'inline-block');
+        });
 
+        $divOptionsContainer.on('click', function (ev) {
+            var $clicked = $(ev.target),
+                $divToDisplay = $('.current');
+            $divToDisplay.text($clicked.html());
+            $selectedList.val($clicked.attr('data-value'));
 
-    return function(selector) {
+            var $container = $(this)
+                .css('display', 'none');
+        });
 
-        var $this = $(selector),
-            $val1,
-            $val2;
+        for (var i = 1; i <= options.length; i++) {
+            var newOpt = $('<div>')
+                .addClass('dropdown-item')
+                .attr('data-value', $(options[i]).val())
+                .attr('data-index', i - 1)
+                .text($(options[i]).text());
 
-        $this = $('<div />').addClass('dropdown-list').append($this);
-        $this.children().first().hide();
-
-        $val1 = $('<div />').addClass('current').attr('data-value', '').
-        text($this.children().first().children().first().text());
-
-        $val2 = $('<div />').addClass('options-container').hide().css('position', 'absolute');
-
-        for (var i = 0; i < $this.children().first().children().length; i++) {
-            var el = $('<div />').addClass('dropdown-item').attr('data-value', 'value-' + (i + 1)).attr('data-index', i).text($this.children().first().children()[i].innerHTML);
-            $val2.append(el);
+            $divOptionsContainer.append(newOpt);
         }
 
-        $this.append($val1);
-        $this.append($val2);
-        $('body').append($this);
+        $divContainer.appendTo('body');
+        $currentSelection.appendTo($divContainer);
+        $divOptionsContainer.appendTo($divContainer);
 
-        $('.current').on('click', function() {
-            $('.options-container').toggle();
-        });
-
-        $('.dropdown-item').on('click', function() {
-            $('.current').attr('data-value', $(this).attr('data-value'));
-            $('.current').text($(this).text());
-            $('.options-container').toggle();
-        });
-        return this;
     };
-
 }
 
 module.exports = solve;
