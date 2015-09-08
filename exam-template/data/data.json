@@ -1,0 +1,117 @@
+{
+  "users": [
+    {
+      "username": "Minkov",
+      "passHash": "4cb5ba2355368d4dfd14c9eee9a134791f7001cb",
+      "usernameLower": "minkov",
+      "id": 814565,
+      "authKey": "814565gid-zeb)*uv&no^=^@shylqo=qaoummfsvqju%%cfp#j-ocyanfcj%",
+      "todos": [
+        {
+          "id": 200167,
+          "text": "Wash the dishes",
+          "category": "Home",
+          "state": false
+        },
+        {
+          "id": 797498,
+          "text": "Wash the dishes",
+          "state": false,
+          "category": "My new category"
+        },
+        {
+          "id": 662556,
+          "text": "Text",
+          "state": false,
+          "category": "My new category"
+        }
+      ],
+      "events": [
+        {
+          "id": 826042,
+          "title": "Pay the phone bill",
+          "category": "Bills",
+          "description": "Pay the bill, before they suspend it",
+          "date": "2015-10-01T21:00:00.000Z"
+        },
+        {
+          "id": 831305,
+          "title": "Clean!!!",
+          "category": "VERY VERY IMPORTANT",
+          "description": "Your girl will suspend you!",
+          "date": "2015-10-05T21:00:00.000Z"
+        },
+        {
+          "id": 314980,
+          "title": "Feed the Cat",
+          "category": "Home",
+          "description": "Otherwise he will be grumpy :(",
+          "date": "2015-09-03T21:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "username": "nasko",
+      "passHash": "ac2869c9588b0decbe06b22699fa296868310f8b",
+      "usernameLower": "nasko",
+      "id": 658516,
+      "authKey": "658516jcan(xmqtdd-&aotal)%=x!-gcesjb-ykszi*whtrmcrgypm!doyb$"
+    },
+    {
+      "username": "nasko",
+      "passHash": "ac2869c9588b0decbe06b22699fa296868310f8b",
+      "usernameLower": "nasko",
+      "id": 324012,
+      "authKey": "324012ql-x)ojp-jmv!-)&qvwl&+k)#$ix%*ht_pasjidl-!sa=bc%t$!l*i"
+    },
+    {
+      "username": "nasko",
+      "passHash": "ac2869c9588b0decbe06b22699fa296868310f8b",
+      "usernameLower": "nasko",
+      "id": 324021,
+      "authKey": "324021xtvknzk*ku(dc#dok$$l*b%leibs(ixn#ez)k$^+(bs^knukm$u)pe"
+    },
+    {
+      "username": "nasko",
+      "passHash": "ac2869c9588b0decbe06b22699fa296868310f8b",
+      "usernameLower": "nasko",
+      "id": 324026,
+      "authKey": "324026jhnlbp^xr#rxqwi%ytk^rp*q%_=zw&^je@w%%wbnq-xalvvh_tds)o"
+    },
+    {
+      "username": "nasko",
+      "passHash": "ac2869c9588b0decbe06b22699fa296868310f8b",
+      "usernameLower": "nasko",
+      "id": 324030,
+      "authKey": "324030howd-)usshh^bif*$d%=r+nv-qn+zn*@g^-fzc*hxi$bsb$j!p%erz"
+    },
+    {
+      "username": "nasko",
+      "passHash": "ac2869c9588b0decbe06b22699fa296868310f8b",
+      "usernameLower": "nasko",
+      "id": 324057,
+      "authKey": "324057jftkywc&lqao%t*dkn+&wcd+_*t*qb=@svziuzjnr=atqo*_c(gjln"
+    },
+    {
+      "username": "nasko",
+      "passHash": "ac2869c9588b0decbe06b22699fa296868310f8b",
+      "usernameLower": "nasko",
+      "id": 324112,
+      "authKey": "324112%#-b%hcvg*v#-z(qxul&w!o%ezs@gyry&*!bpeax#cbm+a!wyutp@y"
+    },
+    {
+      "username": "nasko",
+      "passHash": "ac2869c9588b0decbe06b22699fa296868310f8b",
+      "usernameLower": "nasko",
+      "id": 324119,
+      "authKey": "324119gkumhd_pu_vxlbc)*@&=l%kfywkorb=buvfp)!r$b%x)v_fzg*d=tk"
+    },
+    {
+      "username": "nasko",
+      "passHash": "ac2869c9588b0decbe06b22699fa296868310f8b",
+      "usernameLower": "nasko",
+      "id": 324125,
+      "authKey": "324125w_mxmtrpo_uo^+bnpabf-o))i*z+klbyrf&r+r%f)#sglbe^qpgydw"
+    }
+  ]
+}
