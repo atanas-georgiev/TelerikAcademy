@@ -1,4 +1,4 @@
-var events = (function () {
+var events = (function() {
 
     function _getUserDetails() {
         var user = {
@@ -10,42 +10,24 @@ var events = (function () {
 
     function registerLoginEvent(context) {
         $("#btn-login").unbind('click');
-        $('#btn-login').on('click', function () {
+        $('#btn-login').on('click', function() {
             $('.dropdown.open .dropdown-toggle').dropdown('toggle');
-            dataUser.login(_getUserDetails())
-                .then(function (user) {
-                    $.notify("User " + user.username + " logged in!", "success");
-                    context.redirect('#/');
-                }, function (err) {
-                    $.notify(err.responseText, "error");
-                });
+            usersController.login(context, _getUserDetails());
         });
     }
 
     function registerRegEvent(context) {
         $("#btn-register").unbind('click');
-        $('#btn-register').on('click', function () {
+        $('#btn-register').on('click', function() {
             $('.dropdown.open .dropdown-toggle').dropdown('toggle');
-            dataUser.register(_getUserDetails())
-                .then(function (user) {
-                    $.notify("User " + user.username + " registered and logged in!", "success");
-                    context.redirect('#/');
-                }, function (err) {
-                    $.notify(err.responseText, "error");
-                });
+            usersController.registerAndLogin(context, _getUserDetails());
         });
     }
 
     function registerLogoutEvent(context) {
         $("#btn-logout").unbind('click');
-        $('#btn-logout').on('click', function () {
-            dataUser.logout()
-                .then(function () {
-                    $.notify("User successfully logged out!", "success");
-                    context.redirect('#/');
-                }, function (err) {
-                    $.notify(err.responseText, "error");
-                });
+        $('#btn-logout').on('click', function() {
+            usersController.logout(context);
         });
     }
 

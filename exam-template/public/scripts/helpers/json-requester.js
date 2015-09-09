@@ -6,7 +6,6 @@ var jsonRequester = (function () {
         var headers = options.headers || {},
             data = options.data || undefined,
             promise = new Promise(function (resolve, reject) {
-
                 $.ajax({
                     url: url,
                     method: method,

@@ -4,7 +4,7 @@ var homeController = (function () {
         templates.get('home')
             .then(function (template) {
                 context.$element().html(template());
-                return dataUser.getCurrentUser();
+                return dataUsers.getCurrentLogin();
             })
             .then(function (user) {
                 if (user) {

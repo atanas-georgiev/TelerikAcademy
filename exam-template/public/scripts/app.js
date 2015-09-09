@@ -7,7 +7,9 @@
 
         this.get('#/home', homeController.displayHomePage);
 
-        this.get('#/users', usersController.getUsers);
+        this.get('#/users', usersController.displayUsers);
+
+        // this.get('#/users/:id', usersController.displayUserDetails);
 
     });
 

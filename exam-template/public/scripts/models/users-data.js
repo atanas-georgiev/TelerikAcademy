@@ -1,68 +1,75 @@
-var dataUser = (function () {
+var dataUsers = (function() {
     const LOCAL_STORAGE_USERNAME_KEY = 'signed-in-user-username',
         LOCAL_STORAGE_AUTHKEY_KEY = 'signed-in-user-auth-key';
 
-    function register(user) {
-        var reqUser = {
+    function _encryptUser(user) {
+        var encryptedUser = {
             username: user.username,
             passHash: CryptoJS.SHA1(user.username + user.password).toString()
         };
+        return encryptedUser;
+    }
 
+    function _storeUserLocalStorage(user) {
+        localStorage.setItem(LOCAL_STORAGE_USERNAME_KEY, user.username);
+        localStorage.setItem(LOCAL_STORAGE_AUTHKEY_KEY, user.authKey);
+    }
+
+    function _removeUserLocalStorage() {
+        localStorage.removeItem(LOCAL_STORAGE_USERNAME_KEY);
+        localStorage.removeItem(LOCAL_STORAGE_AUTHKEY_KEY);
+    }
+
+    function _getUserFromLocalStorage() {
+        var username = localStorage.getItem(LOCAL_STORAGE_USERNAME_KEY);
+        if (username) {
+            return username;
+        }
+        return null;
+    }
+
+    function registerAndLogin(user) {
         return jsonRequester.post('api/users', {
-                data: reqUser
+                data: _encryptUser(user)
             })
-            .then(function (resp) {
-                var user = resp.result;
-                localStorage.setItem(LOCAL_STORAGE_USERNAME_KEY, user.username);
-                localStorage.setItem(LOCAL_STORAGE_AUTHKEY_KEY, user.authKey);
-                return {
-                    username: resp.result.username
-                };
+            .then(function(resp) {
+                _storeUserLocalStorage(resp.result);
+                return user;
             });
     }
 
     function login(user) {
-        var reqUser = {
-                username: user.username,
-                passHash: CryptoJS.SHA1(user.username + user.password).toString()
-            },
-            options = {
-                data: reqUser
-            };
+        console.log(user);
+        var options = {
+            data: _encryptUser(user)
+        };
 
         return jsonRequester.put('api/users/auth', options)
-            .then(function (resp) {
-                var user = resp.result;
-                localStorage.setItem(LOCAL_STORAGE_USERNAME_KEY, user.username);
-                localStorage.setItem(LOCAL_STORAGE_AUTHKEY_KEY, user.authKey);
+            .then(function(resp) {
+                _storeUserLocalStorage(resp.result);
                 return user;
             });
     }
 
     function logout() {
-        var promise = new Promise(function (resolve, reject) {
-            localStorage.removeItem(LOCAL_STORAGE_USERNAME_KEY);
-            localStorage.removeItem(LOCAL_STORAGE_AUTHKEY_KEY);
+        var promise = new Promise(function(resolve, reject) {
+            _removeUserLocalStorage();
             resolve();
         });
         return promise;
     }
 
-    function getCurrentUser() {
-        var username = localStorage.getItem(LOCAL_STORAGE_USERNAME_KEY),
-            promise = new Promise(function (resolve, reject) {
-                if (username) {
-                    resolve(username);
-                    return;
-                }
-                resolve(null);
+    function getCurrentLogin() {
+        var username = _getUserFromLocalStorage(),
+            promise = new Promise(function(resolve, reject) {
+                resolve(username);
             });
         return promise;
     }
 
-    function getAllUsersPages(maxPerPage, currentPage) {
+    function getAll(maxPerPage, currentPage) {
         return jsonRequester.get('api/users')
-            .then(function (res) {
+            .then(function(res) {
                 if (res.result.length <= maxPerPage) {
                     return {
                         data: res.result,
@@ -88,10 +95,10 @@ var dataUser = (function () {
     }
 
     return {
-        register: register,
+        registerAndLogin: registerAndLogin,
         login: login,
         logout: logout,
-        getCurrentUser: getCurrentUser,
-        getAllUsersPages: getAllUsersPages
+        getCurrentLogin: getCurrentLogin,
+        getAll: getAll
     };
 }());
