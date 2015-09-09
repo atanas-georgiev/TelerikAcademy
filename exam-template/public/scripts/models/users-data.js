@@ -60,13 +60,6 @@ var dataUser = (function () {
         return promise;
     }
 
-    function getAllUsers() {
-        return jsonRequester.get('api/users')
-            .then(function (res) {
-                return res.result;
-            });
-    }
-
     function getAllUsersPages(maxPerPage, currentPage) {
         return jsonRequester.get('api/users')
             .then(function (res) {
@@ -77,12 +70,17 @@ var dataUser = (function () {
                     };
                 } else {
                     var pages = [],
-                        numPages = ((res.result.length / maxPerPage) | 0) + 1;
+                        rem = res.result.length % maxPerPage,
+                        numPages = (res.result.length / maxPerPage) | 0;
+
+                    if (rem !== 0) {
+                        numPages += 1;
+                    }
                     for (var i = 1; i < numPages + 1; i += 1) {
                         pages.push(i);
                     }
                     return {
-                        data: res.result.splice(currentPage * maxPerPage, maxPerPage),
+                        data: res.result.splice((currentPage - 1) * maxPerPage, maxPerPage),
                         pages: pages
                     };
                 }
@@ -94,7 +92,6 @@ var dataUser = (function () {
         login: login,
         logout: logout,
         getCurrentUser: getCurrentUser,
-        getAllUsers: getAllUsers,
         getAllUsersPages: getAllUsersPages
     };
 }());

@@ -6,13 +6,15 @@
     <title>Exam</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="bower_components/notifyjs/dist/styles/bootstrap/notify-bootstrap.js">
+    <link rel="stylesheet" href="bower_components/jquery-ui/themes/base/all.css">
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 
 <body>
     <div id="root">
         <header class="container">
-            <nav class="navbar navbar-default navbar-inverse" role="navigation">
+            <nav class="navbar navbar-default" role="navigation">
                 <div class="container-fluid">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
@@ -99,37 +101,46 @@
             </nav>
         </header>
 
-        <div class="container" id="messages">
-
-        </div>
-
         <main class="container" id="content">
 
         </main>
-        <!-- End container -->
+
+        <footer class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="thumbnail">
+                        <a class="btn btn-link" href="http://telerikacademy.com">&copy; Telerik Academy</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
     </div>
 
     <!-- Libs -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
     <script src="bower_components/sammy/lib/sammy.js"></script>
     <script src="bower_components/handlebars/handlebars.js"></script>
     <script src="bower_components/sha1/index.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/notifyjs/dist/notify.js"></script>
+    <script src="bower_components/notifyjs/dist/styles/bootstrap/notify-bootstrap.js"></script>
 
-    <!-- App: Controllers -->
-    <script src="controllers/todosController.js"></script>
-    <script src="controllers/eventsController.js"></script>
+    <!-- Controllers -->
+    <script src="scripts/controllers/home-controller.js"></script>
+    <script src="scripts/controllers/users-controller.js"></script>
 
-    <!-- App: Loaders -->
-    <script src="app/templates.js"></script>
-    <script src="app/json-requester.js"></script>
-    <script src="app/dataMessages.js"></script>
-    <script src="app/dataUsers.js"></script>
+    <!-- Models -->
+    <script src="scripts/models/templates.js"></script>
+    <script src="scripts/models/users-data.js"></script>
+    <script src="scripts/models/events.js"></script>
 
-    <script src="app.js"></script>
+    <!-- Helpers -->
+    <script src="scripts/helpers/json-requester.js"></script>
 
-
-    </script>
+    <!-- Main -->
+    <script src="scripts/app.js"></script>
 
 </body>
 

@@ -18,13 +18,26 @@
                         {{/each}}
                     </tbody>
                 </table>
-                <ul class="pagination">
-                    {{#each this.pages}}
-                        <tr>
-                            <li><a href="#/users/3/{{this}}">{{this}}</a></li>
-                        </tr>
-                    {{/each}}
-                </ul>
+                <div class="row">
+                    <div class="col-md-8">
+                        <ul class="pagination pagination-lg">
+                            {{#each this.pages}}
+                                <tr>
+                                    <li><a href="#/users?page={{this}}">{{this}}</a></li>
+                                </tr>
+                            {{/each}}
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="sl-results-page">Results per page:</label>
+                        <select class="form-control" id="sl-results-page">
+                            <option>5</option>
+                            <option>10</option>
+                            <option>20</option>
+                            <option>50</option>
+                        </select>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
