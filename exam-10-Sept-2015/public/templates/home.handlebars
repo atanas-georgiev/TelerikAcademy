@@ -1,0 +1,74 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="thumbnail">
+            <div class="caption">
+                <table class="table table-hover" id="cookies-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Fortune cookie</th>
+                            <th>
+                                <div class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{this.category}}<span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#/home">All</a></li>
+                                        <li class="divider"></li>
+                                        {{#each this.categories}}
+                                            <li><a href="#/home?category={{this}}">{{this}}</a></li>
+                                        {{/each}}
+                                    </ul>
+                                </div>
+                            </th>
+                            <th>
+                                <img src="/images/like-icon.png" width="25" height="25">
+                            </th>
+                            <th>
+                                <img src="/images/dislike-icon.png" width="25" height="25">
+                            </th>
+                            <th>Posted</th>
+                            {{#if this.user}}
+                                <th>Posted by</th>
+                            {{/if}}
+                            <th class="table-hidden">Id</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#if this.user}}
+                            {{#each this.data}}
+                                <tr>
+                                    <td>
+                                        <img src="{{img}}" width="25" height="25"></img>
+                                    </td>
+                                    <td>{{text}}</td>
+                                    <td>{{category}}</td>
+                                    <td id="img-like-details">
+                                        <img src="/images/like-icon.png" width="15" height="15"> {{likes}}</img>
+                                    </td>
+                                    <td id="img-dislike-details">
+                                        <img src="/images/dislike-icon.png" width="15" height="15"> {{dislikes}}</img>
+                                    </td>
+                                    <td>{{shareDate}}</td>
+                                    <td>{{postedBy}}</td>
+                                    <td class="table-hidden">{{id}}</td>
+                                </tr>
+                            {{/each}}
+                        {{else}}
+                            {{#each this.data}}
+                                <tr>
+                                    <td>
+                                        <img src="{{img}}" width="25" height="25"></img>
+                                    </td>
+                                    <td>{{text}}</td>
+                                    <td>{{category}}</td>
+                                    <td>{{likes}}</td>
+                                    <td>{{dislikes}}</td>
+                                    <td>{{shareDate}}</td>
+                                    <td class="table-hidden">{{id}}</td>
+                                </tr>
+                            {{/each}}
+                        {{/if}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

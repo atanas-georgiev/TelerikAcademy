@@ -1,0 +1,111 @@
+{
+  "users": [
+    {
+      "username": "test123",
+      "passHash": "27bdb7161db9c5b73734ca010982c986a341858e",
+      "usernameToLower": "test123",
+      "id": "1064f4cf-51dd-4198-a49f-4334503b2d15",
+      "authKey": "1064f4cf-51dd-4198-a49f-4334503b2d15CHAMOJdTGXpNxcdFXmAhglHc"
+    },
+    {
+      "username": "testUserName",
+      "passHash": "3b48c2fb020e1c1c1988f84cdcdfd5f410a3cde2",
+      "usernameToLower": "testusername",
+      "id": "07f26b2c-5386-44e5-875f-463ae9815153",
+      "authKey": "07f26b2c-5386-44e5-875f-463ae9815153UDIdkRvgApXYSgvxpzmfuNcf"
+    },
+    {
+      "username": "anotherUser",
+      "passHash": "e8c50d1e0c581f09688cd8d6bb271e1c497d27ea",
+      "usernameToLower": "anotheruser",
+      "id": "51ec4b66-a841-475c-ac24-47b82d8e23bc",
+      "authKey": "51ec4b66-a841-475c-ac24-47b82d8e23bcTMkNHHVuXfrovwkRwdpNvFdV"
+    },
+    {
+      "username": "myUsername",
+      "passHash": "ac07207c8031a13f322f919fb33f0f2831048640",
+      "usernameToLower": "myusername",
+      "id": "fc86429b-49c1-4144-862b-11e343ca440f",
+      "authKey": "fc86429b-49c1-4144-862b-11e343ca440fZxxuudlDrTWRnXTEyMCHuWVt"
+    },
+    {
+      "username": "Different_user",
+      "passHash": "ee2a7b6bd4743b1e4cd88d0dcf9debff36d804f5",
+      "usernameToLower": "different_user",
+      "id": "d64aa3b2-f4a5-471a-9745-f4d4354d2464",
+      "authKey": "d64aa3b2-f4a5-471a-9745-f4d4354d2464AucIzZkbPyrYZeCVGEXHwzxn"
+    }
+  ],
+  "cookies": [
+    {
+      "img": "https://dayinthelifeofapurpleminion.files.wordpress.com/2014/12/batman-exam.jpg",
+      "text": "Test1_T",
+      "category": "Category 1",
+      "userId": "fc86429b-49c1-4144-862b-11e343ca440f",
+      "likes": 5,
+      "dislikes": 4,
+      "shareDate": "2015-09-10T19:09:41.970Z",
+      "id": "5020eb8a-339a-41a0-9da4-a34d95069e09"
+    },
+    {
+      "img": "https://dayinthelifeofapurpleminion.files.wordpress.com/2014/12/batman-exam.jpg",
+      "text": "Another cookie",
+      "category": "Another",
+      "userId": "fc86429b-49c1-4144-862b-11e343ca440f",
+      "likes": 0,
+      "dislikes": 1,
+      "shareDate": "2015-09-10T19:10:04.195Z",
+      "id": "550cb5ac-ffea-4e69-bc25-5e059540c42e"
+    },
+    {
+      "img": "https://dayinthelifeofapurpleminion.files.wordpress.com/2014/12/batman-exam.jpg",
+      "text": "Hello cookie",
+      "category": "Test33",
+      "userId": "fc86429b-49c1-4144-862b-11e343ca440f",
+      "likes": 2,
+      "dislikes": 3,
+      "shareDate": "2015-09-10T19:10:23.726Z",
+      "id": "c1fac7fe-50ff-455a-b84e-a9c72300a4ef"
+    },
+    {
+      "img": "https://dayinthelifeofapurpleminion.files.wordpress.com/2014/12/batman-exam.jpg",
+      "text": "Different one",
+      "category": "Test33",
+      "userId": "fc86429b-49c1-4144-862b-11e343ca440f",
+      "likes": 0,
+      "dislikes": 0,
+      "shareDate": "2015-09-10T19:10:37.538Z",
+      "id": "373db62e-c873-464f-81fa-877f72d2d764"
+    },
+    {
+      "img": "http://40.media.tumblr.com/d5e2a3de34fcbfa51aeb05533a969281/tumblr_mndl9lVjfB1r5u7qxo1_500.jpg",
+      "text": "Cattssss",
+      "category": "Test33",
+      "userId": "d64aa3b2-f4a5-471a-9745-f4d4354d2464",
+      "likes": 2,
+      "dislikes": 2,
+      "shareDate": "2015-09-10T19:11:37.082Z",
+      "id": "d750e972-0f42-44ef-af0e-340085735f91"
+    },
+    {
+      "img": "https://dayinthelifeofapurpleminion.files.wordpress.com/2014/12/batman-exam.jpg",
+      "text": "12312321",
+      "category": "My category",
+      "userId": "d64aa3b2-f4a5-471a-9745-f4d4354d2464",
+      "likes": 2,
+      "dislikes": 1,
+      "shareDate": "2015-09-10T19:13:18.338Z",
+      "id": "a9328300-8e91-4961-b26e-7535e5199165"
+    },
+    {
+      "img": "https://dayinthelifeofapurpleminion.files.wordpress.com/2014/12/batman-exam.jpg",
+      "text": "dafshfkjsfhdsk",
+      "category": "123456",
+      "userId": "d64aa3b2-f4a5-471a-9745-f4d4354d2464",
+      "likes": 0,
+      "dislikes": 0,
+      "shareDate": "2015-09-10T19:17:11.439Z",
+      "id": "4c06bad1-0b28-43b3-9831-46ffe100be62"
+    }
+  ]
+}
