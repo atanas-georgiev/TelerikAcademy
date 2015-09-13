@@ -69,7 +69,7 @@ public class ConcreteProduct2 : ProductBase {
 Abstract Factory Pattern-ът се използва при системи, които често се изменят. Предоставя лесен и гъвкъв механизъм за замяна на конкретни групи от обекти.
 
 ### Структура
-![FactoryMethod](images/Factory_Method.jpg.jpg "FactoryMethod - UML diagram")
+![FactoryMethod](images/Factory_Method.jpg "FactoryMethod - UML diagram")
 
 ### Сродни модели
 * Simple Factory
