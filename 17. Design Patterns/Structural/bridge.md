@@ -1,6 +1,6 @@
 # Structural Design Patterns Homework
 
-## Builder pattern
+## Bridge pattern
 
 ### Мотивация
 
