@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<catalogue>
+    <album>
+      <name>Black Album</name>
+      <artist>Metallica</artist>
+      <year>1991</year>
+      <producer>Bob Rock</producer>
+      <price>99.99</price>
+      <songs>
+        <song>
+          <title>Enter Sandman</title>
+          <duration>4.23</duration>          
+        </song>
+        <song>
+          <title>Sad But True</title>
+          <duration>5.01</duration>
+        </song>
+      </songs>
+    </album>
+</catalogue>
