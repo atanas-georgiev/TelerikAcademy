@@ -3,25 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XMLProcessing.Tasks;
 
 namespace XMLProcessing
 {
     using System.Xml;
 
+    using XMLProcessing.Tasks;
+
     class Program
     {
         private const string FileName = "catalog.xml";
+        private const string TxtName = "person.txt";
         static void Main(string[] args)
         {
-
-            // Write program that extracts all different artists which are found in the catalog.xml.
-            // For each author you should print the number of albums in the catalogue.
-            // Use the DOM parser and a hash-table.
-
-            var doc = new XmlDocument();
-            doc.Load(FileName);
-            var rootNode = doc.DocumentElement;
-            Console.WriteLine(rootNode.OuterXml);
+            // Task2.ExtractArtists(FileName);
+            // Task3.ExtractArtistsXPath(FileName);
+            // Task4.DeleteAllAlbumsWithPriceMoreThan20(FileName);
+            // Task5.ExtractAllSongTitles(FileName);
+            // Task6.ExtractAllSongTitlesXpathLinq(FileName);
+            // Task7.CreateXmlFromTxtFile(TxtName);
+            // Task8.CreateAlbumXml(FileName);
+            // Task9.TraverseDirectory("../..");
+            // Task10.TraverseDirectory("../..");
+            // Task11.ExtractAlbumPrices(FileName);
+            // Task12.ExtractAlbumPricesLinq(FileName);
         }
     }
 }
