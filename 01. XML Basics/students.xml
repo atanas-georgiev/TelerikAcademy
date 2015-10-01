@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="students.xsl"?>
+<students xmlns="http://telerikacademy.com/students"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="file://./students.xsd">  
+    <student>
+      <name>Ivan Ivanov</name>
+      <sex>Male</sex>
+      <birthData>1983-05-12</birthData>
+      <phone>0888 888 888</phone>
+      <email>ivan@ivanov.com</email>
+      <course>Course 1</course>
+      <specialty>Specialty 1</specialty>
+      <number>1</number>
+      <exams>
+        <exam>
+          <name>Exam 1</name>
+          <tutor>Tutor 1</tutor>
+          <score>6</score>
+        </exam>
+        <exam>
+          <name>Exam 2</name>
+          <tutor>Tutor 1</tutor>
+          <score>6</score>
+        </exam>
+      </exams>
+    </student>
+    <student>
+      <name>Peter Petrov</name>
+      <sex>Male</sex>
+      <birthData>1981-01-01</birthData>
+      <phone>0888 777 777</phone>
+      <email>peter@petrov.com</email>
+      <course>Course 2</course>
+      <specialty>Specialty 1</specialty>
+      <number>2</number>
+      <exams>
+        <exam>
+          <name>Exam 2</name>
+          <tutor>Tutor 2</tutor>
+          <score>2</score>
+        </exam>
+        <exam>
+          <name>Exam 3</name>
+          <tutor>Tutor 3</tutor>
+          <score>6</score>
+        </exam>
+        <exam>
+          <name>Exam 12</name>
+          <tutor>Tutor 1</tutor>
+          <score>2</score>
+        </exam>
+      </exams>
+    </student>
+    <student>
+      <name>Maria Georgieva</name>
+      <sex>Female</sex>
+      <birthData>1991-12-01</birthData>
+      <phone>0888 666 666</phone>
+      <email>maria@georgieva.com</email>
+      <course>Course 3</course>
+      <specialty>Specialty 2</specialty>
+      <number>3</number>
+      <exams>
+        <exam>
+          <name>Exam 1</name>
+          <tutor>Tutor 1</tutor>
+          <score>4</score>
+        </exam>
+        <exam>
+          <name>Exam 4</name>
+          <tutor>Tutor 1</tutor>
+          <score>3</score>
+        </exam>
+        <exam>
+          <name>Exam 3</name>
+          <tutor>Tutor 2</tutor>
+          <score>6</score>
+        </exam>
+      </exams>
+    </student>
+</students>
