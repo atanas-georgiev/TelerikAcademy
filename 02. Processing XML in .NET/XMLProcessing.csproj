@@ -45,6 +45,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Tasks\Task11.cs" />
     <Compile Include="Tasks\Task12.cs" />
+    <Compile Include="Tasks\Task14.cs" />
+    <Compile Include="Tasks\Task16.cs" />
     <Compile Include="Tasks\Task2.cs" />
     <Compile Include="Tasks\Task3.cs" />
     <Compile Include="Tasks\Task4.cs" />
@@ -57,12 +59,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="catalog.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="catalog.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="catalog.xslt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="person.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="catalog_invalid.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

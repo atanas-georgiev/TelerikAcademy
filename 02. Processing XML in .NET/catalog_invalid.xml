@@ -8,7 +8,7 @@
     <artist>Metallica</artist>
     <year>1991</year>
     <producer>Bob Rock</producer>
-    <price>99.99</price>
+    <price>wrong value</price>
     <songs>
       <song>
         <title>Enter Sandman</title>

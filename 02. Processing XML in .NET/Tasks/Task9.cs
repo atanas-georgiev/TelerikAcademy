@@ -6,7 +6,6 @@
 //   The task 9.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace XMLProcessing.Tasks
 {
     using System.IO;
@@ -14,17 +13,17 @@ namespace XMLProcessing.Tasks
     using System.Xml;
 
     /// <summary>
-    /// The task 9.
+    ///     The task 9.
     /// </summary>
     internal class Task9
     {
         /// <summary>
-        /// The xml dir filename.
+        ///     The xml dir filename.
         /// </summary>
         private const string xmlDirFilename = "xmlStructure.xml";
 
         /// <summary>
-        /// The writer.
+        ///     The writer.
         /// </summary>
         private static XmlTextWriter writer;
 

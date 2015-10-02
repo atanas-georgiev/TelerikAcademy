@@ -6,7 +6,6 @@
 //   The task 7.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace XMLProcessing.Tasks
 {
     using System.IO;
@@ -14,12 +13,12 @@ namespace XMLProcessing.Tasks
     using System.Xml;
 
     /// <summary>
-    /// The task 7.
+    ///     The task 7.
     /// </summary>
     internal class Task7
     {
         /// <summary>
-        /// The write file name.
+        ///     The write file name.
         /// </summary>
         private const string writeFileName = "person.xml";
 
