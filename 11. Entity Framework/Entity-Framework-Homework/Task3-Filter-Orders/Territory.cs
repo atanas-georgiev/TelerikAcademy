@@ -14,6 +14,7 @@ namespace Task3_Filter_Orders
     
     public partial class Territory
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Territory()
         {
             this.Employees = new HashSet<Employee>();
@@ -24,6 +25,7 @@ namespace Task3_Filter_Orders
         public int RegionID { get; set; }
     
         public virtual Region Region { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employees { get; set; }
     }
 }

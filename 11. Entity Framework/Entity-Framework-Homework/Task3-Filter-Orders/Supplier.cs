@@ -14,6 +14,7 @@ namespace Task3_Filter_Orders
     
     public partial class Supplier
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Supplier()
         {
             this.Products = new HashSet<Product>();
@@ -32,6 +33,7 @@ namespace Task3_Filter_Orders
         public string Fax { get; set; }
         public string HomePage { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
     }
 }

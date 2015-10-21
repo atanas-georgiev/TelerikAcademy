@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Task02_DAOClass
+﻿namespace Task02_DAOClass
 {
-    class Program
+    using System;
+
+    class Startup
     {
         static void Main(string[] args)
         {

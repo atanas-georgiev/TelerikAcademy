@@ -13,10 +13,10 @@ namespace Task02_DAOClass
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class NORTHWNDEntities : DbContext
+    public partial class NorthwindEntities : DbContext
     {
-        public NORTHWNDEntities()
-            : base("name=NORTHWNDEntities")
+        public NorthwindEntities()
+            : base("name=NorthwindEntities")
         {
         }
     
@@ -25,6 +25,7 @@ namespace Task02_DAOClass
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<CustomerDemographic> CustomerDemographics { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
@@ -35,7 +36,6 @@ namespace Task02_DAOClass
         public virtual DbSet<Region> Regions { get; set; }
         public virtual DbSet<Shipper> Shippers { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Territory> Territories { get; set; }
     }
 }

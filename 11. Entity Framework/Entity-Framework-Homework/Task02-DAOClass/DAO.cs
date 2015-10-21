@@ -12,7 +12,7 @@ namespace Task02_DAOClass
     {
         public static void AddCustomer(Customer input)
         {
-            using (var db = new NORTHWNDEntities())
+            using (var db = new NorthwindEntities())
             {
                 db.Customers.Add(input);
                 db.SaveChanges();
@@ -21,7 +21,7 @@ namespace Task02_DAOClass
 
         public static void DeleteCustomer(Customer input)
         {
-            using (var db = new NORTHWNDEntities())
+            using (var db = new NorthwindEntities())
             {
                 db.Customers.Remove(input);
                 db.SaveChanges();
@@ -30,7 +30,7 @@ namespace Task02_DAOClass
 
         public static void ModifyCustomer(Customer input)
         {
-            using (var db = new NORTHWNDEntities())
+            using (var db = new NorthwindEntities())
             {                
                 db.Customers.Attach(input);
                 db.Entry(input).State = EntityState.Modified;
@@ -40,7 +40,7 @@ namespace Task02_DAOClass
 
         public static Customer GetCustomerById(string id)
         {
-            using (var db = new NORTHWNDEntities())
+            using (var db = new NorthwindEntities())
             {
                 var result = db.Customers.FirstOrDefault(x => x.CustomerID == id);
                 return result;

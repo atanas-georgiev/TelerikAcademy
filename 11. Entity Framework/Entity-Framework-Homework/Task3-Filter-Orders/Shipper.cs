@@ -14,6 +14,7 @@ namespace Task3_Filter_Orders
     
     public partial class Shipper
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Shipper()
         {
             this.Orders = new HashSet<Order>();
@@ -23,6 +24,7 @@ namespace Task3_Filter_Orders
         public string CompanyName { get; set; }
         public string Phone { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
     }
 }

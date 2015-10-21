@@ -14,6 +14,7 @@ namespace Task3_Filter_Orders
     
     public partial class Product
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
             this.Order_Details = new HashSet<Order_Detail>();
@@ -31,6 +32,7 @@ namespace Task3_Filter_Orders
         public bool Discontinued { get; set; }
     
         public virtual Category Category { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order_Detail> Order_Details { get; set; }
         public virtual Supplier Supplier { get; set; }
     }

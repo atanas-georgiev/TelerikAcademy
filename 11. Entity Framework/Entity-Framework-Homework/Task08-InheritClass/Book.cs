@@ -7,17 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Task02_DAOClass
+namespace Task08_InheritClass
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class Book
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int BookId { get; set; }
+        public string title { get; set; }
+        public string author { get; set; }
+        public System.DateTime publishDate { get; set; }
+        public int isbn { get; set; }
     }
 }
