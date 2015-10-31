@@ -1,4 +1,4 @@
-﻿namespace Task06
+﻿namespace Task07
 {
     using System;
     using System.Collections.Generic;
@@ -8,11 +8,14 @@
     {
         static void Main(string[] args)
         {
-            // Write a program that removes from given sequence all numbers that occur odd number of times.
-            // Example:
-            // {4, 2, 2, 5, 2, 3, 2, 3, 1, 5, 2} → {5, 3, 3, 5}
+            // Write a program that finds in given array of integers (all belonging to the range[0..1000]) how many times each of them occurs.
 
-            var array = new List<int> { 4, 2, 2, 5, 2, 3, 2, 3, 1, 5, 2 };
+            // Example: array = { 3, 4, 4, 2, 3, 3, 4, 3, 2}
+            //            2 → 2 times
+            //            3 → 4 times
+            //            4 → 3 times
+
+            var array = new[] { 3, 4, 4, 2, 3, 3, 4, 3, 2 };
             var arrayOccurances = new Dictionary<int, int>();
 
             foreach (var value in array)
@@ -27,12 +30,10 @@
                 }
             }
 
-            foreach (var value in arrayOccurances.Where(x => x.Value % 2 == 1))
+            foreach (var value in arrayOccurances.OrderBy(x => x.Key))
             {
-                array.RemoveAll(x => x == value.Key);
+                Console.WriteLine("Value {0} → {1} times", value.Key, value.Value);
             }
-
-            Console.WriteLine(string.Join(", ", array));
         }
     }
 }
