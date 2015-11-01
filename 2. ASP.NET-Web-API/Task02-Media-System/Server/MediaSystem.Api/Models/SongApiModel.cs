@@ -1,27 +1,25 @@
-﻿namespace MediaSystem.Models
+﻿namespace MediaSystem.Api.Models
 {
-    using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class Song
-    {
-        public int Id { get; set; }
+    using MediaSystem.Models;
 
+    public class SongApiModel
+    {
         [Required]
         [MinLength(2)]
         [MaxLength(50)]
         public string Title { get; set; }
 
-        public int? GenreId { get; set; }
-
-        public virtual Genre Genre { get; set; }
+        [Required]
+        [MinLength(2)]
+        [MaxLength(25)]
+        public string Genre { get; set; }
 
         [Range(1500, 2500)]
         public int Year { get; set; }
 
         [Required]
         public int ArtistId { get; set; }
-
-        public virtual Artist Artist { get; set; }
     }
 }

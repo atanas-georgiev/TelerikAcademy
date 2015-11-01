@@ -11,10 +11,10 @@
 
         Artist GetById(int id);
 
-        void Add(string name, DateTime dateOfBirth, Country country = null);
+        void Add(string name, DateTime? dateOfBirth = null, string country = null);
 
-        void Update(Artist newArtistData);
+        bool Update(int id, string name = null, DateTime? dateOfBirth = null, string country = null);
 
-        void DeleteById(Artist artist);
+        bool DeleteById(int id);
     }
 }

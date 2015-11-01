@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="ArtistService.cs" />
     <Compile Include="Interfaces\IArtistService.cs" />
+    <Compile Include="Interfaces\ISongService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
