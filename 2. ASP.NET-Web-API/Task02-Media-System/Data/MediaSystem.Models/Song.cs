@@ -17,10 +17,10 @@
         public virtual Genre Genre { get; set; }
 
         [Range(1500, 2500)]
-        public int Year { get; set; }
+        public int? Year { get; set; }
 
         [Required]
-        public int ArtistId { get; set; }
+        public int? ArtistId { get; set; }
 
         public virtual Artist Artist { get; set; }
     }

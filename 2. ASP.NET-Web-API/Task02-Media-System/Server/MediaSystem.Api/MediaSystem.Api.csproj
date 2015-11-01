@@ -116,10 +116,13 @@
     <Compile Include="App_Start\DatabaseConfig.cs" />
     <Compile Include="App_Start\NinjectConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\ArtistController.cs" />
+    <Compile Include="Controllers\SongController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AlbumApiModel.cs" />
     <Compile Include="Models\ArtistApiModel.cs" />
     <Compile Include="Models\SongApiModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,23 +1,16 @@
-﻿namespace MediaSystem.Api.Models
+﻿namespace Task03_Media_System_Console_Test.Models
 {
-    using System.ComponentModel.DataAnnotations;
+    using System;
 
-    using MediaSystem.Models;
-
+    [Serializable]
     public class SongApiModel
     {
         public int Id { get; set; }
 
-        [Required]
-        [MinLength(2)]
-        [MaxLength(50)]
         public string Title { get; set; }
 
-        [MinLength(2)]
-        [MaxLength(25)]
         public string Genre { get; set; }
 
-        [Range(1500, 2500)]
         public int? Year { get; set; }
         
         public int? ArtistId { get; set; }

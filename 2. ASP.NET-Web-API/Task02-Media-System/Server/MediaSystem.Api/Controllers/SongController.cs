@@ -11,22 +11,22 @@
 
     using StudentSystem.Data;
 
-    public class ArtistController : ApiController
+    public class SongController : ApiController
     {
-        private readonly IArtistService artistService;
+        private readonly ISongService songService;
 
-        public ArtistController()
+        public SongController()
         {
             var db = new MediaSystemContext();
-            this.artistService = new ArtistService(new EfGenericRepository<Artist>(db), new EfGenericRepository<Country>(db));
+            this.songService = new SongService(new EfGenericRepository<Song>(db), new EfGenericRepository<Genre>(db));
         }
 
         public IHttpActionResult Get()
         {
-            var result = this.artistService
+            var result = this.songService
                 .GetAll()
                 .ToList()
-                .Select(MapArtist)
+                .Select(MapSong)
                 .ToList();
 
             return this.Ok(result);
@@ -34,41 +34,41 @@
 
         public IHttpActionResult Get(int id)
         {
-            var result = this.artistService.GetById(id);
+            var result = this.songService.GetById(id);
 
             if (result == null)
             {
                 return this.NotFound();
             }
 
-            return this.Ok(MapArtist(result));
+            return this.Ok(MapSong(result));
         }
 
-        public IHttpActionResult Post(ArtistApiModel artist)
+        public IHttpActionResult Post(SongApiModel song)
         {
             if (!this.ModelState.IsValid)
             {
                 return this.BadRequest(this.ModelState);
             }
 
-            if (artist == null)
+            if (song == null)
             {
                 return this.BadRequest("No data");
             }
 
-            this.artistService.Add(artist.Name, artist.DateOfBirth, artist.Country);
+            this.songService.Add(song.Title, song.ArtistId, song.Genre, song.Year);
 
             return this.Ok();
         }
 
-        public IHttpActionResult Put(int id, ArtistApiModel artist)
+        public IHttpActionResult Put(int id, SongApiModel song)
         {
-            if (artist == null)
+            if (song == null)
             {
                 return this.BadRequest("No data");
             }
 
-            if (this.artistService.Update(id, artist.Name, artist.DateOfBirth, artist.Country))
+            if (this.songService.Update(id, song.Title, song.ArtistId, song.Genre, song.Year))
             {
                 return this.Ok();
             }
@@ -78,7 +78,7 @@
 
         public IHttpActionResult Delete(int id)
         {
-            if (this.artistService.DeleteById(id))
+            if (this.songService.DeleteById(id))
             {
                 return this.Ok();
             }
@@ -86,19 +86,19 @@
             return this.NotFound();
         }
 
-        private static ArtistApiModel MapArtist(Artist artist)
+        private static SongApiModel MapSong(Song song)
         {
-            string countryName;
-            if (artist.Country == null)
+            string genreName;
+            if (song.Genre == null)
             {
-                countryName = null;
+                genreName = null;
             }
             else
             {
-                countryName = artist.Country.Name;
+                genreName = song.Genre.Name;
             }
 
-            return new ArtistApiModel() { Id = artist.Id, Name = artist.Name, Country = countryName, DateOfBirth = artist.DateOfBirth };
+            return new SongApiModel() { Id = song.Id, Title = song.Title, Year = song.Year, Genre = genreName, ArtistId = song.ArtistId };
         }
     }
 }

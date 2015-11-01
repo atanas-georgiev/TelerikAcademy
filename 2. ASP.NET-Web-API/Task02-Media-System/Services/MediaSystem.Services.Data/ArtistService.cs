@@ -85,7 +85,6 @@
 
         private Country GetCountry(string name)
         {
-
             if (string.IsNullOrEmpty(name))
             {
                 return null;

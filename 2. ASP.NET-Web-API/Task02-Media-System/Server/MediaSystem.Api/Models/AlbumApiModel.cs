@@ -1,10 +1,11 @@
 ﻿namespace MediaSystem.Api.Models
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using MediaSystem.Models;
 
-    public class SongApiModel
+    public class AlbumApiModel
     {
         public int Id { get; set; }
 
@@ -13,13 +14,12 @@
         [MaxLength(50)]
         public string Title { get; set; }
 
-        [MinLength(2)]
-        [MaxLength(25)]
-        public string Genre { get; set; }
-
-        [Range(1500, 2500)]
         public int? Year { get; set; }
-        
-        public int? ArtistId { get; set; }
+
+        public string Producer { get; set; }
+
+        public ICollection<int> ArtistsIds;
+
+        public ICollection<int> SongsIds;
     }
 }
