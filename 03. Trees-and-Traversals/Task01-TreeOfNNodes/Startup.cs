@@ -2,8 +2,6 @@
 {
     using System;
     using System.Linq;
-    using System.Runtime.InteropServices;
-    using System.Xml.Serialization.Configuration;
 
     internal class Startup
     {
@@ -43,8 +41,7 @@
             var middleNodes = nodes.Where(x => x.Children.Count != 0 && x.HasParent).ToList();
             middleNodes.ForEach(x => Console.WriteLine(x.Value));
 
-            Console.WriteLine("Max depth: " + TreeDepthCalculate(rootNode));
-            
+            Console.WriteLine("Max depth: " + TreeDepthCalculate(rootNode));            
         }
 
         public static int TreeDepthCalculate(TreeNode<int> root)

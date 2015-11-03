@@ -3,17 +3,17 @@
     using System;
     using System.IO;
 
-    class Startup
+    public class Startup
     {
         private const string DirectoryName = @"C:\Windows";
         private const string SearchPattern = @"*.exe";
 
-        static void Main(string[] args)
+        public static void Main()
         {
             TraverseDirectoryTree(new DirectoryInfo(DirectoryName));
         }
 
-        static void TraverseDirectoryTree(DirectoryInfo root)
+        public static void TraverseDirectoryTree(DirectoryInfo root)
         {
             FileInfo[] files = null;
             DirectoryInfo[] directories = null;
