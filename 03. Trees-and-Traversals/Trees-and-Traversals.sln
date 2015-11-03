@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task01-TreeOfNNodes", "Task01-TreeOfNNodes\Task01-TreeOfNNodes.csproj", "{599B5DB9-EFE1-4681-B37E-8F7CA8CF81F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task02-TraverseWindowsDirectory", "Task02-TraverseWindowsDirectory\Task02-TraverseWindowsDirectory.csproj", "{9720230C-764E-4874-9BDB-2F48E3CA3339}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task03-ConvertWindowsDirToTree", "Task03-ConvertWindowsDirToTree\Task03-ConvertWindowsDirToTree.csproj", "{48363E48-36CC-4C15-B87A-25D796ACA087}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{599B5DB9-EFE1-4681-B37E-8F7CA8CF81F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{599B5DB9-EFE1-4681-B37E-8F7CA8CF81F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{599B5DB9-EFE1-4681-B37E-8F7CA8CF81F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{599B5DB9-EFE1-4681-B37E-8F7CA8CF81F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9720230C-764E-4874-9BDB-2F48E3CA3339}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9720230C-764E-4874-9BDB-2F48E3CA3339}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9720230C-764E-4874-9BDB-2F48E3CA3339}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9720230C-764E-4874-9BDB-2F48E3CA3339}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48363E48-36CC-4C15-B87A-25D796ACA087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48363E48-36CC-4C15-B87A-25D796ACA087}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48363E48-36CC-4C15-B87A-25D796ACA087}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48363E48-36CC-4C15-B87A-25D796ACA087}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
