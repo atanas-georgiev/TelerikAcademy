@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task05_HashSet", "Task05_Ha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task05_HashSet.Test", "Task05_HashSet.Test\Task05_HashSet.Test.csproj", "{7147F42D-0411-4086-817B-460DE3FF4129}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task06_People", "Task06_People\Task06_People.csproj", "{91761EDD-63FE-40D9-B0DE-0767D4C7FE4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{7147F42D-0411-4086-817B-460DE3FF4129}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7147F42D-0411-4086-817B-460DE3FF4129}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7147F42D-0411-4086-817B-460DE3FF4129}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91761EDD-63FE-40D9-B0DE-0767D4C7FE4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91761EDD-63FE-40D9-B0DE-0767D4C7FE4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91761EDD-63FE-40D9-B0DE-0767D4C7FE4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91761EDD-63FE-40D9-B0DE-0767D4C7FE4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
