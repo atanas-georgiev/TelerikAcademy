@@ -9,14 +9,14 @@ namespace Task03_CombinationsWithoutDuplicates
         public static void Main()
         {
             Console.WriteLine("n = ");
-            var n = 4;//int.Parse(Console.ReadLine());
+            var n = int.Parse(Console.ReadLine());
             Console.WriteLine("k = ");
-            var k = 2;//int.Parse(Console.ReadLine());
+            var k = int.Parse(Console.ReadLine());
 
-            CombinationWithDuplicates(1, n, new int[k], 0);
+            CombinationWithoutDuplicates(1, n, new int[k], 0);
         }
 
-        private static void CombinationWithDuplicates(int start, int end, int[] array, int index)
+        private static void CombinationWithoutDuplicates(int start, int end, int[] array, int index)
         {
             if (index >= array.Length)
             {
@@ -27,7 +27,7 @@ namespace Task03_CombinationsWithoutDuplicates
             for (var i = start; i <= end; i++)
             {
                 array[index] = i;
-                CombinationWithDuplicates(start + i - 1, end, array, index + 1);
+                CombinationWithoutDuplicates(start + i, end, array, index + 1);
             }
         }
 
