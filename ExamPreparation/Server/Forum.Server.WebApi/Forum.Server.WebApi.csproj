@@ -222,6 +222,7 @@
     </Compile>
     <Compile Include="Infrastructure\Mappings\IHaveCustomMappings.cs" />
     <Compile Include="Infrastructure\Mappings\IMapFrom.cs" />
+    <Compile Include="Infrastructure\Validation\ValidateModelAttribute.cs" />
     <Compile Include="Models\Account\AccountViewModels.cs" />
     <Compile Include="Models\Account\AddExternalLoginBindingModel.cs" />
     <Compile Include="Models\Account\ChangePasswordBindingModel.cs" />
@@ -229,6 +230,7 @@
     <Compile Include="Models\Account\RegisterExternalBindingModel.cs" />
     <Compile Include="Models\Account\RemoveLoginBindingModel.cs" />
     <Compile Include="Models\Account\SetPasswordBindingModel.cs" />
+    <Compile Include="Models\Articles\ArticleRequestModel.cs" />
     <Compile Include="Models\Articles\ArticleResponseModel.cs" />
     <Compile Include="Models\Tags\TagResponseModel.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -253,6 +255,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Forum.Constants\Forum.Constants.csproj">
+      <Project>{198b066f-6f67-40f3-8578-9912a2ed1cbd}</Project>
+      <Name>Forum.Constants</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Data\Forum.Data.Models\Forum.Data.Models.csproj">
       <Project>{7162487c-8df8-4c78-bb60-9e2dde000052}</Project>
       <Name>Forum.Data.Models</Name>
