@@ -1,4 +1,6 @@
-﻿namespace Forum.Data.Models
+﻿using System;
+
+namespace Forum.Data.Models
 {
     using System.ComponentModel.DataAnnotations;
 
@@ -7,6 +9,8 @@
         public int Id { get; set; }
 
         public string Content { get; set; }
+
+        public DateTime DateCreated { get; set; }
 
         [Required]
         public int ArticleId { get; set; }

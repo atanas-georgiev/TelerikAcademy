@@ -1,4 +1,6 @@
-﻿namespace Forum.Server.WebApi.Controllers
+﻿using Forum.Server.WebApi.Models.Comments;
+
+namespace Forum.Server.WebApi.Controllers
 {
     using System.Linq;
     using System.Web.Http;
@@ -73,6 +75,18 @@
                 .FirstOrDefault();
 
             return this.Ok(result);
+        }
+
+        [Authorize]
+        [ValidateModel]
+        [HttpPost]
+        [Route("api/articles/{id}/comments")]
+        public IHttpActionResult CreateArtileComment(int id, CommentRequestModel model)
+        {
+            var user = this.User.Identity.Name;
+            var newComment = this.articleService.AddComment(id, model.Content, user);            
+
+            return this.Created("api/articles/" + id, newComment);
         }
     }
 }

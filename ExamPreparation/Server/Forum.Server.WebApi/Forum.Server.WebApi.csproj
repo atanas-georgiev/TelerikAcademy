@@ -233,6 +233,7 @@
     <Compile Include="Models\Articles\ArticleRequestModel.cs" />
     <Compile Include="Models\Articles\ArticleResponseModel.cs" />
     <Compile Include="Models\Articles\ArticleResponseModelDetails.cs" />
+    <Compile Include="Models\Comments\CommentRequestModel.cs" />
     <Compile Include="Models\Comments\CommentResponseModel.cs" />
     <Compile Include="Models\Tags\TagResponseModel.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />

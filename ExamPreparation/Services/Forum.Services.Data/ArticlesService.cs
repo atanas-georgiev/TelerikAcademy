@@ -13,15 +13,17 @@
     {        
         private readonly IRepository<Article> articles;
         private readonly IRepository<Category> categories;
+        private readonly IRepository<Comment> comments;
         private readonly IRepository<Tag> tags;
         private readonly IRepository<User> users;
 
-        public ArticlesService(IRepository<Article> articles, IRepository<Category> categories, IRepository<Tag> tags, IRepository<User> users)
+        public ArticlesService(IRepository<Article> articles, IRepository<Category> categories, IRepository<Tag> tags, IRepository<User> users, IRepository<Comment> comments)
         {
             this.articles = articles;
             this.categories = categories;
             this.tags = tags;
             this.users = users;
+            this.comments = comments;
         }
 
         public IQueryable<Article> GetArticles(int page = 0, string category = null)
@@ -45,6 +47,25 @@
                         .Skip(page * Constants.ForumPageSize)
                         .Take(Constants.ForumPageSize);
             }
+
+            return result;
+        }
+
+        public Comment AddComment(int articleId, string content, string userName)
+        {
+            var user = this.users.All().FirstOrDefault(u => u.Email == userName);
+            var article = this.articles.All().FirstOrDefault(a => a.Id == articleId);
+
+            var result = new Comment()
+            {
+                Article = article,
+                Content = content,
+                User = user,
+                DateCreated = DateTime.UtcNow
+            };
+
+            this.comments.Add(result);
+            this.comments.SaveChanges();
 
             return result;
         }

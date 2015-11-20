@@ -10,6 +10,8 @@
 
         Article AddArticle(string title, string content, string category, string[] tags);
 
+        Comment AddComment(int articleId, string content, string userName);
+
         IQueryable<Article> GetArticleById(int id);
     }
 }
