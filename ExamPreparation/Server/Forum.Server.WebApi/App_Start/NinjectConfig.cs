@@ -14,8 +14,8 @@
     {
         public static Action<IKernel> DependenciesRegistration = kernel =>
         {
-            kernel.Bind<IForumDbContext>().To<ForumDbContext>();
-            kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));
+            kernel.Bind<IForumDbContext>().To<ForumDbContext>().InRequestScope();
+            kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>)).InRequestScope();
         };
 
         public static IKernel CreateKernel()
@@ -40,7 +40,7 @@
         {
             DependenciesRegistration(kernel);
 
-          // todo  kernel.Bind<IRandomProvider>().To<RandomProvider>();
+            // todo  kernel.Bind<IRandomProvider>().To<RandomProvider>();            
 
             kernel.Bind(b => b
                 .From("Forum.Services.Data")

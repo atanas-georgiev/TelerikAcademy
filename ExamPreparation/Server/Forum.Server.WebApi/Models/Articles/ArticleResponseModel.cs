@@ -24,7 +24,7 @@
 
         public IEnumerable<string> Tags { get; set; }
 
-        public void CreateMappings(IConfiguration configuration)
+        public virtual void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Article, ArticleResponseModel>()
                 .ForMember(a => a.Category, opts => opts.MapFrom(a => a.Category.Name))

@@ -14,12 +14,14 @@
         private readonly IRepository<Article> articles;
         private readonly IRepository<Category> categories;
         private readonly IRepository<Tag> tags;
+        private readonly IRepository<User> users;
 
-        public ArticlesService(IRepository<Article> articles, IRepository<Category> categories, IRepository<Tag> tags)
+        public ArticlesService(IRepository<Article> articles, IRepository<Category> categories, IRepository<Tag> tags, IRepository<User> users)
         {
             this.articles = articles;
             this.categories = categories;
             this.tags = tags;
+            this.users = users;
         }
 
         public IQueryable<Article> GetArticles(int page = 0, string category = null)
@@ -55,31 +57,39 @@
         }
 
         public Article AddArticle(string title, string content, string category, string[] tags)
-        {                       
+        {            
             var newArticle = new Article
                                  {
                                      Title = title,
                                      Content = content,
                                      DateTime = DateTime.UtcNow,
+                                     
                                  };
-
+            
             var categoryDb = this.categories.All().FirstOrDefault(c => c.Name == category); ;
 
-            //if (categoryDb == null)
-            //{
-            //    newArticle.Category = new Category() { Name = category};
-            //}
-            //else
-            //{
-            //    newArticle.CategoryId = categoryDb.Id;
-            //}
+            if (categoryDb == null)
+            {
+                newArticle.Category = new Category() { Name = category};
+            }
+            else
+            {
+                newArticle.CategoryId = categoryDb.Id;
+            }
 
-            //foreach (var tag in tags)
-            //{
-            //    var tagDb = this.tags.All().FirstOrDefault(t => t.Name == tag);
+            foreach (var tag in tags)
+            {
+                var tagDb = this.tags.All().FirstOrDefault(t => t.Name == tag);
 
-            //    newArticle.Tags.Add(tagDb ?? new Tag() { Name = tag, });
-            //}
+                if (tagDb == null)
+                {
+                    newArticle.Tags.Add(new Tag() {Name = tag,});
+                }
+                else
+                {
+                    newArticle.Tags.Add(tagDb);
+                }                
+            }
 
             this.articles.Add(newArticle);
             this.articles.SaveChanges();

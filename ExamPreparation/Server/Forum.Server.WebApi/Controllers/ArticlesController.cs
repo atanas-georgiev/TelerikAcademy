@@ -52,16 +52,25 @@
         }
 
         [Authorize]
+        [ValidateModel]
         public IHttpActionResult Post(ArticleRequestModel model)
         {
-            if (!this.ModelState.IsValid)
-            {
-                return this.BadRequest(this.ModelState);
-            }
-
             var newArticle = this.articleService.AddArticle(model.Title, model.Content, model.Category, model.Tags);
             var result =
                 this.articleService.GetArticleById(newArticle.Id).ProjectTo<ArticleResponseModel>().FirstOrDefault();
+
+            return this.Ok(result);
+        }
+
+        [Authorize]
+        [ValidateModel]
+        [Route("api/articles/{id}")]
+        public IHttpActionResult GetArticleById(int id)
+        {
+            var article = this.articleService.GetArticleById(id);
+            var result = article
+                .ProjectTo<ArticleResponseModelDetails>()
+                .FirstOrDefault();
 
             return this.Ok(result);
         }
