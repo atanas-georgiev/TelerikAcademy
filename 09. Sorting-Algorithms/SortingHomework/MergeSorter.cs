@@ -2,78 +2,62 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class MergeSorter<T> : ISorter<T>
         where T : IComparable<T>
     {
         public void Sort(IList<T> collection)
         {
-            mergeSort(collection, 0, collection.Count - 1);
+            SortArray(collection, 0, collection.Count - 1);
         }
 
-        private static void mergeSort<T>(IList<T> inputData, int firstIndex, int lastIndex)
-              where T : IComparable<T>
+        private void SortArray(IList<T> collection, int left, int right)
         {
-            // If the firstIndex is greater than the lastIndex then the recursion 
-            // has divided the problem into a single item. Return back up the call 
-            // stack.
-            if (firstIndex >= lastIndex)
+            if (left >= right)
+            {
                 return;
+            }
 
-            int midIndex = (firstIndex + lastIndex) / 2;
+            var mid = (left + right) / 2;
+            SortArray(collection, left, mid);
+            SortArray(collection, mid + 1, right);
 
-            // Recursively divide the first and second halves of the inputData into
-            // its two seperate parts.
-            mergeSort(inputData, firstIndex, midIndex);
-            mergeSort(inputData, midIndex + 1, lastIndex);
-
-            // Merge the two remaining halves after dividing them in half.
-            merge(inputData, firstIndex, midIndex, lastIndex);
+            MergeArrays(collection, left, mid + 1, right);
         }
 
-        private static void merge<T>(IList<T> inputData, int firstIndex, int midIndex, int lastIndex)
-            where T : IComparable<T>
+        private void MergeArrays(IList<T> numbers, int left, int mid, int right)
         {
-            int currentLeft = firstIndex;
-            int currentRight = midIndex + 1;
+            var numbersCount = right - left + 1;
+            var leftEnd = mid - 1;
+            var position = left;
+            var temp = new T[numbers.Count];
 
-            T[] tempData = new T[(lastIndex - firstIndex) + 1];
-            int tempPos = 0;
-
-            // Check the items at the left most index of the two havles and compare
-            // them. Add the items in ascending order into the tempData array.
-            while (currentLeft <= midIndex && currentRight <= lastIndex)
-                if (inputData.ElementAt(currentLeft).CompareTo(inputData.ElementAt(currentRight)) < 0)
+            while ((left <= leftEnd) && (mid <= right))
+            {
+                if (numbers[left].CompareTo(numbers[mid]) < 1)
                 {
-                    tempData[tempPos++] = inputData.ElementAt(currentLeft++);
+                    temp[position++] = numbers[left++];
                 }
                 else
                 {
-                    tempData[tempPos++] = inputData.ElementAt(currentRight++);
+                    temp[position++] = numbers[mid++];
                 }
-
-            // If there are any remaining items to be added to the tempData array,
-            // add them.
-
-            while (currentLeft <= midIndex)
-            {
-                tempData[tempPos++] = inputData.ElementAt(currentLeft++);
             }
 
-            while (currentRight <= lastIndex)
+            while (left <= leftEnd)
             {
-                tempData[tempPos++] = inputData.ElementAt(currentRight++);
+                temp[position++] = numbers[left++];
             }
 
-            // Now that the items have been sorted, copy them back into the inputData
-            // reference that was passed to this function.
-            tempPos = 0;
-            for (int i = firstIndex; i <= lastIndex; i++)
+            while (mid <= right)
             {
-                inputData.Insert(firstIndex, tempData.ElementAt(tempPos));
+                temp[position++] = numbers[mid++];
+            }
+
+            for (var index = numbersCount - 1; index >= 0; index--)
+            {
+                numbers[right] = temp[right];
+                --right;
             }
         }
     }
