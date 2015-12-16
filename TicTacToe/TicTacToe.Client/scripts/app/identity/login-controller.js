@@ -1,0 +1,19 @@
+﻿(function () {
+    'use strict';
+
+    function LoginController($location, auth) {
+        var vm = this;
+
+        vm.login = function (user, loginForm) {
+            if (loginForm.$valid) {
+                auth.login(user)
+                    .then(function () {
+                        $location.path('/');
+                    });
+            }
+        }
+    }
+
+    angular.module('ticTacToeApp.controllers')
+        .controller('LoginController', ['$location', 'auth', LoginController]);
+}());

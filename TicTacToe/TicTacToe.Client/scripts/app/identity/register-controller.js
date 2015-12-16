@@ -1,0 +1,19 @@
+﻿(function () {
+    'use strict';
+
+    function RegisterController($location, auth) {
+        var vm = this;
+
+        vm.register = function (user, registerForm) {
+            if (registerForm.$valid) {
+                auth.register(user)
+                    .then(function () {
+                        $location.path('/identity/login');
+                    });
+            }
+        }
+    }
+
+    angular.module('ticTacToeApp.controllers')
+        .controller('RegisterController', ['$location', 'auth', RegisterController]);
+}());
