@@ -87,6 +87,7 @@
     <None Include="scripts\_references.js" />
     <Content Include="scripts\app\app.js" />
     <Content Include="scripts\app\common\main-controller.js" />
+    <Content Include="scripts\app\home\home-controller.js" />
     <Content Include="scripts\app\identity\auth-service.js" />
     <Content Include="scripts\app\identity\identity-service.js" />
     <Content Include="scripts\app\identity\login-controller.js" />
