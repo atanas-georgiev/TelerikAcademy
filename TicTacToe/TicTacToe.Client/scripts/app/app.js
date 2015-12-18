@@ -35,17 +35,24 @@
                 controller: 'LoginController',
                 controllerAs: CONTROLLER_VIEW_MODEL_NAME
             })
-            //.when('/cats/add', {
-            //    templateUrl: 'partials/cats/add-cat.html',
-            //    controller: 'AddCatController',
-            //    controllerAs: CONTROLLER_VIEW_MODEL_NAME,
-            //    resolve: routeResolvers.authenticationRequired
-            //})
-            //.when('/cats', {
-            //    templateUrl: 'partials/cats/search-cats.html',
-            //    controller: 'SearchCatsController',
-            //    controllerAs: CONTROLLER_VIEW_MODEL_NAME
-            //})
+            .when('/game/create', {
+                template: '',
+                controller: 'NewGameController',
+                controllerAs: CONTROLLER_VIEW_MODEL_NAME,
+                resolve: routeResolvers.authenticationRequired
+            })
+            .when('/game/join', {
+                templateUrl: 'partials/game/game.html',
+                controller: 'JoinGameController',
+                controllerAs: CONTROLLER_VIEW_MODEL_NAME,
+                resolve: routeResolvers.authenticationRequired
+            })
+            .when('/game/:id', {
+                templateUrl: 'partials/game/game.html',
+                controller: 'GameController',
+                controllerAs: CONTROLLER_VIEW_MODEL_NAME,
+                resolve: routeResolvers.authenticationRequired
+            })
             .otherwise({ redirectTo: '/' });
     }
 

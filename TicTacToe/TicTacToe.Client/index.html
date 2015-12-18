@@ -24,29 +24,15 @@
                 </button>
             </div>
             <div class="navbar-collapse collapse" id="navbar-main">
-                <!--<ul class="nav navbar-nav">
-                    <li>
-                        <a href="../help/">Help</a>
-                    </li>
-                    <li>
-                        <a href="http://news.bootswatch.com">Blog</a>
-                    </li>
+                <ul class="nav navbar-nav" ng-if="vm.globallySetCurrentUser" >
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Darkly <span class="caret"></span></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Game<span class="caret"></span></a>
                         <ul class="dropdown-menu" aria-labelledby="download">
-                            <li><a href="http://jsfiddle.net/bootswatch/1172d9hh/">Open Sandbox</a></li>
-                            <li class="divider"></li>
-                            <li><a href="./bootstrap.min.css">bootstrap.min.css</a></li>
-                            <li><a href="./bootstrap.css">bootstrap.css</a></li>
-                            <li class="divider"></li>
-                            <li><a href="./variables.less">variables.less</a></li>
-                            <li><a href="./bootswatch.less">bootswatch.less</a></li>
-                            <li class="divider"></li>
-                            <li><a href="./_variables.scss">_variables.scss</a></li>
-                            <li><a href="./_bootswatch.scss">_bootswatch.scss</a></li>
+                            <li><a href="/game/create">New</a></li>                            
+                            <li><a href="/game/join">Join</a></li>
                         </ul>
                     </li>
-                </ul>-->
+                </ul>
 
                 <ul class="nav navbar-nav navbar-right" ng-if="!vm.globallySetCurrentUser">
                     <li>
@@ -59,7 +45,7 @@
 
                 <ul class="nav navbar-nav navbar-right" ng-if="vm.globallySetCurrentUser">
                     <li>
-                        <a href="/identity/profile">{{vm.globallySetCurrentUser.DisplayName}}</a>
+                        <a href="/identity/profile">{{vm.globallySetCurrentUser}}</a>
                     </li>
                     <li>
                         <a href="#" ng-click="vm.logout()">Logout</a>
@@ -79,7 +65,12 @@
     <script src="scripts/app/identity/login-controller.js"></script>
     <script src="scripts/app/identity/register-controller.js"></script>
     <script src="scripts/app/common/main-controller.js"></script>
-<script src="scripts/app/home/home-controller.js"></script>
+    <script src="scripts/app/home/home-controller.js"></script>
+    <script src="scripts/app/game/new-game-controller.js"></script>
+    <script src="scripts/app/common/data-service.js"></script>
+    <script src="scripts/app/game/game-service.js"></script>
+    <script src="scripts/app/game/game-controller.js"></script>
+    <script src="scripts/app/game/join-game-controller.js"></script>
 
 </body>
 </html>

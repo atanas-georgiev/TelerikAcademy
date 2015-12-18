@@ -79,6 +79,7 @@
             },
             logout: function () {
                 $cookies.remove(TOKEN_KEY);
+                $cookies.remove(USERNAME);
                 $http.defaults.headers.common.Authorization = null;
                 identity.removeUser();
             },

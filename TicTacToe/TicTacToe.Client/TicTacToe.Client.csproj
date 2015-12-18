@@ -68,6 +68,7 @@
   <ItemGroup>
     <Content Include="index.html" />
     <Content Include="packages.config" />
+    <Content Include="partials\game\game.html" />
     <Content Include="partials\home\home.html" />
     <Content Include="partials\identity\login.html" />
     <Content Include="partials\identity\register.html" />
@@ -86,7 +87,12 @@
   <ItemGroup>
     <None Include="scripts\_references.js" />
     <Content Include="scripts\app\app.js" />
+    <Content Include="scripts\app\common\data-service.js" />
     <Content Include="scripts\app\common\main-controller.js" />
+    <Content Include="scripts\app\game\game-controller.js" />
+    <Content Include="scripts\app\game\game-service.js" />
+    <Content Include="scripts\app\game\join-game-controller.js" />
+    <Content Include="scripts\app\game\new-game-controller.js" />
     <Content Include="scripts\app\home\home-controller.js" />
     <Content Include="scripts\app\identity\auth-service.js" />
     <Content Include="scripts\app\identity\identity-service.js" />

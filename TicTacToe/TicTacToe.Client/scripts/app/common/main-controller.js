@@ -13,9 +13,9 @@
             $location.path('/');
         };
 
-        function waitForLogin() {
-            identity.getUser()
-                .then(function (user) {                    
+        function waitForLogin() {            
+            auth.getIdentity()
+                .then(function (user) {
                     vm.globallySetCurrentUser = user;
                 });
         }
