@@ -14,14 +14,12 @@ module.exports = function (app) {
     app.get('/ads/add', auth.isAuthenticated, controllers.ads.getAdd);
     app.post('/ads/add', auth.isAuthenticated, controllers.ads.postAdd);
     app.get('/ads/list', controllers.ads.getAll);
+    app.get('/ads/edit/:id', controllers.ads.getEdit);
+    app.put('/ads/edit/:id', controllers.ads.putEdit);
     app.get('/ads/:id', controllers.ads.getAdDetails);
-        
-	// Others
-    app.get('/', function(req, res) {
-        res.render('index', { req: req, currentUser: req.user});
-    });
 
-    app.get('*', function(req, res) {
-        res.render('index', { req: req, currentUser: req.user});
-    });
+    // Others
+    app.get('/', controllers.index.stats);
+    app.get('*', controllers.index.stats);
+
 };

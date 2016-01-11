@@ -12,9 +12,7 @@ html
                     a.navbar-brand(href='../') Bazar 
 
                 #navbar-main.navbar-collapse.collapse
-                    ul.nav.navbar-nav
-                        li
-                            a(href='/') Test1         
+                    ul.nav.navbar-nav      
                         li.dropdown
                             a#ads.dropdown-toggle(data-toggle='dropdown', href='#')
                                 | Ads 
@@ -24,10 +22,7 @@ html
                                     a(href='/ads/add') Add      
                                 li.divider
                                 li
-                                    a(href='/ads/list') List           
-                                li.divider
-                                li
-                                    a(href='#') Delete             
+                                    a(href='/ads/list') List                   
                     ul.nav.navbar-nav.navbar-right
                         if (currentUser)
                             li
@@ -44,6 +39,6 @@ html
            
         footer
             p.text-center
-                | &copy; Telerik Academy 2014
+                | &copy; Telerik Academy 2016
 
         include scripts

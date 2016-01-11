@@ -44,6 +44,7 @@
     <Content Include="public\lib\bootstrap-3.2.0\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="README.md" />
     <Content Include="server\views\ads\add.jade" />
+    <Content Include="server\views\ads\edit.jade" />
     <Content Include="server\views\ads\details.jade" />
     <Content Include="server\views\ads\list.jade" />
     <Content Include="server\views\index.jade" />
@@ -90,6 +91,7 @@
     <Compile Include="server\config\routes.js" />
     <Compile Include="server\controllers\AdsController.js" />
     <Compile Include="server\controllers\index.js" />
+    <Compile Include="server\controllers\IndexController.js" />
     <Compile Include="server\controllers\UsersController.js" />
     <Compile Include="server\data\ads.js" />
     <Compile Include="server\data\models\Ad.js" />

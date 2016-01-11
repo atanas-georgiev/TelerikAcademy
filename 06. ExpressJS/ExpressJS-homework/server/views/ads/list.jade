@@ -18,3 +18,8 @@ block main-content
                                 td= ad.description
                                 td
                                     a(href= "/users/#{ad.username}")= ad.username
+                                if (currentUser == ad.username)
+                                    td
+                                        a(href= "/ads/edit/#{ad._id}") Edit
+                                    td
+                                        a(href= "/ads/delete/#{ad._id}") Delete

@@ -27,28 +27,28 @@ module.exports = {
         });
         
         req.busboy.on('finish', function () {
-            ads.create(ad, function (err, data) {
+            ads.create(ad, function(err, data) {
                 if (err) {
                     res.json(err);
                     return;
                 }
-                res.redirect('/ads/' + data._id);    
-            })     
+                res.redirect('/ads/' + data._id);
+            });
         });
     },
     getAdDetails: function (req, res, next) {
         var id = req.params.id;
-        ads.getById(id, function (err, data) {
+        ads.getById(id, function(err, data) {
             if (err) {
                 res.json(err);
                 return;
             }
             res.render(CONTROLLER_NAME + '/details', { req: req, currentAd: data });
             console.log(data);
-        })
+        });
     },
     getAll: function (req, res, next) {
-        ads.all(function (err, data) {
+        ads.all(function(err, data) {
             if (err) {
                 res.json(err);
                 return;
@@ -56,6 +56,20 @@ module.exports = {
             //res.json(data);
             res.render(CONTROLLER_NAME + '/list', { req: req, data: data });
             console.log(data);
-        })
+        });
     },
+    getEdit: function (req, res, next) {
+        var id = req.params.id;
+        ads.getById(id, function (err, data) {
+            if (err) {
+                res.json(err);
+                return;
+            }
+            res.render(CONTROLLER_NAME + '/edit', { req: req, data: data });
+            console.log(data);
+        });
+    },
+    putEdit: function (req, res, next) {
+
+    }
 };

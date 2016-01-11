@@ -5,10 +5,16 @@ module.exports = {
         User.create(user, callback);
     },
     getByUsername: function (username, callback) {
-        Ad.findOne()
+        User.findOne()
 	        .where('username').equals(username)
-	        .exec(function (err, ad) {
-            callback(err, ad);
+	        .exec(function (err, user) {
+            callback(err, user);
         });
     }, 
+    all: function (callback) {
+        User.find()
+	        .exec(function (err, user) {
+            callback(err, user);
+        });
+    }
 };

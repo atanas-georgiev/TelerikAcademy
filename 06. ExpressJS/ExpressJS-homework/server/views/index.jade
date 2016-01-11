@@ -2,3 +2,17 @@ extends shared/layout
 block main-content
     .jumbotron
         h1 Welcome to Bazar System
+    .well
+        .row
+            .col-lg-6
+                .panel.panel-primary
+                    .panel-heading
+                        | Users
+                    .panel-body
+                        = users
+            .col-lg-6
+                .panel.panel-primary
+                    .panel-heading
+                        | Ads
+                    .panel-body
+                        = ads
