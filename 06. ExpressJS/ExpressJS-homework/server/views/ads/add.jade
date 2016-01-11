@@ -4,15 +4,19 @@ block main-content
     .container
         .row
             .col-lg-12
-                form.form-horizontal(method="post")
+                form.form-horizontal(method="post" enctype="multipart/form-data")
                     .form-group
                         label.col-lg-2.control-label(for='name') Name              
                         .col-lg-10
-                            input#name.form-control(type='text', placeholder='Name')
+                            input#name.form-control(type='text', placeholder='Name', name="name")
                     .form-group
                         label.col-lg-2.control-label(for='description') Description              
                         .col-lg-10
-                            textarea#description.form-control(rows='3',  placeholder='Description')    
+                            textarea#description.form-control(rows='3',  placeholder='Description', name="description")    
+                    .form-group
+                        label.col-lg-2.control-label(for='img') File              
+                        .col-lg-10
+                            input#img.form-control(type='file', placeholder='Image', name="file" accept="image/x-png, image/gif, image/jpeg")
                     .form-group               
                         .col-lg-10.col-lg-offset-2
                             input(type="submit" class="btn btn-primary" value="Add ad")

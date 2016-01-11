@@ -11,15 +11,17 @@ module.exports = function (app) {
 	app.get('/logout', auth.logout);
 	
 	// Ads
-    app.get('/ads/add', controllers.ads.getAdd);
-    app.post('/ads/add', controllers.ads.postAdd);
-	
+    app.get('/ads/add', auth.isAuthenticated, controllers.ads.getAdd);
+    app.post('/ads/add', auth.isAuthenticated, controllers.ads.postAdd);
+    app.get('/ads/list', controllers.ads.getAll);
+    app.get('/ads/:id', controllers.ads.getAdDetails);
+        
 	// Others
     app.get('/', function(req, res) {
-        res.render('index', {currentUser: req.user});
+        res.render('index', { req: req, currentUser: req.user});
     });
 
     app.get('*', function(req, res) {
-        res.render('index', {currentUser: req.user});
+        res.render('index', { req: req, currentUser: req.user});
     });
 };

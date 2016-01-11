@@ -1,0 +1,20 @@
+﻿extends ../shared/layout
+
+block main-content
+    .well
+        .row
+            .col-lg-12
+                table.table.table-striped.table-hover
+                    .thead
+                        .tr
+                            th Name
+                            th Description
+                            th By User
+                    .tdody
+                        each ad in data
+                            tr
+                                td
+                                    a(href= "/ads/#{ad._id}")= ad.name
+                                td= ad.description
+                                td
+                                    a(href= "/users/#{ad.username}")= ad.username

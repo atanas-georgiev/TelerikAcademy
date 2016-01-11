@@ -5,36 +5,39 @@ var CONTROLLER_NAME = 'users';
 
 module.exports = {
     getRegister: function(req, res, next) {
-        res.render(CONTROLLER_NAME + '/register')
+        res.render(CONTROLLER_NAME + '/register', { req: req })
     },
     postRegister: function(req, res, next) {
-        var newUserData = req.body;
-
+        var newUserData = req.body;        
+        
         if (newUserData.password != newUserData.confirmPassword) {
-            req.session.error = 'Passwords do not match!';
-            res.redirect('/register');
+            req.toastr.error('Passwords do not match!');            
+            res.render(CONTROLLER_NAME + '/register', { req: req });
         }
         else {
             newUserData.salt = encryption.generateSalt();
             newUserData.hashPass = encryption.generateHashedPassword(newUserData.salt, newUserData.password);
             users.create(newUserData, function(err, user) {
                 if (err) {
-                    console.log('Failed to register new user: ' + err);
+                    req.toastr.error('User already exist!');
+                    res.render(CONTROLLER_NAME + '/register', { req: req });
                     return;
                 }
 
                 req.logIn(user, function(err) {
                     if (err) {
-                        res.status(400);
-                        return res.send({ reason: err.toString() }); // TODO
+                        req.toastr.error('Cannot login new user!');
+                        res.render(CONTROLLER_NAME + '/', { req: req });
+                        return;
                     } else {
-                        res.redirect('/');
+                        req.toastr.success('User logged in!');
+                        res.render('index', { req: req });
                     }
                 });
             });
         }
     },
     getLogin: function(req, res, next) {
-        res.render(CONTROLLER_NAME + '/login');
+        res.render(CONTROLLER_NAME + '/login', { req: req });
     }
 };

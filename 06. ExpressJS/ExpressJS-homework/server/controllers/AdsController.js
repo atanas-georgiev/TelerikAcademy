@@ -1,31 +1,61 @@
-﻿var ads = require('../data/ads');
+﻿var encryption = require('../utilities/encryption'),
+    uploading = require('../utilities/uploading'),
+    ads = require('../data/ads'),
+    path = require('path');
 
 var CONTROLLER_NAME = 'ads';
 
 module.exports = {
     getAdd: function (req, res, next) {
-        res.render(CONTROLLER_NAME + '/add')
+        res.render(CONTROLLER_NAME + '/add', { req: req })
     },
     postAdd: function (req, res, next) {
-        var newAd = req.body;
-        console.log(newAd);
-        //newAd.salt = encryption.generateSalt();
-        //newAd.hashPass = encryption.generateHashedPassword(newUserData.salt, newUserData.password);
-        //users.create(newUserData, function (err, user) {
-        //    if (err) {
-        //        console.log('Failed to register new user: ' + err);
-        //        return;
-        //    }
+        var ad = {};
+        ad.username = req.user.username;
+        
+        req.pipe(req.busboy);        
+        
+        req.busboy.on('file', function (fieldname, file, filename) {
+            var fileNameHashed = encryption.generateHashedPassword(encryption.generateSalt(), filename) + path.extname(filename);        
+            var pathName = '/' + ad.username;
+            uploading.saveFile(file, pathName, '/' + fileNameHashed);                    
+            ad.pictureFile = fileNameHashed;
+        });
 
-        //    req.logIn(user, function (err) {
-        //        if (err) {
-        //            res.status(400);
-        //            return res.send({ reason: err.toString() }); // TODO
-        //        }
-        //        else {
-        //            res.redirect('/');
-        //        }
-        //    })
-        //});
-    }
+        req.busboy.on('field', function (fieldname, val) {
+            ad[fieldname] = val;            
+        });
+        
+        req.busboy.on('finish', function () {
+            ads.create(ad, function (err, data) {
+                if (err) {
+                    res.json(err);
+                    return;
+                }
+                res.redirect('/ads/' + data._id);    
+            })     
+        });
+    },
+    getAdDetails: function (req, res, next) {
+        var id = req.params.id;
+        ads.getById(id, function (err, data) {
+            if (err) {
+                res.json(err);
+                return;
+            }
+            res.render(CONTROLLER_NAME + '/details', { req: req, currentAd: data });
+            console.log(data);
+        })
+    },
+    getAll: function (req, res, next) {
+        ads.all(function (err, data) {
+            if (err) {
+                res.json(err);
+                return;
+            }
+            //res.json(data);
+            res.render(CONTROLLER_NAME + '/list', { req: req, data: data });
+            console.log(data);
+        })
+    },
 };
