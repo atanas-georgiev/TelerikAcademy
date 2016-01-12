@@ -54,7 +54,7 @@ module.exports = {
             }
             //res.json(data);
             res.render(CONTROLLER_NAME + '/list', { req: req, data: data });
-        });
+        }, req.query.text);
     },
     getEdit: function (req, res, next) {
         var id = req.params.id;
