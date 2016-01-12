@@ -13,7 +13,8 @@ module.exports = {
 			req.logIn(user, function (err) {
                 if (err) return next(err);
                 req.toastr.success('User logged in!');
-                res.render('index', { req: req });
+                //res.render('index', { req: req });
+                res.redirect('/');
 			});
 		});
 		
@@ -22,7 +23,8 @@ module.exports = {
 	logout: function (req, res, next) {
         req.logout();
         req.toastr.success('User logged out!');
-        res.render('index', { req: req });
+        //res.render('index', { req: req });
+        res.redirect('/');
 	},
 	isAuthenticated: function (req, res, next) {
 		if (!req.isAuthenticated()) {

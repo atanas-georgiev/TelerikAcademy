@@ -26,7 +26,7 @@ html
                     ul.nav.navbar-nav.navbar-right
                         if (currentUser)
                             li
-                                a(href="/logout") Logout [#{currentUser.username}]
+                                a(href="/logout") Logout [#{currentUser}]
                         else
                             li
                                 a(href="/register") Register

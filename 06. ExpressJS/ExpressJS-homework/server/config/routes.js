@@ -15,8 +15,9 @@ module.exports = function (app) {
     app.post('/ads/add', auth.isAuthenticated, controllers.ads.postAdd);
     app.get('/ads/list', controllers.ads.getAll);
     app.get('/ads/edit/:id', controllers.ads.getEdit);
-    app.put('/ads/edit/:id', controllers.ads.putEdit);
+    app.post('/ads/edit/:id', auth.isAuthenticated, controllers.ads.postEdit);
     app.get('/ads/:id', controllers.ads.getAdDetails);
+    app.get('/ads/delete/:id', auth.isAuthenticated, controllers.ads.getDelete);
 
     // Others
     app.get('/', controllers.index.stats);
