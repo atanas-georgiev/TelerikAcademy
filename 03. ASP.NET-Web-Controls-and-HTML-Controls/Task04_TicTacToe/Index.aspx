@@ -7,9 +7,22 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <asp:GridView ID="GridViewGame" runat="server" OnSelectedIndexChanged="GridViewGame_SelectedIndexChanged" OnSelectedIndexChanging="GridViewGame_SelectedIndexChanging">
-        </asp:GridView>
+    <form id="formTicTacToe" runat="server">
+        <asp:Button ID="ButtonNewGame" runat="server" OnClick="ButtonNewGame_Click" Text="New Game" />
+        <br/>
+        <asp:Button ID="Button1_1" runat="server" Text="" OnClick="Button1_1_Click" />        
+        <asp:Button ID="Button1_2" runat="server" Text="" OnClick="Button1_2_Click" />
+        <asp:Button ID="Button1_3" runat="server" Text="" OnClick="Button1_3_Click" />
+        <br/>
+        <asp:Button ID="Button2_1" runat="server" Text="" OnClick="Button2_1_Click" />
+        <asp:Button ID="Button2_2" runat="server" Text="" OnClick="Button2_2_Click" />
+        <asp:Button ID="Button2_3" runat="server" Text="" OnClick="Button2_3_Click" />
+        <br/>
+        <asp:Button ID="Button3_1" runat="server" Text="" OnClick="Button3_1_Click" />
+        <asp:Button ID="Button3_2" runat="server" Text="" OnClick="Button3_2_Click" />
+        <asp:Button ID="Button3_3" runat="server" Text="" OnClick="Button3_3_Click" />     
+        <br/>   
+        <asp:Literal ID="LiteralResult" runat="server"></asp:Literal>        
     </form>
 </body>
 </html>

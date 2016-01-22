@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -10,48 +11,274 @@ namespace Task04_TicTacToe
 {
     public partial class Index : System.Web.UI.Page
     {
-        TicTacToeLogic game = new TicTacToeLogic();
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
-
-            for (int i = 0; i < game.GameBoard.GetLength(0); i++)
+            if (Session["game"] == null)
             {
-                dt.Columns.Add();             
+                Session["game"] = new TicTacToeLogic();
             }
-
-            for (int i = 0; i < game.GameBoard.GetLength(1); i++)
-            {
-                dt.Rows.Add();
-            }
-
-            for (int i = 0; i < game.GameBoard.GetLength(0); i++)
-            {
-                for (int j = 0; j < game.GameBoard.GetLength(1); j++)
-                {
-                    dt.Rows[i][j] = game.GameBoard[i, j];
-                }
-
-            }
-
-            //arrList.Add(new ListItem(game.GameBoard[i, 0].ToString(), game.GameBoard[i, 1].ToString(), game.GameBoard[i, 2].ToString());
-            //}
-
-            GridViewGame.DataSource = dt;
-            GridViewGame.DataBind();
         }
 
-        protected void GridViewGame_SelectedIndexChanged(object sender, EventArgs e)
+        private void UpdateGameData()
         {
-            var SelectedRow = GridViewGame.SelectedRow.RowIndex;
-            var SelectedColumn = GridViewGame.SelectedIndex;
+            var game = (TicTacToeLogic) Session["game"];
+
+            if (game.GameBoard[0, 0] != ' ')
+            {
+                this.Button1_1.Enabled = false;
+            }
+
+            if (game.GameBoard[0, 1] != ' ')
+            {
+                this.Button1_2.Enabled = false;
+            }
+
+            if (game.GameBoard[0, 2] != ' ')
+            {
+                this.Button1_3.Enabled = false;
+            }
+
+            if (game.GameBoard[1, 0] != ' ')
+            {
+                this.Button2_1.Enabled = false;
+            }
+
+            if (game.GameBoard[1, 1] != ' ')
+            {
+                this.Button2_2.Enabled = false;
+            }
+
+            if (game.GameBoard[1, 2] != ' ')
+            {
+                this.Button2_3.Enabled = false;
+            }
+
+            if (game.GameBoard[2, 0] != ' ')
+            {
+                this.Button3_1.Enabled = false;
+            }
+
+            if (game.GameBoard[2, 1] != ' ')
+            {
+                this.Button3_2.Enabled = false;
+            }
+
+            if (game.GameBoard[2, 2] != ' ')
+            {
+                this.Button3_3.Enabled = false;
+            }
+
+            this.Button1_1.Text = game.GameBoard[0, 0].ToString();
+            this.Button1_2.Text = game.GameBoard[0, 1].ToString();
+            this.Button1_3.Text = game.GameBoard[0, 2].ToString();
+            this.Button2_1.Text = game.GameBoard[1, 0].ToString();
+            this.Button2_2.Text = game.GameBoard[1, 1].ToString();
+            this.Button2_3.Text = game.GameBoard[1, 2].ToString();
+            this.Button3_1.Text = game.GameBoard[2, 0].ToString();
+            this.Button3_2.Text = game.GameBoard[2, 1].ToString();
+            this.Button3_3.Text = game.GameBoard[2, 2].ToString();
         }
 
-        protected void GridViewGame_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        protected void Button1_1_Click(object sender, EventArgs e)
         {
-            var SelectedRow = GridViewGame.SelectedRow.RowIndex;
-            var SelectedColumn = GridViewGame.SelectedIndex;
+            var game = (TicTacToeLogic) Session["game"];
+            game.FirstPlayerMove(0, 0);
+            if (IsGameOver())
+            {
+                PlayerWins();
+                return;
+            }
+            game.ComputerPlayerMove();
+            Session["game"] = game;
+            UpdateGameData();
+        }
+
+        protected void Button1_2_Click(object sender, EventArgs e)
+        {
+            var game = (TicTacToeLogic) Session["game"];
+            game.FirstPlayerMove(0, 1);
+            if (IsGameOver())
+            {
+                PlayerWins();
+                return;
+            }
+            game.ComputerPlayerMove();
+            if (IsGameOver())
+            {
+                ComputerWins();
+                return;
+            }
+            Session["game"] = game;
+            UpdateGameData();
+        }
+
+        protected void Button1_3_Click(object sender, EventArgs e)
+        {
+            var game = (TicTacToeLogic) Session["game"];
+            game.FirstPlayerMove(0, 2);
+            if (IsGameOver())
+            {
+                PlayerWins();
+                return;
+            }
+            game.ComputerPlayerMove();
+            if (IsGameOver())
+            {
+                ComputerWins();
+                return;
+            }
+            Session["game"] = game;
+            UpdateGameData();
+        }
+
+        protected void Button2_1_Click(object sender, EventArgs e)
+        {
+            var game = (TicTacToeLogic) Session["game"];
+            game.FirstPlayerMove(1, 0);
+            if (IsGameOver())
+            {
+                PlayerWins();
+                return;
+            }
+            game.ComputerPlayerMove();
+            if (IsGameOver())
+            {
+                ComputerWins();
+                return;
+            }
+            Session["game"] = game;
+            UpdateGameData();
+        }
+
+        protected void Button2_2_Click(object sender, EventArgs e)
+        {
+            var game = (TicTacToeLogic) Session["game"];
+            game.FirstPlayerMove(1, 1);
+            if (IsGameOver())
+            {
+                PlayerWins();
+                return;
+            }
+            game.ComputerPlayerMove();
+            if (IsGameOver())
+            {
+                ComputerWins();
+                return;
+            }
+            Session["game"] = game;
+            UpdateGameData();
+        }
+
+        protected void Button2_3_Click(object sender, EventArgs e)
+        {
+            var game = (TicTacToeLogic) Session["game"];
+            game.FirstPlayerMove(1, 2);
+            if (IsGameOver())
+            {
+                PlayerWins();
+                return;
+            }
+            game.ComputerPlayerMove();
+            if (IsGameOver())
+            {
+                ComputerWins();
+                return;
+            }
+            Session["game"] = game;
+            UpdateGameData();
+        }
+
+        protected void Button3_1_Click(object sender, EventArgs e)
+        {
+            var game = (TicTacToeLogic) Session["game"];
+            game.FirstPlayerMove(2, 0);
+            if (IsGameOver())
+            {
+                PlayerWins();
+                return;
+            }
+            game.ComputerPlayerMove();
+            if (IsGameOver())
+            {
+                ComputerWins();
+                return;
+            }
+            Session["game"] = game;
+            UpdateGameData();
+        }
+
+        protected void Button3_2_Click(object sender, EventArgs e)
+        {
+            var game = (TicTacToeLogic) Session["game"];
+            game.FirstPlayerMove(2, 1);
+            if (IsGameOver())
+            {
+                PlayerWins();
+                return;
+            }
+            game.ComputerPlayerMove();
+            if (IsGameOver())
+            {
+                ComputerWins();
+                return;
+            }
+            Session["game"] = game;
+            UpdateGameData();
+        }
+
+        protected void Button3_3_Click(object sender, EventArgs e)
+        {
+            var game = (TicTacToeLogic) Session["game"];
+            game.FirstPlayerMove(2, 2);
+            game.ComputerPlayerMove();
+            if (IsGameOver())
+            {
+                ComputerWins();
+                return;
+            }
+            Session["game"] = game;
+            UpdateGameData();
+        }
+
+        private bool IsGameOver()
+        {
+            var game = (TicTacToeLogic)Session["game"];
+            var gameResult = game.IsGameFinished();
+            if (gameResult == -1)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private void PlayerWins()
+        {
+            LiteralResult.Text = "You win!";
+            Session["game"] = new TicTacToeLogic();
+            UpdateGameData();
+        }
+
+        private void ComputerWins()
+        {
+            LiteralResult.Text = "You loose!";
+            Session["game"] = new TicTacToeLogic();
+            UpdateGameData();
+        }
+
+        protected void ButtonNewGame_Click(object sender, EventArgs e)
+        {
+            LiteralResult.Text = "";
+            Session["game"] = new TicTacToeLogic();
+            this.Button1_1.Enabled = true;
+            this.Button1_2.Enabled = true;
+            this.Button1_3.Enabled = true;
+            this.Button2_1.Enabled = true;
+            this.Button2_2.Enabled = true;
+            this.Button2_3.Enabled = true;
+            this.Button3_1.Enabled = true;
+            this.Button3_2.Enabled = true;
+            this.Button3_3.Enabled = true;
+            UpdateGameData();
         }
     }
 }

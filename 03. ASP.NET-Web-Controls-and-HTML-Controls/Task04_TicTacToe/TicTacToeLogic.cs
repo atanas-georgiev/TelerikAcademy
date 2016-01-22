@@ -7,42 +7,74 @@
         public const int MaxX = 3;
         public const int MaxY = 3;
 
-        public int[,] GameBoard;
+        public char[,] GameBoard;
 
         public TicTacToeLogic()
         {
-            GameBoard = new int[MaxX,MaxY];
+            GameBoard = new char[MaxX, MaxY];
+            for (int i = 0; i < GameBoard.GetLength(0); i++)
+            {
+                for (int j = 0; j < GameBoard.GetLength(1); j++)
+                {
+                    GameBoard[i, j] = ' ';
+                }
+            }
         }
 
         public void FirstPlayerMove(int x, int y)
         {
-            if (GameBoard[x, y] != 0)
+            if (GameBoard[x, y] != ' ')
             {
                 throw new InvalidOperationException("Not valid move!");
             }
 
-            GameBoard[x, y] = 1;
+            GameBoard[x, y] = 'X';
         }
 
-        public void SecondPlayerMove(int x, int y)
+        public void ComputerPlayerMove()
         {
-            if (GameBoard[x, y] != 0)
+            while (true)
             {
-                throw new InvalidOperationException("Not valid move!");
+                Random rand1 = new Random();
+                Random rand2 = new Random();
+
+                var x = rand1.Next(MaxX);
+                var y = rand2.Next(MaxY);
+
+                if (this.GameBoard[x, y] == ' ')
+                {
+                    this.GameBoard[x, y] = 'O';
+                    break;
+                }
+            }
+        }
+
+        public int IsGameFinished()
+        {
+            var cnt = 0;
+            for (int i = 0; i < GameBoard.GetLength(0); i++)
+            {
+                for (int j = 0; j < GameBoard.GetLength(1); j++)
+                {
+                    if (GameBoard[i, j] != ' ')
+                    {
+                        cnt ++;
+                    }
+                }
             }
 
-            GameBoard[x, y] = 2;
-        }
+            if (cnt == MaxX*MaxY)
+            {
+                return 0;
+            }
 
-        public bool IsGameFinished()
-        {
             for (int i = 0; i < GameBoard.GetLength(0); i++)
             {
                 var foundEmpty = false;
 
                 for (int j = 0; j < GameBoard.GetLength(1); j++)
                 {
-                    if (GameBoard[i, j] == 0)
+                    if (GameBoard[i, j] == ' ')
                     {
                         foundEmpty = true;
                         break;
@@ -51,7 +83,7 @@
 
                 if (foundEmpty == false)
                 {
-                    return true;
+                    return 1;
                 }
             }
 
@@ -61,7 +93,7 @@
 
                 for (int j = 0; j < GameBoard.GetLength(0); j++)
                 {
-                    if (GameBoard[j, i] == 0)
+                    if (GameBoard[j, i] == ' ')
                     {
                         foundEmpty = true;
                         break;
@@ -70,11 +102,11 @@
 
                 if (foundEmpty == false)
                 {
-                    return true;
+                    return 1;
                 }
             }
 
-            return false;            
+            return -1;            
         }
     }
 }
