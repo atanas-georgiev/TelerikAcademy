@@ -1,0 +1,12 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="NestedMasterPageDe.master.cs" Inherits="Task02_CompanyApp.NestedMasterPageGe" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderNav" runat="server">
+    <ul>
+        <li><a href="Home.aspx">Startseite</a></li>
+        <li><a href="About.aspx">Über uns</a></li>
+        <li><a href="Contacts.aspx">Kontakt</a></li>
+    </ul>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderMain" runat="server">
+    <asp:ContentPlaceHolder ID="ContentPlaceHolderMainDe" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>

@@ -1,0 +1,39 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Task02_CompanyApp.Site" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Company</title>
+    <style type="text/css">
+        .auto-style1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form id="formMain" runat="server">
+        <header>
+            <h3 class="auto-style1">Welcome to out hiper-mega cool international company</h3>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolderNav" runat="server">
+                <p class="auto-style1">
+                    &nbsp;</p>
+            </asp:ContentPlaceHolder>
+        </header>        
+        <main>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolderMain" runat="server">
+            </asp:ContentPlaceHolder>
+        </main>
+        <footer class="auto-style1">
+            &copy; Telerik Academy 2016
+            <br />
+            <br />
+            <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                <asp:ListItem Value="0">Български</asp:ListItem>
+                <asp:ListItem Value="1">English</asp:ListItem>
+                <asp:ListItem Value="2">Deutsche</asp:ListItem>
+            </asp:DropDownList>
+        </footer>
+    </form>
+</body>
+</html>
