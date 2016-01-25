@@ -7,48 +7,34 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div>
-    
+    <form id="formTodos" runat="server">
+        <asp:ListView runat="server" ID="ListViewTodos" GroupItemCount="3" ItemType="Task02_TodoList.Data.Todo" SelectMethod="SelectAllData" UpdateMethod="Update">
+            <EmptyDataTemplate>
+                No items!
+            </EmptyDataTemplate>
 
-        <ef:entitydatasource ID="EntityDataSourceCategories" runat="server" ConnectionString="name=TodosEntities" 
-            DefaultContainerName="TodosEntities" EnableDelete="True" EnableFlattening="False" EnableInsert="True" EnableUpdate="True" EntitySetName="Categories">
-        </ef:entitydatasource>
-    </div>
-        <asp:GridView ID="GridViewCategories" runat="server" CellPadding="4" AutoGenerateColumns="False" DataSourceID="EntityDataSourceCategories" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px">
-            <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
-            <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
-            <PagerStyle BackColor="#99CCCC" ForeColor="#003399" HorizontalAlign="Left" />
-            <RowStyle BackColor="White" ForeColor="#003399" />
-            <SelectedRowStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
-            <SortedAscendingCellStyle BackColor="#EDF6F6" />
-            <SortedAscendingHeaderStyle BackColor="#0D4AC4" />
-            <SortedDescendingCellStyle BackColor="#D6DFDF" />
-            <SortedDescendingHeaderStyle BackColor="#002876" />
-            <Columns>
-                <asp:CommandField ShowSelectButton="True" />
-                <asp:CommandField ShowEditButton="True" />
-                <asp:CommandField ShowDeleteButton="True" />
-                <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
-            </Columns>
-        </asp:GridView>
-
-         <asp:ListView ID="ListViewCategories" runat="server" 
-                    DataSourceID="EntityDataSourceCategories" 
-                    ItemType="Task02_TodoList.Category"
-                    InsertItemPosition="None">
-             
-            <ItemTemplate></ItemTemplate>
-             
-            <InsertItemTemplate>
-                <div class="insertItem">
-                    <asp:TextBox ID="TextBoxName" runat="server" Text='<%#: BindItem.Name %>' />
-                    <br />
-                
-                    <asp:Button ID="ButtonInsert" runat="server" CommandName="Insert" Text="Insert" />
-                    <asp:Button ID="ButtonCancel" runat="server" CommandName="Cancel" Text="Clear" />
+            <GroupTemplate>
+                <div class="row">
+                    <asp:PlaceHolder runat="server" ID="itemPlaceHolder"></asp:PlaceHolder>
                 </div>
-            </InsertItemTemplate>
+            </GroupTemplate>
+
+            <ItemTemplate>
+                <div class="col-md-4">
+                    <h2><%#: Item.Title %></h2>
+                    <p><%#: Item.Body %></p>
+                    <p>Changed: <%#: Item.DateChanged %></p>
+                    <asp:LinkButton ID="LBEdit" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit"></asp:LinkButton>
+                </div>
+            </ItemTemplate>
+            
+            <EditItemTemplate>
+                <div class="col-md-4">
+                    <h2><asp:TextBox runat="server" ID="TextBoxEditTitle" Text="<%#: BindItem.Title %>"></asp:TextBox></h2>
+                    <p><asp:TextBox runat="server" ID="TextBoxEditBody" Text="<%#: BindItem.Body %>" TextMode="MultiLine"></asp:TextBox></p>                
+                </div>
+            </EditItemTemplate>
+
         </asp:ListView>
     </form>
 </body>

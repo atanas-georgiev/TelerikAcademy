@@ -13,39 +13,21 @@ namespace Task02_TodoList {
     public partial class Index {
         
         /// <summary>
-        /// form1 control.
+        /// formTodos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm formTodos;
         
         /// <summary>
-        /// EntityDataSourceCategories control.
+        /// ListViewTodos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Microsoft.AspNet.EntityDataSource.EntityDataSource EntityDataSourceCategories;
-        
-        /// <summary>
-        /// GridViewCategories control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewCategories;
-        
-        /// <summary>
-        /// ListViewCategories control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView ListViewCategories;
+        protected global::System.Web.UI.WebControls.ListView ListViewTodos;
     }
 }
