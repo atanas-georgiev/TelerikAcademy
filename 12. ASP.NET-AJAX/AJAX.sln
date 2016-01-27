@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task01_NothwindAjax", "Task01_NothwindAjax\Task01_NothwindAjax.csproj", "{E0BB0F74-4359-400D-8D55-D745236EA0CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task02_Timer", "Task02_Timer\Task02_Timer.csproj", "{8FD86679-5C88-477E-B790-0AAE20C0F9DD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E0BB0F74-4359-400D-8D55-D745236EA0CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0BB0F74-4359-400D-8D55-D745236EA0CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0BB0F74-4359-400D-8D55-D745236EA0CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0BB0F74-4359-400D-8D55-D745236EA0CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FD86679-5C88-477E-B790-0AAE20C0F9DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FD86679-5C88-477E-B790-0AAE20C0F9DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FD86679-5C88-477E-B790-0AAE20C0F9DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FD86679-5C88-477E-B790-0AAE20C0F9DD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
