@@ -76,18 +76,27 @@ namespace YoutubePlaylists.WebForms.Playlists
         {
             string id = Request.QueryString["id"];
 
-            if (id != null)
+            try
             {
-                int intId = int.Parse(id);
-
-                ratings.Add(new Rating()
+                if (id != null)
                 {
-                    Value = e.RatingValue,
-                    UserId = Page.User.Identity.GetUserId(),
-                    PlaylistId = intId
-                });
-                ratings.SaveChanges();
+                    int intId = int.Parse(id);
+                    var newRating = new Rating()
+                    {
+                        Value = e.RatingValue,
+                        UserId = Page.User.Identity.GetUserId(),
+                        PlaylistId = intId
+                    };
+
+                    ratings.Add(newRating);
+                    ratings.SaveChanges();
+                }
             }
+            catch (Exception)
+            {
+
+            }
+
         }
 
         protected void OnCommand(object sender, CommandEventArgs e)

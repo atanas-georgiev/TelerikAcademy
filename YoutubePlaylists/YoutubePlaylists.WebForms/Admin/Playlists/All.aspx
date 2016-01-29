@@ -51,14 +51,13 @@
         </LayoutTemplate>
         <ItemTemplate>
             <tr>
-                <td><%#: Item.Title %></td>
-                <td><asp:LinkButton runat="server" NavigateUrl='?category=<%# Item.Category.Name %>' Text="<%#: Item.Category.Name %>"></asp:LinkButton>
+                <td><a href="/Playlists/Details.aspx?id=<%# Item.Id %>"><%#: Item.Title %></a></td>
+                <td><a href="?category=<%# Item.Category.Name %>"><%#: Item.Category.Name %></a></td>
                 <td><%#: Item.User.UserName %></td>
                 <td><%#: GetNumberOfVideosPerPlaylistId(Item.Id) %></td>
                 <td><%#: Item.Ratings.Sum(r => r.Value) %></td>
             </tr>
         </ItemTemplate>
-       
        
     </asp:ListView>
 </asp:Content>

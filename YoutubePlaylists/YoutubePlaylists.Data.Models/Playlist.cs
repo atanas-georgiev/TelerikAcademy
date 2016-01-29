@@ -28,12 +28,10 @@ namespace YoutubePlaylists.Data.Models
         [Required]
         public DateTime CreationDate { get; set; }
 
-        [Required]
         public int CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
 
-        [Required]
         public string UserId { get; set; }
 
         public virtual User User { get; set; }

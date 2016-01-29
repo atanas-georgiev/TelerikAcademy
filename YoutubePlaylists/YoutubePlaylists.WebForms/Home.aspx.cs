@@ -19,7 +19,7 @@ namespace YoutubePlaylists.WebForms
 
         public IQueryable<Playlist> RepeaterPlaylists_GetData()
         {
-            var result = this.playlists.All().OrderByDescending(p => p.Ratings.Sum(r => r.Value));
+            var result = this.playlists.All().OrderByDescending(p => p.Ratings.Sum(r => r.Value)).Take(10);
             return result;
         }
 

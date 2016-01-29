@@ -70,7 +70,7 @@ namespace YoutubePlaylists.WebForms.Admin.Playlists
                 playlists.SaveChanges();
             }
 
-            Response.Redirect("~/Home.aspx");
+            Response.Redirect("/Playlists/Details.aspx?id=" + newPlaylist.Id);
 
         }
     }
