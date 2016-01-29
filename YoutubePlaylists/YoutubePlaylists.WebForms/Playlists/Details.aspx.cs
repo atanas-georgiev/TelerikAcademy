@@ -60,10 +60,6 @@ namespace YoutubePlaylists.WebForms.Playlists
             }
         }
 
-        protected void FormViewPlaylistDetails_PageIndexChanging(object sender, FormViewPageEventArgs e)
-        {
-
-        }
 
         protected bool IsAuthor(string userId)
         {
@@ -98,7 +94,8 @@ namespace YoutubePlaylists.WebForms.Playlists
         {
             var recordId = int.Parse((string)e.CommandArgument);
             videos.Delete(recordId);
-            
+            videos.SaveChanges();
+            FormViewPlaylistDetails.DataBind();
         }
     }
 }

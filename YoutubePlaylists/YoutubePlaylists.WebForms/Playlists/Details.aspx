@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Details.aspx.cs" Inherits="YoutubePlaylists.WebForms.Playlists.Details" %>
 <%@ Register src="../Controls/RatingControl.ascx" tagname="RatingControl" tagprefix="uc" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:FormView runat="server" ID="FormViewPlaylistDetails" ItemType="YoutubePlaylists.Data.Models.Playlist" SelectMethod="FormViewPlaylistDetails_SelectData" OnPageIndexChanging="FormViewPlaylistDetails_PageIndexChanging">
+    <asp:FormView runat="server" ID="FormViewPlaylistDetails" ItemType="YoutubePlaylists.Data.Models.Playlist" SelectMethod="FormViewPlaylistDetails_SelectData">
         <ItemTemplate>
             <header>
                 <h1><%: Title %></h1>

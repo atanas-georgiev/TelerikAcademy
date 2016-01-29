@@ -6,14 +6,21 @@
             <asp:Repeater runat="server" ID="RepeaterPlaylists"
                 ItemType="YoutubePlaylists.Data.Models.Playlist"
                 SelectMethod="RepeaterPlaylists_GetData">
+                <HeaderTemplate>
+                    <table class="table">
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Rating</th>
+                        <th>Category</th>
+                    </tr>
+                </HeaderTemplate>
                 <ItemTemplate>
-                    <div class="panel panel-default col-md-4">
-                        <div class="panel-heading"><a href="Playlists/Details.aspx?id=<%# Item.Id %>"><%#: Item.Title %></a></div>
-                            <div class="panel-body">
-                               by  <i><%#: Item.Category.Name %></i>
-                               in category <a href="Admin/Playlists/All.aspx?category=<%# Item.Category.Name %>"><%#: Item.Category.Name %></a> 
-                        </div>
-                    </div>
+                    <tr>
+                        <td><a href="Playlists/Details.aspx?id=<%# Item.Id %>"><%#: Item.Title %></a></td>
+                        <td><%#: Item.User.UserName %></td>
+                        <td><%#: Item.Ratings.Sum(r => r.Value) %></td>
+                        <td><a href="Admin/Playlists/All.aspx?category=<%# Item.Category.Name %>"><%#: Item.Category.Name %></a></td>
                 </ItemTemplate>
             </asp:Repeater>
         </div>

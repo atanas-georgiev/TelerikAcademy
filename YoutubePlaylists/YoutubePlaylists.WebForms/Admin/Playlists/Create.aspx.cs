@@ -51,9 +51,6 @@ namespace YoutubePlaylists.WebForms.Admin.Playlists
             newPlaylist.UserId = Page.User.Identity.GetUserId();
             newPlaylist.CategoryId = selectedCategory.Id;
             newPlaylist.CreationDate = DateTime.UtcNow;
-
-            playlists.Add(newPlaylist);
-            playlists.SaveChanges();
             var videosToAdd = Session["videos"] as List<string>;
 
             for (int i = 0; i < videosToAdd.Count; i++)
@@ -63,8 +60,14 @@ namespace YoutubePlaylists.WebForms.Admin.Playlists
                     Url = videosToAdd[i],
                     Playlist = newPlaylist
                 });
+            }
 
-                videos.SaveChanges();
+            videos.SaveChanges();
+
+            if (videosToAdd.Count == 0)
+            {
+                playlists.Add(newPlaylist);
+                playlists.SaveChanges();
             }
 
             Response.Redirect("~/Home.aspx");

@@ -21,26 +21,41 @@ namespace YoutubePlaylists.WebForms.Admin.Playlists
 
         }
 
-        public IQueryable<Playlist> ListViewPlaylists_SelectData([QueryString]string orderBy, [QueryString]string search, [QueryString]string categoty)
+        public IQueryable<Playlist> ListViewPlaylists_SelectData([QueryString]string orderBy, [QueryString]string search, [QueryString]string category)
         {
             var result = this.playlists.All();
 
             if (search == null)
             {
-                result = string.IsNullOrEmpty(orderBy) ? result.OrderBy(x => x.Id) : result.OrderBy(orderBy + " Ascending");
+                if (orderBy == "Rating")
+                {
+                    result = this.playlists.All().OrderBy(p => p.Ratings.Sum(r => r.Value));
+                }
+                else
+                {
+                    result = string.IsNullOrEmpty(orderBy) ? result.OrderBy(x => x.Id) : result.OrderBy(orderBy + " Ascending");
+                }
+                
             }
             else
             {
-                result = string.IsNullOrEmpty(orderBy) ? result.OrderBy(x => x.Id).Where(p => p.Title.Contains(search) || p.Description.Contains(search)) : 
+                if (orderBy == "Rating")
+                {
+                    result = this.playlists.All().OrderBy(p => p.Ratings.Sum(r => r.Value));
+                }
+                else
+                {
+                    result = string.IsNullOrEmpty(orderBy) ? result.OrderBy(x => x.Id).Where(p => p.Title.Contains(search) || p.Description.Contains(search)) :
                                                          result.OrderBy(orderBy + " Ascending").Where(p => p.Title.Contains(search) || p.Description.Contains(search));
+                }
             }
 
-            if (categoty == null)
+            if (category == null)
             {
                 return result;
             }
 
-            return result.Where(c => c.Category.Name == categoty);
+            return result.Where(c => c.Category.Name == category);
         }
  
         public int GetNumberOfVideosPerPlaylistId(int id)
