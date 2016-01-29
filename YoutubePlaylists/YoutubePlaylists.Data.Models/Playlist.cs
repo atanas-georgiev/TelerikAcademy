@@ -23,13 +23,11 @@ namespace YoutubePlaylists.Data.Models
         [Required]
         public int CategoryId { get; set; }
 
-        [ForeignKey("CategoryId")]
         public virtual Category Category { get; set; }
 
         [Required]
         public int UserId { get; set; }
 
-        [ForeignKey("UserId")]
         public virtual User User { get; set; }
     }
 }

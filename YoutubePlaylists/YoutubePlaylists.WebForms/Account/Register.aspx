@@ -11,11 +11,11 @@
         <hr />
         <asp:ValidationSummary runat="server" CssClass="text-danger" />
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="Username" CssClass="col-md-2 control-label">Username</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-md-2 control-label">Email</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="Username" CssClass="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="Username"
-                    CssClass="text-danger" ErrorMessage="The username field is required." />
+                <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="Email" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
+                    CssClass="text-danger" ErrorMessage="The email field is required." />
             </div>
         </div>
         <div class="form-group">
@@ -34,6 +34,40 @@
                     CssClass="text-danger" Display="Dynamic" ErrorMessage="The confirm password field is required." />
                 <asp:CompareValidator runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword"
                     CssClass="text-danger" Display="Dynamic" ErrorMessage="The password and confirmation password do not match." />
+            </div>
+        </div>
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="TextBoxFirstName" CssClass="col-md-2 control-label">First name</asp:Label>
+            <div class="col-md-10">
+                <asp:TextBox runat="server" ID="TextBoxFirstName" CssClass="form-control"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="TextBoxFirstName"
+                    CssClass="text-danger" ErrorMessage="The first name field is required." />
+            </div>
+        </div>
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="TextBoxLastName" CssClass="col-md-2 control-label">Last name</asp:Label>
+            <div class="col-md-10">
+                <asp:TextBox runat="server" ID="TextBoxLastName" CssClass="form-control"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="TextBoxLastName"
+                    CssClass="text-danger" ErrorMessage="The last name field is required." />
+            </div>
+        </div>
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="TextBoxImageUrl" CssClass="col-md-2 control-label">Image url (optional)</asp:Label>
+            <div class="col-md-10">
+                <asp:TextBox runat="server" ID="TextBoxImageUrl" CssClass="form-control" TextMode="Url"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="TextBoxFacebookUrl" CssClass="col-md-2 control-label">Facebook url (optional)</asp:Label>
+            <div class="col-md-10">
+                <asp:TextBox runat="server" ID="TextBoxFacebookUrl" CssClass="form-control" TextMode="Url"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="TextBoxYoutubeUrl" CssClass="col-md-2 control-label">Youtube url (optional)</asp:Label>
+            <div class="col-md-10">
+                <asp:TextBox runat="server" ID="TextBoxYoutubeUrl" CssClass="form-control" TextMode="Url"/>
             </div>
         </div>
         <div class="form-group">

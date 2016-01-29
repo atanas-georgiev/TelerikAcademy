@@ -9,24 +9,19 @@ namespace YoutubePlaylists.Data.Models
     public class User : IdentityUser
     {
         [Required]
-        [MinLength(2)]
-        [MaxLength(30)]
+        [MaxLength(55)]
         public string FirstName { get; set; }
 
         [Required]
-        [MinLength(2)]
-        [MaxLength(30)]
+        [MaxLength(55)]
         public string LastName { get; set; }
 
-        [MinLength(2)]
         [MaxLength(200)]
         public string ImageUrl { get; set; }
 
-        [MinLength(2)]
         [MaxLength(200)]
         public string FacebookUrl { get; set; }
 
-        [MinLength(2)]
         [MaxLength(200)]
         public string YoutubeUrl { get; set; }
 

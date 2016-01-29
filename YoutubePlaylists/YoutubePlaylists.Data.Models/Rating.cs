@@ -19,13 +19,11 @@ namespace YoutubePlaylists.Data.Models
         [Required]
         public int PlaylistId { get; set; }
 
-        [ForeignKey("PlaylistId")]
         public virtual Playlist Playlist { get; set; }
 
         [Required]
         public int UserId { get; set; }
 
-        [ForeignKey("UserId")]
         public virtual User User { get; set; }
     }
 }
