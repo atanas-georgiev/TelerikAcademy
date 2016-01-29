@@ -16,12 +16,10 @@ namespace YoutubePlaylists.Data.Models
         [Range(1, 5)]
         public int Value { get; set; }
 
-        [Required]
-        public int PlaylistId { get; set; }
+ //       public int PlaylistId { get; set; }
 
-        public virtual Playlist Playlist { get; set; }
+ //       public virtual Playlist Playlist { get; set; }
 
-//        [Required]
 //        public string UserId { get; set; }
 //
 //        public virtual User User { get; set; }
