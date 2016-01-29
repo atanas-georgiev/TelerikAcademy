@@ -12,7 +12,7 @@
                             DisplayMode="BulletList" ShowMessageBox="False" ShowSummary="True" CssClass="alert alert-danger" />
                     <asp:CustomValidator runat="server" ID="CustomValidator" ValidationGroup="EditCategory"/>
                     <asp:GridView runat="server" ID="GridViewCategories"
-                        ItemType="TestExam.Data.Models.Category"
+                        ItemType="YoutubePlaylists.Data.Models.Category"
                         DataKeyNames="Id"        
                         AutoGenerateColumns="false"
                         AllowPaging="true"

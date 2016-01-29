@@ -13,7 +13,12 @@ namespace YoutubePlaylists.Data
 
         public IDbSet<Category> Categories { get; set; }
 
-        public IDbSet<TextExamItem> TextExamItems { get; set; }
+        public IDbSet<Playlist> Playlists { get; set; }
+
+        public IDbSet<Video> Videos { get; set; }
+
+        public IDbSet<Rating> Ratings { get; set; }
+
 
         public static YoutubePlaylistsDbContext Create()
         {

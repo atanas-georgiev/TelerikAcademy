@@ -59,7 +59,6 @@
   <ItemGroup>
     <Compile Include="IYoutubePlaylistsDbContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="YoutubePlaylistsDbContext.cs" />
@@ -71,8 +70,11 @@
   <ItemGroup>
     <ProjectReference Include="..\YoutubePlaylists.Data.Models\YoutubePlaylists.Data.Models.csproj">
       <Project>{45a84e8f-358b-416e-836d-2878c8738584}</Project>
-      <Name>TestExam.Data.Models</Name>
+      <Name>YoutubePlaylists.Data.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

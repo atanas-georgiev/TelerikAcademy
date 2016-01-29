@@ -13,7 +13,11 @@ namespace YoutubePlaylists.Data
 
         IDbSet<Category> Categories { get; set; }
 
-        IDbSet<TextExamItem> TextExamItems { get; set; }
+        IDbSet<Playlist> Playlists { get; set; }
+
+        IDbSet<Video> Videos { get; set; }
+
+        IDbSet<Rating> Ratings { get; set; }
 
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
 
