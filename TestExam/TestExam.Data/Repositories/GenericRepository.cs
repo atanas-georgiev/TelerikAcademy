@@ -18,6 +18,12 @@
             this.DbSet = this.Context.Set<T>();
         }
 
+        public GenericRepository()
+        {
+            this.Context = new TestExamDbContext();
+            this.DbSet = this.Context.Set<T>();
+        }
+
         protected IDbSet<T> DbSet { get; set; }
 
         protected ITestExamDbContext Context { get; set; }

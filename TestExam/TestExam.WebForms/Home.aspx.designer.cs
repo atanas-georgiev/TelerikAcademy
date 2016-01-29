@@ -11,7 +11,7 @@ namespace TestExam.WebForms
 {
 
 
-    public partial class _Default
+    public partial class Home
     {
     }
 }
