@@ -1,80 +1,63 @@
 ﻿<%@ Page Title="Manage Account" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Manage.aspx.cs" Inherits="YoutubePlaylists.WebForms.Account.Manage" %>
 
-<%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
-
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
+
     <h2><%: Title %>.</h2>
+    <p class="text-danger">
+        <asp:Literal runat="server" ID="ErrorMessage"/>
+    </p>
 
-    <div>
-        <asp:PlaceHolder runat="server" ID="successMessage" Visible="false" ViewStateMode="Disabled">
-            <p class="text-success"><%: SuccessMessage %></p>
-        </asp:PlaceHolder>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="form-horizontal">
-                <h4>Change your account settings</h4>
-                <hr />
-                <dl class="dl-horizontal">
-                    <dt>Password:</dt>
-                    <dd>
-                        <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="[Change]" Visible="false" ID="ChangePassword" runat="server" />
-                        <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="[Create]" Visible="false" ID="CreatePassword" runat="server" />
-                    </dd>
-                    <dt>External Logins:</dt>
-                    <dd><%: LoginsCount %>
-                        <asp:HyperLink NavigateUrl="/Account/ManageLogins" Text="[Manage]" runat="server" />
-
-                    </dd>
-                    <%--
-                        Phone Numbers can used as a second factor of verification in a two-factor authentication system.
-                        See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                        for details on setting up this ASP.NET application to support two-factor authentication using SMS.
-                        Uncomment the following blocks after you have set up two-factor authentication
-                    --%>
-                    <%--
-                    <dt>Phone Number:</dt>
-                    <% if (HasPhoneNumber)
-                       { %>
-                    <dd>
-                        <asp:HyperLink NavigateUrl="/Account/AddPhoneNumber" runat="server" Text="[Add]" />
-                    </dd>
-                    <% }
-                       else
-                       { %>
-                    <dd>
-                        <asp:Label Text="" ID="PhoneNumber" runat="server" />
-                        <asp:HyperLink NavigateUrl="/Account/AddPhoneNumber" runat="server" Text="[Change]" /> &nbsp;|&nbsp;
-                        <asp:LinkButton Text="[Remove]" OnClick="RemovePhone_Click" runat="server" />
-                    </dd>
-                    <% } %>
-                    --%>
-
-                    <dt>Two-Factor Authentication:</dt>
-                    <dd>
-                        <p>
-                            There are no two-factor authentication providers configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                            for details on setting up this ASP.NET application to support two-factor authentication.
-                        </p>
-                        <% if (TwoFactorEnabled)
-                          { %> 
-                        <%--
-                        Enabled
-                        <asp:LinkButton Text="[Disable]" runat="server" CommandArgument="false" OnClick="TwoFactorDisable_Click" />
-                        --%>
-                        <% }
-                          else
-                          { %> 
-                        <%--
-                        Disabled
-                        <asp:LinkButton Text="[Enable]" CommandArgument="true" OnClick="TwoFactorEnable_Click" runat="server" />
-                        --%>
-                        <% } %>
-                    </dd>
-                </dl>
+    <asp:FormView runat="server" ID="FormViewUserDetails" ItemType="YoutubePlaylists.Data.Models.User" SelectMethod="FormViewUserDetails_SelectData">
+        <ItemTemplate>
+            <div class="col-lg-12">
+                <div class="form-horizontal">
+                    <h4>Edit account</h4>
+                    <hr/>
+                    <img src="<%#: Item.ImageUrl %>" alt="Image url"/>
+                    <hr/>
+                    <asp:ValidationSummary runat="server" CssClass="text-danger"/>
+                    <div class="form-group">
+                        <asp:Label runat="server" AssociatedControlID="TextBoxFirstName" CssClass="col-md-2 control-label">First name</asp:Label>
+                        <div class="col-md-10">
+                            <asp:TextBox runat="server" ID="TextBoxFirstName" CssClass="form-control" Text="<%#: Item.FirstName %>"/>
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="TextBoxFirstName"
+                                                        CssClass="text-danger" ErrorMessage="The first name field is required."/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <asp:Label runat="server" AssociatedControlID="TextBoxLastName" CssClass="col-md-2 control-label">Last name</asp:Label>
+                        <div class="col-md-10">
+                            <asp:TextBox runat="server" ID="TextBoxLastName" CssClass="form-control" Text="<%#: Item.LastName %>"/>
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="TextBoxLastName"
+                                                        CssClass="text-danger" ErrorMessage="The last name field is required."/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <asp:Label runat="server" AssociatedControlID="TextBoxImageUrl" CssClass="col-md-2 control-label">Image url (optional)</asp:Label>
+                        <div class="col-md-10">
+                            <asp:TextBox runat="server" ID="TextBoxImageUrl" CssClass="form-control" TextMode="Url" Text="<%#: Item.ImageUrl %>"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <asp:Label runat="server" AssociatedControlID="TextBoxFacebookUrl" CssClass="col-md-2 control-label">Facebook url (optional)</asp:Label>
+                        <div class="col-md-10">
+                            <asp:TextBox runat="server" ID="TextBoxFacebookUrl" CssClass="form-control" TextMode="Url" Text="<%#: Item.FacebookUrl %>"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <asp:Label runat="server" AssociatedControlID="TextBoxYoutubeUrl" CssClass="col-md-2 control-label">Youtube url (optional)</asp:Label>
+                        <div class="col-md-10">
+                            <asp:TextBox runat="server" ID="TextBoxYoutubeUrl" CssClass="form-control" TextMode="Url" Text="<%#: Item.FacebookUrl %>"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <asp:Button runat="server" OnClick="ButtonUpdate_OnClick" ID="ButtonUpdate" Text="Update" CssClass="btn btn-default"/>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+        </ItemTemplate>
+    </asp:FormView>
 
 </asp:Content>

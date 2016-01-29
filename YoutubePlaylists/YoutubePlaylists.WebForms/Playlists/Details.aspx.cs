@@ -6,8 +6,10 @@ using System.Web;
 using System.Web.ModelBinding;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Microsoft.AspNet.Identity;
 using YoutubePlaylists.Data.Models;
 using YoutubePlaylists.Data.Repositories;
+using YoutubePlaylists.WebForms.Controls;
 
 namespace YoutubePlaylists.WebForms.Playlists
 {
@@ -15,6 +17,7 @@ namespace YoutubePlaylists.WebForms.Playlists
     {
         GenericRepository<Playlist> playlists = new GenericRepository<Playlist>();
         GenericRepository<Video> videos = new GenericRepository<Video>();
+        GenericRepository<Rating> ratings = new GenericRepository<Rating>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -41,6 +44,61 @@ namespace YoutubePlaylists.WebForms.Playlists
             }
 
             return null;
+        }
+
+        protected void ButtonDelete_OnClick(object sender, EventArgs e)
+        {
+            string id = Request.QueryString["id"];
+
+            if (id != null)
+            {
+                int intId = int.Parse(id);
+                playlists.Delete(intId);
+                playlists.SaveChanges();
+                
+                Response.Redirect("~/Home.aspx");
+            }
+        }
+
+        protected void FormViewPlaylistDetails_PageIndexChanging(object sender, FormViewPageEventArgs e)
+        {
+
+        }
+
+        protected bool IsAuthor(string userId)
+        {
+            return Page.User.Identity.GetUserId() == userId;
+        }
+
+        protected object RemoveVideo(int id)
+        {
+            videos.Delete(id);
+            return null;
+        }
+
+        protected void RatingControlPlaylist_OnRate(object sender, RatingEventArgs e)
+        {
+            string id = Request.QueryString["id"];
+
+            if (id != null)
+            {
+                int intId = int.Parse(id);
+
+                ratings.Add(new Rating()
+                {
+                    Value = e.RatingValue,
+                    UserId = Page.User.Identity.GetUserId(),
+                    PlaylistId = intId
+                });
+                ratings.SaveChanges();
+            }
+        }
+
+        protected void OnCommand(object sender, CommandEventArgs e)
+        {
+            var recordId = int.Parse((string)e.CommandArgument);
+            videos.Delete(recordId);
+            
         }
     }
 }

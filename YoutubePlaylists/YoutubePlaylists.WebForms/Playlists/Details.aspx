@@ -1,9 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Details.aspx.cs" Inherits="YoutubePlaylists.WebForms.Playlists.Details" %>
+<%@ Register src="../Controls/RatingControl.ascx" tagname="RatingControl" tagprefix="uc" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:FormView runat="server" ID="FormViewPlaylistDetails" ItemType="YoutubePlaylists.Data.Models.Playlist" SelectMethod="FormViewPlaylistDetails_SelectData">
+    <asp:FormView runat="server" ID="FormViewPlaylistDetails" ItemType="YoutubePlaylists.Data.Models.Playlist" SelectMethod="FormViewPlaylistDetails_SelectData" OnPageIndexChanging="FormViewPlaylistDetails_PageIndexChanging">
         <ItemTemplate>
             <header>
                 <h1><%: Title %></h1>
+                <p><asp:Button runat="server" ID="ButtonDelete" OnClick="ButtonDelete_OnClick" Text="Remove" Visible=<%# IsAuthor(Item.UserId) %>/></p>
+                <p>Rate: <uc:RatingControl ID="RatingControlPlaylist" runat="server" OnRate="RatingControlPlaylist_OnRate"/></p>
                 <p>Title: <%#: Item.Title %></p>
                 <p>Description: <%#: Item.Description %></p>
                 <p>Category: <%#: Item.Category.Name %></p>
@@ -19,12 +22,13 @@
                         <ItemTemplate>
                             <li>
                                 <a href="<%#: Item.Url %>" target="_blank"><%#: Item.Url %></a>
-                            </li>
+                                <asp:Button runat="server" Text="Remove" CommandName="Delete" CommandArgument="<%# Item.Id %>" OnCommand="OnCommand" Visible=<%# IsAuthor(Item.Playlist.UserId) %>/>
+                            </li> 
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
                         </FooterTemplate>
-                    </asp:Repeater>
+                    </asp:Repeater> 
                 </p>
             </header>
         </ItemTemplate>

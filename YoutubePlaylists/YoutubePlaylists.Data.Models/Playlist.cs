@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -6,6 +7,13 @@ namespace YoutubePlaylists.Data.Models
 {
     public class Playlist
     {
+        private ICollection<Rating> ratings;
+
+        public Playlist()
+        {
+            this.ratings = new HashSet<Rating>();
+        }
+
         public int Id { get; set; }
 
         [Required]
@@ -29,5 +37,11 @@ namespace YoutubePlaylists.Data.Models
         public string UserId { get; set; }
 
         public virtual User User { get; set; }
+
+        public virtual ICollection<Rating> Ratings
+        {
+            get { return this.ratings; } 
+            set { this.ratings = value; }
+        }
     }
 }
