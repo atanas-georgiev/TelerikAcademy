@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Task03_MobileShop.Areas.Smartphones.Models.SmarthoneViewModel>
+
+<h1>Smartphones</h1>
+
+@foreach (var phone in Model)
+{
+    <div class="col-md-4">
+        <h2>@phone.Manufacturer</h2>
+        <h4>@phone.Model</h4>
+        <img src="@phone.Url" width="100" height="100"/>
+        @Html.Partial("_PhoneDetails", phone.Info)
+    </div>    
+}
+
