@@ -4,16 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Task03_MobileShop.Controllers
+namespace Task04_AdminRoute.Controllers
 {
-    public class HomeController : BaseController
+    public class DefaultController : Controller
     {
+        // GET: Default
         public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult About()
         {
             return View();
         }

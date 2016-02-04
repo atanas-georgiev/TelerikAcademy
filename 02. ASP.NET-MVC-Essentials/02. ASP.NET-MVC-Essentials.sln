@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task03_MobileShop", "Task03
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task02_Calculator", "Task02_Calculator\Task02_Calculator.csproj", "{B863FAEB-CD66-410D-AF83-8DE4A9CAEA6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task04_AdminRoute", "Task04_AdminRoute\Task04_AdminRoute.csproj", "{4F30543C-9B69-4EF4-B637-E5433DA3D43C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task04_AdminRoute", "Task04_AdminRoute\Task04_AdminRoute.csproj", "{D1A065F0-AE5D-4AFA-A08A-B664EACEDCF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{B863FAEB-CD66-410D-AF83-8DE4A9CAEA6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B863FAEB-CD66-410D-AF83-8DE4A9CAEA6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B863FAEB-CD66-410D-AF83-8DE4A9CAEA6F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4F30543C-9B69-4EF4-B637-E5433DA3D43C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4F30543C-9B69-4EF4-B637-E5433DA3D43C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4F30543C-9B69-4EF4-B637-E5433DA3D43C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4F30543C-9B69-4EF4-B637-E5433DA3D43C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1A065F0-AE5D-4AFA-A08A-B664EACEDCF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1A065F0-AE5D-4AFA-A08A-B664EACEDCF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1A065F0-AE5D-4AFA-A08A-B664EACEDCF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1A065F0-AE5D-4AFA-A08A-B664EACEDCF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

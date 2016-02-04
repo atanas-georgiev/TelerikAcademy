@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Task04_AdminRoute.Controllers
 {
-    public class HomeController : Controller
+    public class AdminHomeController : Controller
     {
         public ActionResult Index()
         {

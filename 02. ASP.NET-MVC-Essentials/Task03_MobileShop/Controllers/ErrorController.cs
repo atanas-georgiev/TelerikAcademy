@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Task04_AdminRoute.Controllers
+namespace Task03_MobileShop.Controllers
 {
-    public class StaticContentController : Controller
+    public class ErrorController : Controller
     {
-        // GET: StaticContent
-        public ActionResult PageNotFound()
+        // GET: Error
+        public ActionResult Index()
         {
             return View();
         }
