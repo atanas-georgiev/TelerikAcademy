@@ -19,7 +19,7 @@ namespace Tweeter.Data.Models
 
         public string Title { get; set; }
 
-        public ICollection<Tweet> Tweets
+        public virtual ICollection<Tweet> Tweets
         {
             get { return this.tweets; }
             set { this.tweets = value; }

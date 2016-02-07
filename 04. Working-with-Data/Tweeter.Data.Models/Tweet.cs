@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -24,11 +25,14 @@ namespace Tweeter.Data.Models
         public string Content { get; set; }
 
         [Required]
-        public int UserId { get; set; }
+        public DateTime CreatedDate { get; set; }
 
-        public User User { get; set; }
+        [Required]
+        public string UserId { get; set; }
 
-        public ICollection<Tag> Tags
+        public virtual User User { get; set; }
+
+        public virtual ICollection<Tag> Tags
         {
             get { return this.tags; }
             set { this.tags = value; }

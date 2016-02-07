@@ -2,7 +2,7 @@
 using Tweeter.Data;
 using Tweeter.Data.Migrations;
 
-namespace Tweeter.Mvc.App_Start
+namespace Tweeter.Mvc
 {
     public class DatabaseConfig
     {
