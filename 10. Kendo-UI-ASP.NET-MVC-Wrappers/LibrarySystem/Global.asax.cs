@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using LibrarySystem.App_Start;
 
 namespace LibrarySystem
 {
@@ -18,6 +17,7 @@ namespace LibrarySystem
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             DatabaseConfig.Initialize();
+            AutoMapperConfig.RegisterMappings("LibrarySystem");
         }
     }
 }
