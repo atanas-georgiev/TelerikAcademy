@@ -16,14 +16,15 @@
       .Name("Menu")
       .Items(items =>
       {
-          items.Add()
-              .Text("Categories")
-              .Items(children =>
-              {
-                  children.Add().Text("Add").Action("Add", "Categories");
-                  children.Add().Text("List all").Action("Add", "All");
-
-              });
+          items.Add().Text("Categories").Action("Index", "Categories");
+          //          items.Add()
+          //              .Text("Categories")
+          //              .Items(children =>
+          //              {
+          //                  children.Add().Text("Add").Action("Add", "Categories");
+          //                  children.Add().Text("List all").Action("Add", "All");
+          //
+          //              });
 
           items.Add().Visible(Context.User.Identity.IsAuthenticated).Text("Logout [" + Context.User.Identity.Name + "]").Action("LogOff", "Account");
           items.Add().Visible(!Context.User.Identity.IsAuthenticated).Text("Register").Action("Register", "Account");

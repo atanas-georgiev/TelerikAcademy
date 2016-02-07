@@ -16,7 +16,7 @@ using Kendo.Mvc.UI;
 
 namespace LibrarySystem.Controllers
 {
-    public class CatregoryController : Controller
+    public class CategoriesController : Controller
     {
         IRepository<Category> categories = new GenericRepository<Category>();
 

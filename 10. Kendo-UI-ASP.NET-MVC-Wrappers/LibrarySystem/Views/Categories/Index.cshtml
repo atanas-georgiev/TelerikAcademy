@@ -4,7 +4,7 @@
       .Columns(columns =>
       {
         columns.Bound(c => c.Name);
-        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+        columns.Command(command => { command.Edit(); command.Destroy(); });
       })
       .ToolBar(toolbar => {
             toolbar.Create();
@@ -21,9 +21,9 @@
       .DataSource(dataSource => dataSource
           .Ajax()
           .Model(model => model.Id(p => p.Id))
-          .Read(read => read.Action("Categories_Read", "Catregory"))
-          .Create(create => create.Action("Categories_Create", "Catregory"))
-          .Update(update => update.Action("Categories_Update", "Catregory"))
-          .Destroy(destroy => destroy.Action("Categories_Destroy", "Catregory"))
+          .Read(read => read.Action("Categories_Read", "Categories"))
+          .Create(create => create.Action("Categories_Create", "Categories"))
+          .Update(update => update.Action("Categories_Update", "Categories"))
+          .Destroy(destroy => destroy.Action("Categories_Destroy", "Categories"))
       )
 )
