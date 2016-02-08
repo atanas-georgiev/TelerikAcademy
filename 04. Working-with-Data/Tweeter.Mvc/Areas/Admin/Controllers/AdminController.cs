@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
 using Tweeter.Data.Models;
 using Tweeter.Data.Repositories;
 using Tweeter.Mvc.Areas.Admin.Models;
-using Tweeter.Mvc.Models;
 
 namespace Tweeter.Mvc.Areas.Admin.Controllers
 {
@@ -18,24 +19,72 @@ namespace Tweeter.Mvc.Areas.Admin.Controllers
     {
         IRepository<Tweet> tweets = new GenericRepository<Tweet>();
 
-        // GET: Admin/Tweets
         public ActionResult Index()
         {
             return View();
         }
 
-
-        protected override T GetById<T>(object id)
+        public ActionResult TweetAdminViewModels_Read([DataSourceRequest]DataSourceRequest request)
         {
-            return this.tweets.GetById((int)id) as T;
+            return Json(this.tweets.All().ProjectTo<TweetAdminViewModel>().ToDataSourceResult(request));
         }
 
-        [HttpPost]
-        public ActionResult Create([DataSourceRequest]DataSourceRequest request, TweetAdminViewModel model)
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult TweetAdminViewModels_Create([DataSourceRequest]DataSourceRequest request, TweetAdminViewModel tweet)
         {
-            var dbModel = base.Create<Tweet>(model);
-            if (dbModel != null) model.Id = dbModel.Id;
-            return this.GridOperation(model, request);
+            if (ModelState.IsValid)
+            {
+                var entity = new Tweet()
+                {
+                    Title = tweet.Title,
+                    Content = tweet.Content
+                };
+
+                tweets.Add(entity);
+                tweets.SaveChanges();
+                tweet.Id = entity.Id;
+            }
+
+            return Json(new[] { tweet }.ToDataSourceResult(request, ModelState));
         }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult TweetAdminViewModels_Update([DataSourceRequest]DataSourceRequest request, TweetAdminViewModel tweet)
+        {
+            if (ModelState.IsValid)
+            {
+                var entity = new Tweet
+                {
+                    Id = tweet.Id,
+                    Title = tweet.Title,
+                    Content = tweet.Content
+                };
+
+                tweets.Update(entity);
+                tweets.SaveChanges();
+            }
+
+            return Json(new[] { tweet }.ToDataSourceResult(request, ModelState));
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult TweetAdminViewModels_Destroy([DataSourceRequest]DataSourceRequest request, TweetAdminViewModel tweet)
+        {
+            if (ModelState.IsValid)
+            {
+                var entity = new Tweet()
+                {
+                    Id = tweet.Id,
+                    Title = tweet.Title,
+                    Content = tweet.Content
+                };
+
+                tweets.Delete(entity);
+                tweets.SaveChanges();
+            }
+
+            return Json(new[] { tweet }.ToDataSourceResult(request, ModelState));
+        }
+
     }
 }

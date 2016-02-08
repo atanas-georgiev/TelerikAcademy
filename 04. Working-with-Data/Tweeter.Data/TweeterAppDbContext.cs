@@ -18,6 +18,6 @@ namespace Tweeter.Data
         public static TweeterAppDbContext Create()
         {
             return new TweeterAppDbContext();
-        }
+        }       
     }
 }

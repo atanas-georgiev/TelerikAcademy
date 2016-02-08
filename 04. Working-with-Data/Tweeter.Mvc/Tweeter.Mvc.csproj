@@ -190,8 +190,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Models\TweetAdminViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -316,7 +316,6 @@
     <Content Include="Areas\Admin\Views\web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Areas\Admin\Views\Tweets\Index.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Content\kendo\kendo.black.min.css.map" />
     <Content Include="Content\kendo\kendo.black.mobile.min.css.map" />
@@ -394,6 +393,7 @@
     <Content Include="Content\kendo\kendo.uniform.min.css.map" />
     <Content Include="Content\kendo\kendo.uniform.mobile.min.css.map" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -701,6 +701,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
+    <Folder Include="Views\Admin\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Shared\DisplayTempletes\" />
   </ItemGroup>
