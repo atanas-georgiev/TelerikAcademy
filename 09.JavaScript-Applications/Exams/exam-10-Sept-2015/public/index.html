@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fortune Cookies</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="bower_components/notifyjs/dist/styles/bootstrap/notify-bootstrap.js">
+    <link rel="stylesheet" href="bower_components/jquery-ui/themes/base/all.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <div id="root">
+        <header class="container">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#/">Fortune Cookies</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse admin-data-hidden">
+                        <ul class="nav navbar-nav admin-data-hidden">
+                            <li><a href="#/users">Users</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cookies<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="/#/cookies/add">Add</a></li>
+                                    <li><a href="/#/cookies">List all</a></li>
+                                    <li><a href="/#/cookies/fortune">Get fortune cookie</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!--
+                        <form class="navbar-form navbar-left" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search">
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </form>
+                        -->
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown" id="container-sign-in">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <strong>Login/Register</strong>
+                                    <span class="caret"></span>
+                                </a>
+                                <ul id="login-dp" class="dropdown-menu">
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                                    <div class="form-group">
+                                                        <label class="sr-only" for="tb-username">Username</label>
+                                                        <input type="text" class="form-control" id="tb-username" placeholder="Username" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="sr-only" for="tb-pass">Password</label>
+                                                        <input type="password" class="form-control" id="tb-password" placeholder="Password" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <a href="#" class="btn btn-primary btn-block" id="btn-login">Login</a>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <a href="#" class="btn btn-primary btn-block" id="btn-register">Register</a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li id="container-sign-out">
+                                <a href="#">
+                                    <strong id="btn-logout">Logout</strong>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main class="container" id="content">
+
+        </main>
+
+        <footer class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="thumbnail">
+                        <a class="btn btn-link" href="http://telerikacademy.com">&copy; Telerik Academy</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Libs -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+    <script src="bower_components/sammy/lib/sammy.js"></script>
+    <script src="bower_components/handlebars/handlebars.js"></script>
+    <script src="bower_components/sha1/index.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/notifyjs/dist/notify.js"></script>
+    <script src="bower_components/notifyjs/dist/styles/bootstrap/notify-bootstrap.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+
+    <!-- Controllers -->
+    <script src="scripts/controllers/home-controller.js"></script>
+    <script src="scripts/controllers/users-controller.js"></script>
+    <script src="scripts/controllers/cookie-controller.js"></script>
+
+    <!-- Models -->
+    <script src="scripts/models/templates.js"></script>
+    <script src="scripts/models/users-data.js"></script>
+    <script src="scripts/models/cookies-data.js"></script>
+    <script src="scripts/models/events.js"></script>
+
+    <!-- Helpers -->
+    <script src="scripts/helpers/json-requester.js"></script>
+
+    <!-- Main -->
+    <script src="scripts/app.js"></script>
+
+</body>
+
+</html>
