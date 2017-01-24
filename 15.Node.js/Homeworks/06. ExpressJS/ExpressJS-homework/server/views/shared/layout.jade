@@ -1,0 +1,44 @@
+doctype
+html
+    head
+        title Bazar System
+        link(rel="stylesheet" href="/lib/toastr-2.0.2/toastr.min.css")
+        link(rel="stylesheet" href="/lib/bootstrap-3.2.0/css/bootstrap.min.css")
+        link(rel="stylesheet" href="/css/site.css")
+    body
+        .navbar.navbar-primary
+            .container
+                .navbar-header
+                    a.navbar-brand(href='../') Bazar 
+
+                #navbar-main.navbar-collapse.collapse
+                    ul.nav.navbar-nav      
+                        li.dropdown
+                            a#ads.dropdown-toggle(data-toggle='dropdown', href='#')
+                                | Ads 
+                                span.caret
+                            ul.dropdown-menu(aria-labelledby='download')
+                                li
+                                    a(href='/ads/add') Add      
+                                li.divider
+                                li
+                                    a(href='/ads/list') List                   
+                    ul.nav.navbar-nav.navbar-right
+                        if (currentUser)
+                            li
+                                a(href="/logout") Logout [#{currentUser}]
+                        else
+                            li
+                                a(href="/register") Register
+                            li
+                                a(href="/login") Login
+        .container
+            if (errorMessage)
+                .alert.alert-danger #{errorMessage}
+            block main-content        
+           
+        footer
+            p.text-center
+                | &copy; Telerik Academy 2016
+
+        include scripts

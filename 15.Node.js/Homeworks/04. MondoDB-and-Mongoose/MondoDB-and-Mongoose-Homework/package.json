@@ -1,0 +1,14 @@
+{
+  "name": "MondoDB-and-Mongoose",
+  "version": "0.0.0",
+  "description": "MondoDB-and-Mongoose",
+  "main": "app.js",
+  "author": {
+    "name": "AGEORGI1",
+    "email": ""
+  },
+  "dependencies": {
+    "mongodb": "^2.1.3",
+    "mongoose": "^4.3.4"
+  }
+}
