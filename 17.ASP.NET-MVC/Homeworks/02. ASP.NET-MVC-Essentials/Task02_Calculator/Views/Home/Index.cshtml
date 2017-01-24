@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Calculator";
+}
+
+@model Task02_Calculator.Models.CalculatorViewModel
+
+@using (Html.BeginForm())
+{
+        @Html.TextBoxFor(c => c.Input, new { @class = "form-control" })
+        @Html.DropDownListFor(c => c.SelectedMultiplier, new SelectList(Model.Multipliers, Model.SelectedMultiplier), new { @class = "form-control" })
+        @Html.DropDownListFor(c => c.SelecteDataType, new SelectList(Model.DataTypes, "Name", "Name", Model.SelecteDataType), new { @class = "form-control" })
+        <input type="submit" class="btn btn-primary" />
+}
+
+<table class="table table-bordered">
+    @foreach (var item in Model.DataTypes)
+    {
+        <tr>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @(Model.GetSelectedCoefficient() / item.Coefficient)
+            </td>
+        </tr>
+    }
+</table>

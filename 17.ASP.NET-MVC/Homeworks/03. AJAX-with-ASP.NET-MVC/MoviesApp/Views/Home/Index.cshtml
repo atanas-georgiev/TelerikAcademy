@@ -1,0 +1,31 @@
+﻿@model MoviesApp.Models.HomeViewModel
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Latest movies</h2>
+        <ul>
+            @foreach (var item in Model.Movies)
+            {
+                <li>@item.Title</li>
+            }
+        </ul>        
+    </div>
+    <div class="col-md-4">
+        <h2>Latest actors/directors</h2>
+        <ul>
+            @foreach (var item in Model.People)
+            {
+                <li>@item.Name</li>
+            }
+        </ul>
+    </div>
+    <div class="col-md-4">
+        <h2>Latest studios</h2>
+        <ul>
+            @foreach (var item in Model.Studios)
+            {
+                <li>@item.Name</li>
+            }
+        </ul>
+    </div>
+</div>

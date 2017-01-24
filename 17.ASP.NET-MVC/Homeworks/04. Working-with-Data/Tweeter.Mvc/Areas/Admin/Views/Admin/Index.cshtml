@@ -1,0 +1,43 @@
+﻿<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+@(Html.Kendo().Grid<Tweeter.Mvc.Areas.Admin.Models.TweetAdminViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.Title);
+          columns.Bound(c => c.Content);
+          columns.Command(command => { command.Edit(); command.Destroy(); });
+      })
+        .ToolBar(toolbar =>
+        {
+            toolbar.Create();
+        })
+      .ColumnMenu()
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable()
+      .Navigatable()
+      .Selectable(selectable =>
+      {
+          selectable.Mode(GridSelectionMode.Single);
+          selectable.Type(GridSelectionType.Row);
+      })
+      .Sortable(sortable =>
+      {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("TweetAdminViewModels_Read", "Admin"))
+          .Create(create => create.Action("TweetAdminViewModels_Create", "Admin"))
+          .Update(update => update.Action("TweetAdminViewModels_Update", "Admin"))
+          .Destroy(destroy => destroy.Action("TweetAdminViewModels_Destroy", "Admin"))
+      )
+)

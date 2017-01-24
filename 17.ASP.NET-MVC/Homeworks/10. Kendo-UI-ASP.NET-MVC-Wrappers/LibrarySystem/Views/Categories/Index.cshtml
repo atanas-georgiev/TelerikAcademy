@@ -1,0 +1,29 @@
+﻿
+@(Html.Kendo().Grid<LibrarySystem.Models.Categories.AddCategoryViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+        columns.Bound(c => c.Name);
+        columns.Command(command => { command.Edit(); command.Destroy(); });
+      })
+      .ToolBar(toolbar => {
+            toolbar.Create();
+      })
+      .ColumnMenu()
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable()
+      .Navigatable()
+      .Sortable(sortable => {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("Categories_Read", "Categories"))
+          .Create(create => create.Action("Categories_Create", "Categories"))
+          .Update(update => update.Action("Categories_Update", "Categories"))
+          .Destroy(destroy => destroy.Action("Categories_Destroy", "Categories"))
+      )
+)

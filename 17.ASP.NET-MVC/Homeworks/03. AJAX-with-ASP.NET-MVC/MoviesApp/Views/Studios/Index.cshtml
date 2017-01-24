@@ -1,0 +1,19 @@
+﻿@model IEnumerable<MoviesApp.Models.StudioViewModel>
+
+<br/>
+@Ajax.ActionLink("Get All ", "GetAll", null, new AjaxOptions
+{
+    UpdateTargetId = "results",
+    LoadingElementId = "loading",
+    InsertionMode = InsertionMode.Replace
+}, new { @class = "btn btn-primary" })
+
+@Ajax.ActionLink("Create ", "Create", null, new AjaxOptions
+{
+    UpdateTargetId = "results",
+    LoadingElementId = "loading",
+    InsertionMode = InsertionMode.Replace
+}, new { @class = "btn btn-primary" })
+
+<div id="loading" style="display: none">Loading data...</div>
+<div id="results"></div>
