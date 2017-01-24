@@ -1,0 +1,2 @@
+﻿find(Mimi)
+find(Kire, Varna)
