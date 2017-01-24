@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Calculator</title>
+    <link href="styles.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="calculator">
+        <div class="menu">
+            <ul>
+                <li><span class="upper">V</span>iew</li>
+                <li><span class="upper">E</span>dit</li>
+                <li><span class="upper">H</span>elp</li>
+            </ul>
+        </div>
+        <div class="display">
+            8854455
+        </div>
+        <div class="bitsWindow">
+            <table>
+                <tr>
+                    <td>0000</td>
+                    <td>0000</td>
+                    <td>0000</td>
+                    <td>0000</td>
+                    <td>0000</td>
+                    <td>0000</td>
+                    <td>0000</td>
+                    <td>0000</td>
+                </tr>
+                <tr>
+                    <td>63</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>47</td>
+                    <td></td>
+                    <td></td>
+                    <td class="bitsWindowRight">32</td>
+                </tr>
+                <tr>
+                    <td>0000</td>
+                    <td>0000</td>
+                    <td>1000</td>
+                    <td>0111</td>
+                    <td>0001</td>
+                    <td>1011</td>
+                    <td>1011</td>
+                    <td>0111</td>
+                </tr>
+                <tr>
+                    <td>31</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>15</td>
+                    <td></td>
+                    <td></td>
+                    <td class="bitsWindowRight">0</td>
+                </tr>
+            </table>
+        </div>
+        <div class="leftMenus">
+            <ul>
+                <li><input type="radio" name="dec" value="Hex"/>Hex</li>
+                <li><input type="radio" name="dec" value="Dec" checked="checked"/>Dec</li>
+                <li><input type="radio" name="dec" value="Oct"/>Oct</li>
+                <li><input type="radio" name="dec" value="Bin"/>Bin</li>
+            </ul>
+        </div>
+        <div class="leftMenus">
+            <ul>
+                <li><input type="radio" name="dec1" value="Qword" checked="checked"/>Qword</li>
+                <li><input type="radio" name="dec1" value="Dword"/>Dword</li>
+                <li><input type="radio" name="dec1" value="Word"/>Word</li>
+                <li><input type="radio" name="dec1" value="Byte"/>Byte</li>
+            </ul>
+        </div>
+        <div class="TableButtons">
+            <table>
+                <tr>
+                    <td><button class="notactive"></button></td>
+                    <td><button>Mod</button></td>
+                    <td><button class="notactive">A</button></td>
+                    <td><button class="notactive">MC</button></td>
+                    <td><button class="notactive">MR</button></td>
+                    <td><button class="notactive">MS</button></td>
+                    <td><button class="notactive">M+</button></td>
+                    <td><button class="notactive">M-</button></td>
+                </tr>
+                <tr>
+                    <td><button>(</button></td>
+                    <td><button>)</button></td>
+                    <td><button class="notactive">B</button></td>
+                    <td><button>&#8592;</button></td>
+                    <td><button>CE</button></td>
+                    <td><button>C</button></td>
+                    <td><button>&plusmn;</button></td>
+                    <td><button class="notactive">&#8730;</button></td>
+                </tr>
+                <tr>
+                    <td><button>RoL</button></td>
+                    <td><button>RoR</button></td>
+                    <td><button class="notactive">C</button></td>
+                    <td><button>7</button></td>
+                    <td><button>8</button></td>
+                    <td><button>9</button></td>
+                    <td><button>/</button></td>
+                    <td><button class="notactive">%</button></td>
+                </tr>
+                <tr>
+                    <td><button>Or</button></td>
+                    <td><button>Xor</button></td>
+                    <td><button class="notactive">D</button></td>
+                    <td><button>4</button></td>
+                    <td><button>5</button></td>
+                    <td><button>6</button></td>
+                    <td><button>*</button></td>
+                    <td><button class="notactive">1/x</button></td>
+                </tr>
+                <tr>
+                    <td><button>Lsh</button></td>
+                    <td><button>Rsh</button></td>
+                    <td><button class="notactive">E</button></td>
+                    <td><button>1</button></td>
+                    <td><button>2</button></td>
+                    <td><button>3</button></td>
+                    <td><button>-</button></td>
+                    <td rowspan="2"><button>=</button></td>
+                </tr>
+                <tr>
+                    <td><button>Not</button></td>
+                    <td><button>And</button></td>
+                    <td><button class="notactive">F</button></td>
+                    <td colspan="2"><button>0</button></td>
+                    <td><button class="notactive">.</button></td>
+                    <td><button>+</button></td>                                        
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
