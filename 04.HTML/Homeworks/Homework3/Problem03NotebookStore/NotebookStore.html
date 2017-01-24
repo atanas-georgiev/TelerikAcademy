@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Notebook Store</title>
+    <style>
+        #table1 {
+            border-collapse: collapse;
+            border-radius: 10px;
+            border-style: hidden;
+            box-shadow: 0 0 0 3px black;
+            font-family: Verdana;
+        }
+
+        #firstRow {
+            border: 3px solid black;
+            font-size: 1.5em;
+            padding: 10px;
+            font-weight: normal;
+        }
+
+        #table2, fieldset {
+            border: 3px solid black;
+            margin: 5px;
+        }
+
+        input[type="range"] {
+            margin-bottom: 40px;
+            width: 100%;
+        }
+
+        #scales {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <table id="table1">
+            <thead>
+                <tr>
+                    <th colspan="2" id="firstRow">
+                        <a href="#">Apple</a>
+                        <a href="#">Toshiba</a>
+                        <a href="#">Lenovo</a>
+                        <a href="#">Dell</a>
+                        <a href="#">Asus</a>
+                        <a href="#">Acer</a>
+                        <a href="#">HP</a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <table id="table2">
+                            <tr>
+                                <td>
+                                    <fieldset>
+                                        <legend>Apple MacBook Air</legend>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <img src="laptop.png" alt="Laptop"/>
+                                                    <br />
+                                                    1300 USD
+                                                </td>
+                                                <td>
+                                                    64GB SSD<br />
+                                                    2GB DDR<br />
+                                                    Intel Code i5<br />
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </fieldset>
+                                </td>
+                                <td>
+                                    <fieldset>
+                                        <legend>Apple MacBook Air</legend>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <img src="laptop.png" alt="Laptop" />
+                                                    <br />
+                                                    1300 USD
+                                                </td>
+                                                <td>
+                                                    64GB SSD<br />
+                                                    2GB DDR<br />
+                                                    Intel Code i5<br />
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </fieldset>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <fieldset>
+                                        <legend>Apple MacBook Air</legend>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <img src="laptop.png" alt="Laptop" />
+                                                    <br />
+                                                    1300 USD
+                                                </td>
+                                                <td>
+                                                    64GB SSD<br />
+                                                    2GB DDR<br />
+                                                    Intel Code i5<br />
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </fieldset>
+                                </td>
+                                <td>
+                                    <fieldset>
+                                        <legend>Apple MacBook Air</legend>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <img src="laptop.png" alt="Laptop" />
+                                                    <br />
+                                                    1300 USD
+                                                </td>
+                                                <td>
+                                                    64GB SSD<br />
+                                                    2GB DDR<br />
+                                                    Intel Code i5<br />
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </fieldset>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <fieldset>
+                                        <legend>Apple MacBook Air</legend>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <img src="laptop.png" alt="Laptop" />
+                                                    <br />
+                                                    1300 USD
+                                                </td>
+                                                <td>
+                                                    64GB SSD<br />
+                                                    2GB DDR<br />
+                                                    Intel Code i5<br />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </fieldset>
+                                </td>
+                                <td>
+                                    <fieldset>
+                                        <legend>Apple MacBook Air</legend>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <img src="laptop.png" alt="Laptop" />
+                                                    <br />
+                                                    1300 USD
+                                                </td>
+                                                <td>
+                                                    64GB SSD<br />
+                                                    2GB DDR<br />
+                                                    Intel Code i5<br />
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </fieldset>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                    <td id="scales">
+                        <label for="pricerange1">Min Price: 500 USD</label><br />
+                        <input id="pricerange1" type="range" min="0" max="10000" /><br />
+                        <label for="pricerange2">Max Price: 1500 USD</label><br />
+                        <input id="pricerange2" type="range" min="0" max="10000" /><br />
+                        <label for="minram">Min Ram: 4 GB</label><br />
+                        <input id="minram" type="range" min="0" max="64" /><br />
+                        <label for="maxram">Min Ram: 16 GB</label><br />
+                        <input id="maxram" type="range" min="0" max="64" /><br />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</body>
+</html>
