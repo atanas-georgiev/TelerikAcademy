@@ -1,0 +1,40 @@
+Design pattern: Factory Method
+	* 
+
+Design pattern: Strategy
+	* Class WebServerConsole should be initialized with abstract IResponseProvider. Dirrefent strategies can be used for initialization of this class.
+	* HttpRequest is initialized using its abstract IHttpRequest. All controllers has interface as parameter.
+	
+Design pattern: Template Method
+	* All ContentActionResult, JsonActionResult, RedirectActionResult use the same template interface IActionResult. All use the same structure and methods.
+	* The controller class is implemented as abstract. It has the basic functionality which is used as ApiController and HomeController (i.e. Controller is the tempate bot both)
+
+Design pattern: Chain of Responsibility
+	* Implemented in all Requester classes. Each class is responsible for its job, then passes to the next.
+
+Design pattern: Decorator
+	* 
+
+Found bugs:	
+	* Check in HttpResponse ProcessRequest(HttpRequest request) is not correct. Version 3.0 should be excluded. =< replaced with <3
+	* Exception text in ProcessRequest(HttpRequest request) without ! mark
+	* Missing Forum() action in HomeController
+
+Found bottleneck:
+	* Too many loops found in FileExists method in class RequesterFile. Method removed.
+
+Single responsibility principle
+	* All classes are separated in the project. Each class is responsible only for one thing. Files are also separated in different folders for better readability.
+
+Open/closed principle
+	* All controllers use an abstract IHttpRequest interface parameter. SO controllers can be reused for any type of HttpRequests.
+	* Class WebServerConsole can use any ResponseProviders due to its abstract IResponseProvider implementation and usage.
+
+Liskov substitution principle
+	* There are no classes that break any functionality of its parent (Controllers, All classes in Action folder)
+
+Interface segregation principle
+	* Simple and small interfaces are used in the code (IResponseProvider, IHttpRequest)
+
+Dependency inversion principle
+	* Used in class contructors of HomeController, ApiController, WebServerConsole, ActionDescriptor and many others. Please refer unit tests for more information.
