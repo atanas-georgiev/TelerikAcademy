@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task01_VariousData", "Task01_VariousData\Task01_VariousData.csproj", "{34FB7F98-CEA6-489D-B2DE-A556222C93C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task02_SessionText", "Task02_SessionText\Task02_SessionText.csproj", "{B08A4703-1BC1-4648-B0FB-570DAB29DCBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task03_LoginPages", "Task03_LoginPages\Task03_LoginPages.csproj", "{9C55CCB1-4E08-4D10-A31A-9D3F99F2B121}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task04_ViewStateDeletion", "Task04_ViewStateDeletion\Task04_ViewStateDeletion.csproj", "{F9E5F8BB-E932-4DF8-BB27-94BF9062B0E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task05_WebCounter", "Task05_WebCounter\Task05_WebCounter.csproj", "{7B31EB64-F97B-401C-9565-524DA799F683}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task06_ImageCounterSqlServer", "Task06_ImageCounterSqlServer\Task06_ImageCounterSqlServer.csproj", "{418E7381-35D5-445B-B479-E59A20D80BB3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34FB7F98-CEA6-489D-B2DE-A556222C93C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34FB7F98-CEA6-489D-B2DE-A556222C93C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34FB7F98-CEA6-489D-B2DE-A556222C93C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34FB7F98-CEA6-489D-B2DE-A556222C93C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B08A4703-1BC1-4648-B0FB-570DAB29DCBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B08A4703-1BC1-4648-B0FB-570DAB29DCBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B08A4703-1BC1-4648-B0FB-570DAB29DCBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B08A4703-1BC1-4648-B0FB-570DAB29DCBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C55CCB1-4E08-4D10-A31A-9D3F99F2B121}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C55CCB1-4E08-4D10-A31A-9D3F99F2B121}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C55CCB1-4E08-4D10-A31A-9D3F99F2B121}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C55CCB1-4E08-4D10-A31A-9D3F99F2B121}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9E5F8BB-E932-4DF8-BB27-94BF9062B0E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9E5F8BB-E932-4DF8-BB27-94BF9062B0E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9E5F8BB-E932-4DF8-BB27-94BF9062B0E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9E5F8BB-E932-4DF8-BB27-94BF9062B0E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B31EB64-F97B-401C-9565-524DA799F683}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B31EB64-F97B-401C-9565-524DA799F683}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B31EB64-F97B-401C-9565-524DA799F683}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B31EB64-F97B-401C-9565-524DA799F683}.Release|Any CPU.Build.0 = Release|Any CPU
+		{418E7381-35D5-445B-B479-E59A20D80BB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{418E7381-35D5-445B-B479-E59A20D80BB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{418E7381-35D5-445B-B479-E59A20D80BB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{418E7381-35D5-445B-B479-E59A20D80BB3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
