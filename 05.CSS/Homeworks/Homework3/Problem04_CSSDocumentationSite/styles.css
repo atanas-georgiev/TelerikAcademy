@@ -1,0 +1,148 @@
+﻿body {
+    font-family: Verdana, "Trebuchet MS", Tahoma, Arial, "Courier New", Serif;
+    background-color: #f1f1f1;
+    font-size: 11px;
+    width: 800px;
+    height: 575px;
+    border: 1px solid black;
+    margin-top: 3px;
+    margin-left: 1px;
+    padding: 0;
+}
+
+#left {
+    width: 138px;
+    float: left;
+    padding: 2px;
+    padding-top: 15px;
+}
+
+.aside_left {
+    display: block;
+    text-decoration: none;
+    color: black;
+}
+
+#home {
+    display: inline;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+#left img {
+    vertical-align: text-bottom;
+}
+
+#left h3 {
+    margin: 0;
+    margin-top: 10px;
+    font-size: 11px;
+    color: #7f0000;
+}
+
+#right {
+    width: 140px;
+    float: right;
+}
+
+    #right:after {
+        clear: both;
+    }
+
+main {
+    float: left;
+    width: 500px;
+    border: 1px solid #9d9d9d;
+    margin: 2px;
+    padding: 3px;
+    background-color: white;
+}
+
+main h1 {
+    font-size: 18px;
+}
+
+main nav a {
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    border: 1px solid black;
+    width: 95px;
+    text-align: center;
+    padding: 3px;
+}
+
+main header, main footer {
+    padding-bottom: 5px;
+    border-bottom: 2px solid #9d9d9d;
+}
+
+main footer {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding-top: 5px;
+    border-top: 2px solid #9d9d9d;
+}
+
+section h2 {
+    font-size: 11px;
+    color: white;
+    background-color: #808080;
+    padding: 2px;
+}
+
+main figure {
+    float: left;
+    padding: 0;
+    margin: 0;
+    margin-right: 15px;
+}
+
+main a {
+    color: #7f0000;
+}
+
+#right div {
+    border: 1px solid #9d9d9d;
+    margin: 2px;
+    margin-left: 0;   
+    text-align: center;
+    padding: 3px; 
+    background-color: white;
+}
+
+#right h2 {
+    font-size: 11px;
+    color: white;
+    background-color: #808080;
+    padding: 2px;
+    margin: 0;
+}
+
+#right a {
+    color: #7f0000;
+    display: block;
+}
+
+#right input[type="text"] {
+    width: 90px;
+    margin: 2px;
+}
+
+#right input[type="submit"] {
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+}
+
+aside button {
+    width: 90px;
+    height: 30px;
+    background: linear-gradient(to right, #8dd4f4 0,#bfe7f8 10%,#bfe7f8 90%,#8dd4f4 100%);
+    border: 1px solid #689ce1;
+    -ms-border-radius: 2px;
+    border-radius: 2px;
+    color: #31cdf9;
+}
+
